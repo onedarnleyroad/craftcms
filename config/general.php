@@ -11,6 +11,9 @@
 return [
     // Global settings
     '*' => [
+        // Control Panel trigger word
+        'cpTrigger' => env('CP_TRIGGER'),
+
         // Default Week Start Day (0 = Sunday, 1 = Monday...)
         'defaultWeekStartDay' => 0,
 
@@ -20,31 +23,44 @@ return [
         // Whether generated URLs should omit "index.php"
         'omitScriptNameInUrls' => true,
 
-        // Control Panel trigger word
-        'cpTrigger' => 'admin',
+        // Do not identify ourselves as a Craft-powered website in server response headers
+        'sendPoweredByHeader' => false,
+
+        // Prevents “Forgot Password” forms from revealing whether a valid email address was entered,
+        // so even if the email was invalid, a “Password reset email sent” message will be displayed.
+        'preventUserEnumeration' => true,
+
+        // remove username field
+        'useEmailAsUsername' => true,
+
+        // extend tokens to 1 week
+        'defaultTokenDuration' => 'P1W',
 
         // The secure key Craft will use for hashing and encrypting data
         'securityKey' => env('SECURITY_KEY'),
+
+        // Dev Mode (see https://craftcms.com/support/dev-mode)
+        'devMode' => env('DEV_MODE', false),
+
+        // Whether template caching via the cache tag should be enabled
+        'enableTemplateCaching' => env('ENABLE_TEMPLATE_CACHING', true),
+
+        // Send all Craft emails to a test address?
+        'testToEmailAddress' => env('TEST_TO_EMAIL_ADDRESS', null)
     ],
 
     // Dev environment settings
-    'dev' => [
-        // Base site URL
-        'siteUrl' => null,
-
-        // Dev Mode (see https://craftcms.com/support/dev-mode)
-        'devMode' => true,
-    ],
+    'dev' => [],
 
     // Staging environment settings
     'staging' => [
-        // Base site URL
-        'siteUrl' => null,
+        'isSystemOn' => false
     ],
 
     // Production environment settings
+    // Avoid env() to "lock down" any setting
     'production' => [
-        // Base site URL
-        'siteUrl' => null,
+        'allowUpdates' => false,
+        'devMode' => false
     ],
 ];
