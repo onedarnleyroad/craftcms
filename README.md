@@ -43,6 +43,7 @@ References:
 - https://keepachangelog.com/en/1.0.0/
 - https://jolicode.com/blog/what-you-need-to-know-about-environment-variables-with-php
 - https://mattstauffer.com/blog/environment-specific-configuration-for-craftcms-using-phpdotenv/
+- https://docs.craftcms.com/v3/config/app.html#mailer-component
 
 ### Ideal Usage:
 
@@ -76,4 +77,5 @@ _Each major step should be optional_
 - add _errors template group
 - add a front end login form
 - add common configs for redactor
+- add boilerplate mailer overrides
   
