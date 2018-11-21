@@ -10,7 +10,10 @@
   "autoload": {
     "psr-4": {
       "modules\\": "modules/"
-    }
+    },
+    "files": [
+      "env.php"
+    ]
   },
   "config": {
     "optimize-autoloader": true,
