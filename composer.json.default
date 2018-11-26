@@ -1,0 +1,31 @@
+{
+  "require": {
+    "craftcms/cms": "^3.0.0",
+    "craftcms/redactor": "^2.1",
+    "fruitstudios/linkit": "^1.1",
+    "fruitstudios/searchit": "^1.0",
+    "nystudio107/craft-retour": "^3.0",
+    "nystudio107/craft-seomatic": "^3.1",
+    "vlucas/phpdotenv": "^2.4.0",
+    "nystudio107/craft-scripts": "^1.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "modules\\": "modules/"
+    },
+    "files": [
+      "env.php"
+    ]
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "7.0"
+    }
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ]
+  }
+}
