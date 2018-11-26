@@ -44,6 +44,7 @@ References:
 - https://jolicode.com/blog/what-you-need-to-know-about-environment-variables-with-php
 - https://mattstauffer.com/blog/environment-specific-configuration-for-craftcms-using-phpdotenv/
 - https://docs.craftcms.com/v3/config/app.html#mailer-component
+- https://workingconcept.com/blog/mamp-pro-to-ddev
 
 ### Ideal Usage:
 
