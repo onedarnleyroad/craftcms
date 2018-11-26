@@ -30,6 +30,38 @@ Right now we're all on MAMP Pro, and while that's _fine_, it means we're each re
 
 And while it probably would be "nice" if this was a separate package so that it could be leveraged outside of Craft, the reality is that _if_ we are doing something in Craft, we will definitely need our front-end build tool in place. And it's complicated, so having it purpose-built for our most common setup is ideal.
 
+## Installation Instructions:
+
+### Step 1: Download Craft
+
+#### Option 1: Manual setup
+
+1. clone/download repo to local machine
+2. delete `.gitignore` and rename `.gitignore.default` to `.gitignore`
+3. duplicate `.env.example` to `.env`
+4. run `composer install`
+
+#### Option 2: Setup via Composer
+
+1. `composer create-project onedarnleyroad/craftcms <Path>`
+
+### Step 2: Edit .env
+
+1. Set SECURITY_KEY *
+2. Set CP_TRIGGER
+3. Set TEST_TO_EMAIL_ADDRESS
+4. Set DB_ creds **
+
+* For existing projects, obtain security key from project lead; to set up a new Security Key, follow https://docs.craftcms.com/v3/installation.html#step-3-set-a-security-key
+
+** The default Database values are compatible with DDEV environment. If you are planning to use DDEV, leave them as-is.
+
+### Step 3: Configure DDEV
+
+We ship a default `.ddev/config.yaml` with our preferred defaults, so all you need to do is set the project name (which is used as the default hostname).
+
+> `ddev config --project-name <HostName>`
+
 
 ## Roadmap
 
