@@ -12,7 +12,7 @@ return [
     // Global settings
     '*' => [
         // Control Panel trigger word
-        'cpTrigger' => env('CP_TRIGGER'),
+        'cpTrigger' => env('CP_TRIGGER') ?: 'admin',
 
         // extend tokens to 1 week
         'defaultTokenDuration' => 'P1W',
@@ -43,7 +43,7 @@ return [
         'sendPoweredByHeader' => false,
 
         // Send all Craft emails to a test address?
-        'testToEmailAddress' => env('TEST_TO_EMAIL_ADDRESS', null),
+        'testToEmailAddress' => env('TEST_TO_EMAIL_ADDRESS') ?: null,
 
         // remove username field
         'useEmailAsUsername' => true,
