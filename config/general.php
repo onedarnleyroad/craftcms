@@ -21,13 +21,13 @@ return [
         'defaultWeekStartDay' => 0,
 
         // Dev Mode (see https://craftcms.com/support/dev-mode)
-        'devMode' => env('DEV_MODE', false),
+        'devMode' => (bool) env('DEV_MODE', false),
 
         // Enable CSRF Protection (recommended)
         'enableCsrfProtection' => true,
 
         // Whether template caching via the cache tag should be enabled
-        'enableTemplateCaching' => env('ENABLE_TEMPLATE_CACHING', true),
+        'enableTemplateCaching' => (bool) env('ENABLE_TEMPLATE_CACHING', true),
 
         // Whether generated URLs should omit "index.php"
         'omitScriptNameInUrls' => true,
