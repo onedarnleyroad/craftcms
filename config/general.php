@@ -61,6 +61,7 @@ return [
     // Avoid env() to "lock down" any setting
     'production' => [
         'allowUpdates' => false,
-        'devMode' => false
+        'devMode' => false,
+        'testToEmailAddress' => null
     ],
 ];
