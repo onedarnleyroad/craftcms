@@ -49,8 +49,8 @@ return [
         'useEmailAsUsername' => true,
     ],
 
-    // Dev environment settings
-    'dev' => [
+    // Development environment settings
+    'develop' => [
         'isSystemOn' => false
     ],
 
