@@ -14,39 +14,39 @@ return [
         // Control Panel trigger word
         'cpTrigger' => env('CP_TRIGGER'),
 
+        // extend tokens to 1 week
+        'defaultTokenDuration' => 'P1W',
+
         // Default Week Start Day (0 = Sunday, 1 = Monday...)
         'defaultWeekStartDay' => 0,
+
+        // Dev Mode (see https://craftcms.com/support/dev-mode)
+        'devMode' => env('DEV_MODE', false),
 
         // Enable CSRF Protection (recommended)
         'enableCsrfProtection' => true,
 
+        // Whether template caching via the cache tag should be enabled
+        'enableTemplateCaching' => env('ENABLE_TEMPLATE_CACHING', true),
+
         // Whether generated URLs should omit "index.php"
         'omitScriptNameInUrls' => true,
-
-        // Do not identify ourselves as a Craft-powered website in server response headers
-        'sendPoweredByHeader' => false,
 
         // Prevents “Forgot Password” forms from revealing whether a valid email address was entered,
         // so even if the email was invalid, a “Password reset email sent” message will be displayed.
         'preventUserEnumeration' => true,
 
-        // remove username field
-        'useEmailAsUsername' => true,
-
-        // extend tokens to 1 week
-        'defaultTokenDuration' => 'P1W',
-
         // The secure key Craft will use for hashing and encrypting data
         'securityKey' => env('SECURITY_KEY'),
 
-        // Dev Mode (see https://craftcms.com/support/dev-mode)
-        'devMode' => env('DEV_MODE', false),
-
-        // Whether template caching via the cache tag should be enabled
-        'enableTemplateCaching' => env('ENABLE_TEMPLATE_CACHING', true),
+        // Do not identify ourselves as a Craft-powered website in server response headers
+        'sendPoweredByHeader' => false,
 
         // Send all Craft emails to a test address?
-        'testToEmailAddress' => env('TEST_TO_EMAIL_ADDRESS', null)
+        'testToEmailAddress' => env('TEST_TO_EMAIL_ADDRESS', null),
+
+        // remove username field
+        'useEmailAsUsername' => true,
     ],
 
     // Dev environment settings
