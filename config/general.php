@@ -50,7 +50,9 @@ return [
     ],
 
     // Dev environment settings
-    'dev' => [],
+    'dev' => [
+        'isSystemOn' => false
+    ],
 
     // Staging environment settings
     'staging' => [
