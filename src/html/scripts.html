@@ -1,0 +1,50 @@
+{% set webpackHash = "<%= webpack.hash %>" %}
+
+<% if (htmlWebpackPlugin.options.legacy) { %>
+	<% for (var css in htmlWebpackPlugin.files.css) { %>
+		<% var filename = htmlWebpackPlugin.files.css[css].split('/').reverse()[0]; %>		
+		<link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+	<% } %>
+	<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+		<% var filename = htmlWebpackPlugin.files.chunks[chunk].entry; %>
+		<script nomodule src="<%= filename %>"></script>	
+	<% } %>
+<% } else { %>
+	<% for (var css in htmlWebpackPlugin.files.css) { %>
+		<% var filename = htmlWebpackPlugin.files.css[css].split('/').reverse()[0]; %>
+		{% set cachedCssVersion = getCookie('cached-css-version') %}
+		{% if not craft.app.config.general.devMode and cachedCssVersion != oneconfig.version %}
+			{{ setCookie('cached-css-version', '<%= webpack.hash %>', now | date_modify("+7 days").timestamp ) }}
+			{% verbatim %}
+			<style><%= compilation.assets[ filename ].source() %></style>
+			{% endverbatim %}
+			<link rel="preload" as="style" href="<%= htmlWebpackPlugin.files.css[css] %>" onload="this.rel='stylesheet'">
+		{% else %}
+			<link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+		{% endif %}
+	<% } %>
+
+	<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+		<% if ((chunk == 'inlined' || chunk == 'manifest') && htmlWebpackPlugin.options.production) { %>
+			<script type="module">
+				<% for (var prop in compilation.assets) { %>
+					<% var m = new RegExp(`^${chunk}`);  %>
+					<% if (m.test(prop)) { %>
+						{% verbatim %}
+						<%= compilation.assets[ prop ].source() %>
+						{% endverbatim %}
+					<% } %>
+				<% } %>
+			</script>
+		<% } else if ( chunk.indexOf( htmlWebpackPlugin.options.entry ) >= 0 || chunk == 'inlined' || chunk == 'manifest' ) { %>
+			
+			<% var filename = htmlWebpackPlugin.files.chunks[chunk].entry; %>
+			<% var hash = htmlWebpackPlugin.files.chunks[chunk].hash; %>
+			<% if (!htmlWebpackPlugin.options.production) { %>
+				<script async type="module" src="{{ devAssetPath }}<%= chunk %>.js"></script>
+			<% } else { %>	
+				<script async type="module" src="<%= filename %>"></script>
+			<% } %>
+		<% } %>
+	<% } %>
+<% } %>
