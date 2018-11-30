@@ -14,7 +14,7 @@
       "modules\\": "modules/"
     },
     "files": [
-      "env.php"
+      "modules/onedarnleyroad/functions.php"
     ]
   },
   "config": {

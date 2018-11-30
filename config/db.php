@@ -1,4 +1,7 @@
 <?php
+
+use function onedarnleyroad\env;
+
 /**
  * Database Configuration
  *

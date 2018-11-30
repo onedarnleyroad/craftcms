@@ -1,4 +1,7 @@
 <?php
+
+use function onedarnleyroad\env;
+
 /**
  * General Configuration
  *

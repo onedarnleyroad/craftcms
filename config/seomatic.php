@@ -1,5 +1,7 @@
 <?php
 
+use function onedarnleyroad\env;
+
 // @var $isProduction boolean
 $isProduction = env('ENVIRONMENT') == 'production';
 

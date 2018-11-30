@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Our typical Front End setup, opinionated, but all configured for a craft approach to HMR / webpack dev server etc. 
 - Still to do is to hook this build process into our config.php method of pinging port 9000 to see if we should serve webpack dev server assets, or built files.
 
+### Changed
+- `env()` has been namespaced to avoid collision and moved into `modules/onedarnleyroad/functions.php`
+
 ## [1.0.1]
 ### Added
 - default DDEV config
