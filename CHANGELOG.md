@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+### Added
+- Webpack, Postcss, Tailwind, Package.json.....
+- Our typical Front End setup, opinionated, but all configured for a craft approach to HMR / webpack dev server etc. 
+- Still to do is to hook this build process into our config.php method of pinging port 9000 to see if we should serve webpack dev server assets, or built files.
+
 ## [1.0.1]
 ### Added
 - default DDEV config
