@@ -70,9 +70,17 @@ We ship  `.ddev/config.yaml` with our preferred defaults, so all you should need
 
 1. `composer create-project onedarnleyroad/craftcms <Path>`
 2. `cd <Path>`
+
+_If using ddev...otherwise skip to .6_
+
 3. `ddev config --project-name <HostName>`
-4. `./craft setup`
-5. `./onedarnleyroad setup`
+4. `ddev start` (to ensure that craft can connect to a database)
+5. `ddev ssh`
+
+Finally...
+
+6. `./craft setup`
+7. `./onedarnleyroad setup`
 
 #### Cloning an existing project for local environment
 
