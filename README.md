@@ -69,9 +69,10 @@ We ship  `.ddev/config.yaml` with our preferred defaults, so all you should need
 #### Starting a new project from scratch:
 
 1. `composer create-project onedarnleyroad/craftcms <Path>`
-2. `ddev config --project-name <HostName>`
-2. `./craft setup`
-3. `./onedarnleyroad setup`
+2. `cd <Path>`
+3. `ddev config --project-name <HostName>`
+4. `./craft setup`
+5. `./onedarnleyroad setup`
 
 #### Cloning an existing project for local environment
 
