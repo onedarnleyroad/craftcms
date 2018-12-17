@@ -1,5 +1,5 @@
 <?php
-namespace onedarnleyroad;
+namespace onedarnleyroad\one;
 
 /**
  * Gets the value of an environment variable. Supports boolean, empty and null.

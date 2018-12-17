@@ -19,7 +19,7 @@
       "modules\\": "modules/"
     },
     "files": [
-      "modules/onedarnleyroad/functions.php"
+      "modules/one/functions.php"
     ]
   },
   "config": {

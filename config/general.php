@@ -1,6 +1,6 @@
 <?php
 
-use function onedarnleyroad\env;
+use function onedarnleyroad\one\env;
 
 /**
  * General Configuration
