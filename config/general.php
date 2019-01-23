@@ -54,12 +54,12 @@ return [
 
     // Development environment settings
     'develop' => [
-        'isSystemOn' => false
+        'isSystemLive' => false
     ],
 
     // Staging environment settings
     'staging' => [
-        'isSystemOn' => false
+        'isSystemLive' => false
     ],
 
     // Production environment settings
