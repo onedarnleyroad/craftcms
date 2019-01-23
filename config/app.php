@@ -1,4 +1,7 @@
 <?php
+
+use function onedarnleyroad\one\env;
+
 /**
  * Yii Application Config
  *
@@ -22,4 +25,24 @@ return [
         'my-module' => \modules\Module::class,
     ],
     //'bootstrap' => ['my-module'],
+    'components' => [
+        'mailer' => function() {
+            // Get the stored email settings
+            $settings = \craft\helpers\App::mailSettings();
+
+            // Override the transport adapter class
+            $settings->transportType = \craft\mail\transportadapters\Smtp::class;
+
+            // Override the transport adapter settings
+            $settings->transportSettings = [
+                'host' => 'smtp.postmarkapp.com',
+                'port' => '25',
+                'useAuthentication' => true,
+                'username' => env('POSTMARK_TOKEN'),
+                'password' => env('POSTMARK_TOKEN')
+            ];
+
+            return \craft\helpers\App::mailerConfig($settings);
+        }
+    ]
 ];
