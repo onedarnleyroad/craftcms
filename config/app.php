@@ -22,9 +22,9 @@ use function onedarnleyroad\one\env;
 
 return [
     'modules' => [
-        'my-module' => \modules\Module::class,
+        // 'one' => \onedarnleyroad\one\Module::class,
     ],
-    //'bootstrap' => ['my-module'],
+    // 'bootstrap' => ['one'],
     'components' => [
         'mailer' => function() {
             // Get the stored email settings
@@ -42,7 +42,11 @@ return [
                 'password' => env('POSTMARK_TOKEN')
             ];
 
-            return \craft\helpers\App::mailerConfig($settings);
+            // Create a Mailer component config with these settings
+            $config = craft\helpers\App::mailerConfig($settings);
+
+            // Instantiate and return it
+            return Craft::createObject($config);
         }
     ]
 ];
