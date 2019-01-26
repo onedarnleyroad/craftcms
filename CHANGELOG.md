@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Add the `DEFAULT_SITE_URL` Environment Variable to `.env.example`
+
 ### Changed
 - Bump composer dependency to  Craft ^3.1.0, and Redactor ^2.3
 
