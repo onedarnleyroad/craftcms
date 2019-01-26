@@ -4,8 +4,8 @@
   "version": "1.0.2",
   "type": "project",
   "require": {
-    "craftcms/cms": "^3.0.0",
-    "craftcms/redactor": "^2.1",
+    "craftcms/cms": "^3.1.0",
+    "craftcms/redactor": "^2.3",
     "fruitstudios/linkit": "^1.1",
     "fruitstudios/searchit": "^1.0",
     "nystudio107/craft-retour": "^3.0",
