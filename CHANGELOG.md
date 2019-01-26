@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Bump composer dependency to  Craft ^3.1.0, and Redactor ^2.3
 - Use `DEFAULT_SITE_URL` in favour of `@web` for setting `url` values for Volumes
+- Change `isSystemOn` to `IsSystemLive`
 
 ## [1.0.2]
 ### Added
