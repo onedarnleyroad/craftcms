@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Add the `DEFAULT_SITE_URL` Environment Variable to `.env.example`
+- Set `allowAdminChanges` to `true` for production environment
 
 ### Changed
 - Bump composer dependency to  Craft ^3.1.0, and Redactor ^2.3

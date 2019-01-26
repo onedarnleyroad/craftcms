@@ -65,7 +65,7 @@ return [
     // Production environment settings
     // Avoid env() to "lock down" any setting
     'production' => [
-        'allowUpdates' => false,
+        'allowAdminChanges' => false,
         'devMode' => false,
         'testToEmailAddress' => null
     ],
