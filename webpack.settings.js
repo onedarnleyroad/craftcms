@@ -21,6 +21,9 @@ module.exports = {
 	html: {
 		// Templates:
 		template: path.resolve(__dirname, "src/html/scripts.html"),
+		// If you're using the raeder/craft-http2-server-push-twig plugin, then
+		// you can use this template:
+		// template: path.resolve(__dirname, "src/html/scripts-server-push.html"),
 
 		// Outputs File
 		filename: (entry, target) => path.resolve(__dirname, `templates/_readonly/html/${target}_${entry}.twig`),

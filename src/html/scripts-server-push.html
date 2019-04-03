@@ -21,8 +21,8 @@
 		
 		<% for (var css in htmlWebpackPlugin.files.css) { %>
 			<% var filename = htmlWebpackPlugin.files.css[css].split('/').reverse()[0]; %>
-			<link rel="preload" as="style" href="<%= htmlWebpackPlugin.files.css[css] %>" onload="this.rel='stylesheet'">
-			<link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">	
+			<link rel="preload" as="style" href="<%= htmlWebpackPlugin.files.css[css] %>">
+			<link href="{{ '<%= htmlWebpackPlugin.files.css[css] %>' | h2push }}" rel="stylesheet">	
 		<% } %>
 	{% endif %}
 
@@ -46,7 +46,7 @@
 			<% if (!htmlWebpackPlugin.options.production) { %>
 				<script async type="module" src="{{ devAssetPath }}<%= chunk %>.js"></script>
 			<% } else { %>	
-				<script async type="module" src="<%= filename %>"></script>
+				<script async type="module" src="{{ '<%= filename %>' | h2module }}"></script>
 			<% } %>
 		<% } %>
 	<% } %>
