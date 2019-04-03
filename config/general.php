@@ -50,6 +50,9 @@ return [
 
         // remove username field
         'useEmailAsUsername' => true,
+
+        // Error template locations:
+        'errorTemplatePrefix' => "_errors/",
     ],
 
     // Development environment settings

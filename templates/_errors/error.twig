@@ -1,0 +1,10 @@
+{% extends "_errors/_layout" %}
+
+{% set title = "Error " ~ {{ code }} %}
+
+{% block content %}
+
+<p>{{ message }}</p>
+
+
+{% endblock %}
