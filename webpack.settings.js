@@ -23,7 +23,7 @@ module.exports = {
 		template: path.resolve(__dirname, "src/html/scripts.html"),
 
 		// Outputs File
-		filename: (entry, target) => path.resolve(__dirname, `templates/_readonly/html/${target}_${entry}.html`),
+		filename: (entry, target) => path.resolve(__dirname, `templates/_readonly/html/${target}_${entry}.twig`),
 	},
 
 	aliases: {

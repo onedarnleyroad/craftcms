@@ -26,7 +26,7 @@ const img = {
 };
 
 const templates = {
-	src: './templates/**/*.html'
+	src: './templates/**/*.twig'
 };
 
 /*
@@ -125,12 +125,12 @@ gulp.task('watch', () => {
 	// of tailwind and purgecss, so when you get a new page,
 	// any new classes should happily be added to the whitelist.
 	watch([
-		'./templates/**/*.html',
-		'!./templates/index.html',
+		'./templates/**/*.twig',
+		'!./templates/index.twig',
 		'!./templates/_readonly/**/*.*',
 	], { ignoreInitial: true }, function ( file ) {
 		console.log( file.basename );
-		spawn('touch', ['templates/index.html']);
+		spawn('touch', ['templates/index.twig']);
 		spawn('touch', ['src/scss/app.scss']);
 	});
 });

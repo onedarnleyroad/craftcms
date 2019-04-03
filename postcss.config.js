@@ -14,10 +14,10 @@ module.exports = ({ options }) => {
 		require('tailwindcss')('./tailwind.js'),
 		require('autoprefixer'),
 		purgecss({
-			content: ['./templates/**/*.html', './src/js/components/**/*.vue'],
+			content: ['./templates/**/*.twig', './src/js/components/**/*.vue'],
 			extractors: [{
 				extractor: TailwindExtractor,
-				extensions: ["html", "vue"]
+				extensions: ["twig", "vue"]
 			}]
 		})
 	];
