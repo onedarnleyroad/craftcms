@@ -13,6 +13,7 @@
     "nystudio107/craft-seomatic": "^3.1",
     "marionnewlevant/agnostic-fetch": "^2.0", 
     "vlucas/phpdotenv": "^2.4.0",
+    "lukeyouell/craft-queue-manager": "^1.1",
     "nystudio107/craft-scripts": "^1.2",
     "ostark/craft-async-queue": "^2.0",
     "aelvan/imager": "^2.1"
