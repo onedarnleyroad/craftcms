@@ -110,6 +110,19 @@ _Each major step should be optional_
 - add common configs for redactor
 - add boilerplate mailer overrides
 
+## Webpack to do:
+
+- Use .env for some dev settings. eg:
+
+```
+# Webpack settings. 
+WEBPACK_ON="false"
+WEBPACK_PORT=9000
+WEBPACK_HTTPS="true"
+```
+
+- Ensure these env are included in webpack, and make sure that the dev-server config is tidied up so that we aren't duplicating any settings and it's easier to get a handle on what the dev-mode settings are. 
+
 ## References:
 
 - https://github.com/nystudio107/craft/blob/master/nys-setup
