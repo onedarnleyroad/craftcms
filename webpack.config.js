@@ -101,7 +101,7 @@ module.exports = env => {
 
 		output: {
 			filename: outputFilename,
-			publicPath: devServer ? `https://localhost:9000/${publicPath}` : `/${publicPath}`,
+			publicPath: devServer ? `http${settings.devServer.https ? 's' : ''}://localhost:${settings.devServer.port}/${publicPath}` : `/${publicPath}`,
 			path: filePath,
 			library: settings.library
 		},
@@ -175,13 +175,22 @@ module.exports = env => {
 
 
 		devServer: {
+			// from settings
+			https: settings.devServer.https,
+			host: settings.devServer.host,
+			publicPath: `${settings.devServer.https ? 'https' : 'http'}://${settings.devServer.host || 'localhost'}:${settings.devServer.port}/assets/`,
+			port: settings.devServer.port,
+
+			// hardcoded
+			stats: {
+				colors: true
+			},
+
 			watchContentBase: true,
 			contentBase: './templates/',
-			https: true,
 			compress: true,
 			hot: true,
 			inline: true,
-			port: 9000,
 			headers: {
 				"Access-Control-Allow-Origin": "*",
 				"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",

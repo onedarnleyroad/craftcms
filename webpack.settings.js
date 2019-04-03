@@ -1,5 +1,6 @@
 const path = require("path");
 
+
 module.exports = {
 
 	base: './src/js/',
@@ -55,5 +56,11 @@ module.exports = {
 			// targets: '> 1%, last 2 versions, Firefox ESR'
 		}
 
+	},
+
+	devServer: {
+		port: 9000,
+		https: true,
+		host: 'localhost'
 	}
 };

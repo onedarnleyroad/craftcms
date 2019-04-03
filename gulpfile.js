@@ -25,10 +25,6 @@ const img = {
 	dest: './web/assets/img'
 };
 
-const templates = {
-	src: './templates/**/*.twig'
-};
-
 /*
  * ----------
  * SVG
