@@ -15,7 +15,8 @@
     "lukeyouell/craft-queue-manager": "^1.1",
     "nystudio107/craft-scripts": "^1.2",
     "ostark/craft-async-queue": "^2.0",
-    "aelvan/imager": "^2.1"
+    "aelvan/imager": "^2.1",
+    "mmikkel/retcon": "^2.0"
   },
   "autoload": {
     "psr-4": {
