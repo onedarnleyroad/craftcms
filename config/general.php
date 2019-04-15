@@ -14,6 +14,10 @@ use function onedarnleyroad\one\env;
 return [
     // Global settings
     '*' => [
+        'aliases' => [
+            '@web' => env('DEFAULT_SITE_URL')
+        ],
+
         // Control Panel trigger word
         'cpTrigger' => env('CP_TRIGGER') ?: 'admin',
 
