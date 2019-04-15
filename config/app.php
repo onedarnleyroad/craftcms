@@ -17,9 +17,34 @@
  * your config/ folder, alongside this one.
  */
 
+use craft\helpers\App;
+use craft\mail\transportadapters\Smtp;
+
 return [
     'modules' => [
         'my-module' => \modules\Module::class,
     ],
     //'bootstrap' => ['my-module'],
+    'components' => [
+        'mailer' => function() {
+            // Get the stored email settings
+            $settings = App::mailSettings();
+
+            // Override the transport adapter class
+            $settings->transportType = Smtp::class;
+
+            // Override the transport adapter settings
+            $settings->transportSettings = [
+                'host' => getenv('SMTP_HOST'),
+                'port' => getenv('SMTP_PORT'),
+                'username' => getenv('SMTP_USERNAME'),
+                'password' => getenv('SMTP_PASSWORD'),
+                'useAuthentication' => true,
+            ];
+
+            $config = App::mailerConfig($settings);
+
+            return Craft::createObject($config);
+        }
+    ]
 ];
