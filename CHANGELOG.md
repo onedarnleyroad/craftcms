@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unrealeased]
 ### Changed
 - Upgraded to Async Queue 2.x; now requires PHP7.1 minimum
+- Configure mailer as SMTP, pull creds from `.env`
 
 ## [1.1.0]
 ### Added
