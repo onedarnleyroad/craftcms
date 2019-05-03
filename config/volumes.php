@@ -3,13 +3,13 @@
 return [
     'uploads' => [
         'hasUrls' => true,
-        'url' => '$DEFAULT_SITE_URL/uploads',
+        'url' => '@web/uploads',
         'type' => 'craft\volumes\Local',
         'path' => '@webroot/uploads',
     ],
     'userPhotos' => [
         'hasUrls' => true,
-        'url' => '$DEFAULT_SITE_URL/userphotos',
+        'url' => '@web/userphotos',
         'type' => 'craft\volumes\Local',
         'path' => '@webroot/userphotos',
     ]
