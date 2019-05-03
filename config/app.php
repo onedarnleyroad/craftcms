@@ -28,7 +28,7 @@ return [
     'components' => [
         'mailer' => function() {
             // Get the stored email settings
-            $settings = App::mailSettings();
+            $settings = Craft::$app->systemSettings->getEmailSettings();
 
             // Override the transport adapter class
             $settings->transportType = Smtp::class;
