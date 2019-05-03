@@ -5,8 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unrealeased]
+## [Unreleased]
+
 ### Changed
+- try to improve composer require/platform specifications; bump to 7.1 requirements 
+
+## [1.1.2]
+
+### Added
+- Some unnamed tidy webpack & front-end tweaks
+
+## [1.1.1]
+
+### Added
+- Add preferred plugins: Agnostic Fetch, Queue Manager, Retcon-Craft
+- Add some default _errors templates
+- Add config file for Imager
+
+### Changed
+- Ignore .ddev
+- Change to *.twig file extensions
+- Adjust ignore strategy so that `storage` exists
+- Improved multi-env config for SEOmatic
+- Improved multi-env config for mailer; default to mailhog
 - Upgraded to Async Queue 2.x; now requires PHP7.1 minimum
 - Configure mailer as SMTP, pull creds from `.env`
 - Set @web alias to DEFAULT_SITE_URL from `.env`
