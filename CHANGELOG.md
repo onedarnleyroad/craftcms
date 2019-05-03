@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- no longer use our env() for environment variable loading
+- use @web instead of environment variable when defining volumes
 - try to improve composer require/platform specifications 
 
 ## [1.1.2]
