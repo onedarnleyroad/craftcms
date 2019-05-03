@@ -1,7 +1,5 @@
 <?php
 
-use function onedarnleyroad\one\env;
-
 /**
  * General Configuration
  *
@@ -15,11 +13,11 @@ return [
     // Global settings
     '*' => [
         'aliases' => [
-            '@web' => env('DEFAULT_SITE_URL')
+            '@web' => getenv('DEFAULT_SITE_URL') ?: null
         ],
 
         // Control Panel trigger word
-        'cpTrigger' => env('CP_TRIGGER') ?: 'admin',
+        'cpTrigger' => getenv('CP_TRIGGER') ?: 'admin',
 
         // extend tokens to 1 week
         'defaultTokenDuration' => 'P1W',
@@ -28,13 +26,13 @@ return [
         'defaultWeekStartDay' => 0,
 
         // Dev Mode (see https://craftcms.com/support/dev-mode)
-        'devMode' => (bool) env('DEV_MODE', false),
+        'devMode' => getenv('DEV_MODE') ?: false,
 
         // Enable CSRF Protection (recommended)
         'enableCsrfProtection' => true,
 
         // Whether template caching via the cache tag should be enabled
-        'enableTemplateCaching' => (bool) env('ENABLE_TEMPLATE_CACHING', true),
+        'enableTemplateCaching' => getenv('ENABLE_TEMPLATE_CACHING') ?: true,
 
         // Whether generated URLs should omit "index.php"
         'omitScriptNameInUrls' => true,
@@ -44,13 +42,13 @@ return [
         'preventUserEnumeration' => true,
 
         // The secure key Craft will use for hashing and encrypting data
-        'securityKey' => env('SECURITY_KEY'),
+        'securityKey' => getenv('SECURITY_KEY'),
 
         // Do not identify ourselves as a Craft-powered website in server response headers
         'sendPoweredByHeader' => false,
 
         // Send all Craft emails to a test address?
-        'testToEmailAddress' => env('TEST_TO_EMAIL_ADDRESS') ?: null,
+        'testToEmailAddress' => getenv('TEST_TO_EMAIL_ADDRESS') ?: null,
 
         // remove username field
         'useEmailAsUsername' => true,
