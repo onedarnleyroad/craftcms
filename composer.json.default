@@ -1,14 +1,18 @@
 {
   "require": {
-    "craftcms/cms": "^3.0.0",
-    "craftcms/redactor": "^2.1",
+    "aelvan/imager": "^2.1",
+    "craftcms/cms": "^3.1.0",
+    "craftcms/redactor": "^2.3",
     "fruitstudios/linkit": "^1.1",
     "fruitstudios/searchit": "^1.0",
+    "lukeyouell/craft-queue-manager": "^1.1",
+    "marionnewlevant/agnostic-fetch": "^2.0",
+    "mmikkel/retcon": "^2.0",
     "nystudio107/craft-retour": "^3.0",
-    "nystudio107/craft-seomatic": "^3.1",
-    "vlucas/phpdotenv": "^2.4.0",
     "nystudio107/craft-scripts": "^1.2",
-    "ostark/craft-async-queue": "^1.3"
+    "nystudio107/craft-seomatic": "^3.1",
+    "ostark/craft-async-queue": "^2.0",
+    "vlucas/phpdotenv": "^2.4.0"
   },
   "autoload": {
     "psr-4": {
@@ -22,7 +26,8 @@
     "optimize-autoloader": true,
     "platform": {
       "php": "7.0"
-    }
+    },
+    "sort-packages": true
   },
   "scripts": {
     "post-root-package-install": [
