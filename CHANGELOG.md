@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-- try to improve composer require/platform specifications; bump to 7.1 requirements 
+- try to improve composer require/platform specifications 
 
 ## [1.1.2]
 
