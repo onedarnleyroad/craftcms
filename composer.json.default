@@ -1,5 +1,6 @@
 {
   "require": {
+    "php": "^7.1",
     "aelvan/imager": "^2.1",
     "craftcms/cms": "^3.1.0",
     "craftcms/redactor": "^2.3",
@@ -25,7 +26,7 @@
   "config": {
     "optimize-autoloader": true,
     "platform": {
-      "php": "7.0"
+      "php": "7.1"
     },
     "sort-packages": true
   },
