@@ -1,5 +1,7 @@
 <?php
 
+use function onedarnleyroad\one\env;
+
 /**
  * Database Configuration
  *
@@ -10,12 +12,12 @@
  */
 
 return [
-    'driver' => getenv('DB_DRIVER'),
-    'server' => getenv('DB_SERVER'),
-    'user' => getenv('DB_USER'),
-    'password' => getenv('DB_PASSWORD'),
-    'database' => getenv('DB_DATABASE'),
-    'schema' => getenv('DB_SCHEMA'),
-    'tablePrefix' => getenv('DB_TABLE_PREFIX'),
-    'port' => getenv('DB_PORT')
+    'driver' => env('DB_DRIVER'),
+    'server' => env('DB_SERVER'),
+    'user' => env('DB_USER'),
+    'password' => env('DB_PASSWORD'),
+    'database' => env('DB_DATABASE'),
+    'schema' => env('DB_SCHEMA'),
+    'tablePrefix' => env('DB_TABLE_PREFIX'),
+    'port' => env('DB_PORT')
 ];

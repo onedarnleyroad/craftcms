@@ -17,7 +17,10 @@
   "autoload": {
     "psr-4": {
       "modules\\": "modules/"
-    }
+    },
+    "files": [
+      "modules/one/functions.php"
+    ]
   },
   "config": {
     "optimize-autoloader": true,
