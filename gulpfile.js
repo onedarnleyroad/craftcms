@@ -102,7 +102,6 @@ const runNpm = (key) => () => {
 
 
 gulp.task('webpack:production', runNpm('build:production'));
-gulp.task('webpack:dev', runNpm('build:dev'));
 gulp.task('webpack:legacy', runNpm('build:legacy'));
 gulp.task('dev-server', runNpm('serve'));
 gulp.task('watch', () => {
@@ -125,8 +124,7 @@ gulp.task('watch', () => {
 		'!./templates/index.twig',
 		'!./templates/_readonly/**/*.*',
 	], { ignoreInitial: true }, function ( file ) {
-		console.log( file.basename );
-		spawn('touch', ['templates/index.twig']);
+		// spawn('touch', ['templates/index.twig']);
 		spawn('touch', ['src/scss/app.scss']);
 	});
 });
@@ -135,7 +133,6 @@ gulp.task('serve', gulp.parallel('watch', 'dev-server'));
 
 gulp.task('webpack', gulp.parallel(
 	'webpack:production',
-	'webpack:dev',
 	'webpack:legacy',
 ));
 

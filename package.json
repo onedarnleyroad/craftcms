@@ -53,8 +53,7 @@
     "build": "npm run build:production && npm run build:legacy && npm run build:dev",
     "build:production": "webpack --env.production --progress --colors",
     "build:legacy": "webpack --env.legacy --progress --colors",
-    "serve:legacy": "webpack --watch --env.legacy --progress --colors",
-    "build:dev": "webpack --progress --colors"
+    "serve:legacy": "webpack --watch --env.legacy --progress --colors"
   },
   "author": "",
   "license": "ISC"
