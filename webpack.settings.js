@@ -31,10 +31,9 @@ module.exports = {
 	},
 
 	aliases: {
-		'components': path.resolve(__dirname, "./src/js/components"),
-		'parts': path.resolve(__dirname, "./src/js/parts"),
-		'libs': path.resolve(__dirname, "./src/js/libs"),
-		'config': path.resolve(__dirname, "./src/config"),
+		'@components': path.resolve(__dirname, "./src/js/components"),
+		'@parts': path.resolve(__dirname, "./src/js/parts"),
+		'@libs': path.resolve(__dirname, "./src/js/libs"),
 		'@css': path.resolve(__dirname, "./src/scss"),
 		vue$: 'vue/dist/vue.common.js',
 	},
