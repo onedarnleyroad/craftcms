@@ -1,30 +1,64 @@
+
 <% if (htmlWebpackPlugin.options.legacy) { %>
 	<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+	
 		<% var filename = htmlWebpackPlugin.files.chunks[chunk].entry; %>
 		<script nomodule src="<%= filename %>"></script>	
 	<% } %>
 <% } else { %>
+
+	<% if (htmlWebpackPlugin.options.production) { %>
 	
-	{% set cachedCssVersion = getCookie('cached-css-version') %}
-	{% if ( not craft.app.config.general.devMode ) and ( not (cachedCssVersion == webpackHash ) ) %}
-		{% do setCookie('cached-css-version', webpackHash, now | date_modify("+7 days").timestamp ) %}
-		{% verbatim %}
+	{% set webpackHash = "<%= webpack.hash %>" %}
 	
-		<style>
-		<% for (var css in htmlWebpackPlugin.files.css) { %>
-			<% var filename = htmlWebpackPlugin.files.css[css].split('/').reverse()[0]; %>
-			<%= compilation.assets[ filename ].source() %>
-		<% } %>
-		</style>
-	{% endverbatim %}
+	{% set requestCookies = craft.app.request.cookies %}
+	{% set cacheCookie = requestCookies.get('cached-css-version') %}
+
+	{% if cacheCookie and cacheCookie.value %}
+		{% set cachedCssVersion = cacheCookie.value %}
 	{% else %}
-		
-		<% for (var css in htmlWebpackPlugin.files.css) { %>
-			<% var filename = htmlWebpackPlugin.files.css[css].split('/').reverse()[0]; %>
-			<link rel="preload" as="style" href="<%= htmlWebpackPlugin.files.css[css] %>" onload="this.rel='stylesheet'">
-			<link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">	
-		<% } %>
+		{# AKA not set #}
+		{% set cachedCssVersion = false %}
 	{% endif %}
+
+		{# Production_app.twig #}
+		{% if ( not craft.app.config.general.devMode ) and ( cachedCssVersion != webpackHash ) %}
+
+
+			{% set responseCookies = craft.app.response.cookies %}
+
+			{% set cookie = create({
+				'class': 'yii\\web\\Cookie',
+				'name': 'cached-css-version',
+				'value': webpackHash,
+				'expire': now | date_modify("+7 days").timestamp
+			}) %}
+
+		
+			{% do responseCookies.add(cookie) %}
+			
+			{% verbatim %}
+		
+				<style>
+				<% for (var css in htmlWebpackPlugin.files.css) { %>
+					<% var filename = htmlWebpackPlugin.files.css[css].split('/').reverse()[0]; %>
+					<%= compilation.assets[ filename ].source() %>
+				<% } %>
+				</style>
+
+			{% endverbatim %}
+
+		{% else %}
+			
+			<% for (var css in htmlWebpackPlugin.files.css) { %>
+				<% var filename = htmlWebpackPlugin.files.css[css].split('/').reverse()[0]; %>
+				<link rel="preload" as="style" href="<%= htmlWebpackPlugin.files.css[css] %>" onload="this.rel='stylesheet'">
+				<link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">	
+			<% } %>
+
+		{% endif %}
+
+	<% } %>
 
 	{# SCRIPTS #}
 	<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
