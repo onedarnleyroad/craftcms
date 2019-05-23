@@ -13,6 +13,8 @@
     "what-input": "^5.1.2"
   },
   "devDependencies": {
+    "lodash.camelcase": "^4.3.0",
+    "lodash.upperfirst": "^4.3.1",
     "vue-template-compiler": "^2.5.17",
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
