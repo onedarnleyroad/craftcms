@@ -34,6 +34,9 @@ return [
         // Whether template caching via the cache tag should be enabled
         'enableTemplateCaching' => (bool) getenv('ENABLE_TEMPLATE_CACHING'),
 
+        // Error template locations:
+        'errorTemplatePrefix' => "_errors/",
+
         // Whether generated URLs should omit "index.php"
         'omitScriptNameInUrls' => true,
 
@@ -50,14 +53,11 @@ return [
         // Send all Craft emails to a test address?
         'testToEmailAddress' => getenv('TEST_TO_EMAIL_ADDRESS') ?: null,
 
-        // remove username field
-        'useEmailAsUsername' => true,
-
-        // Error template locations:
-        'errorTemplatePrefix' => "_errors/",
-
         // Set timezone
         'timezone' => 'UTC',
+
+        // remove username field
+        'useEmailAsUsername' => true
     ],
 
     // Development environment settings
@@ -73,8 +73,6 @@ return [
     // Production environment settings
     // Avoid env() to "lock down" any setting
     'production' => [
-        'allowAdminChanges' => false,
-        'devMode' => false,
-        'testToEmailAddress' => null
-    ],
+        'allowAdminChanges' => false
+    ]
 ];
