@@ -38,7 +38,7 @@ And while it probably would be "nice" if this was a separate package so that it 
 
 1. `composer create-project onedarnleyroad/craftcms <Path>`  
 
-   _Tip: Use `composer create-project onedarnleyroad/craftcms:dev-master <Path>` to use latest commits from master_
+   _Tip: Use `composer create-project onedarnleyroad/craftcms:dev-master <Path>` to use latest commits from master. If this does not appear to work, run `composer clearcache` and try again._
 
 #### Option 2: Manual setup
 
