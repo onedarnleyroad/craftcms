@@ -36,7 +36,9 @@ And while it probably would be "nice" if this was a separate package so that it 
 
 #### Option 1 (Recommended): Setup via Composer
 
-1. `composer create-project onedarnleyroad/craftcms <Path>`
+1. `composer create-project onedarnleyroad/craftcms <Path>`  
+
+   _Tip: Use `composer create-project onedarnleyroad/craftcms:dev-master <Path>` to use latest commits from master_
 
 #### Option 2: Manual setup
 
