@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yii Application Config
  *
@@ -21,30 +22,41 @@ use craft\helpers\App;
 use craft\mail\transportadapters\Smtp;
 
 return [
-    'modules' => [
-        'my-module' => \modules\Module::class,
+    '*' => [
+        'modules' => [
+            'my-module' => \modules\Module::class,
+        ],
+        //'bootstrap' => ['my-module'],
     ],
-    //'bootstrap' => ['my-module'],
-    'components' => [
-        'mailer' => function() {
-            // Get the stored email settings
-            $settings = Craft::$app->systemSettings->getEmailSettings();
+    'local' => [
+        'components' => [
+            'deprecator' => [
+                'throwExceptions' => YII_DEBUG,
+            ],
+            'mailer' => static function() {
+                $settings = App::mailSettings();
 
-            // Override the transport adapter class
-            $settings->transportType = Smtp::class;
+                $settings->transportType = Smtp::class;
 
-            // Override the transport adapter settings
-            $settings->transportSettings = [
-                'host' => getenv('SMTP_HOST'),
-                'port' => getenv('SMTP_PORT'),
-                'username' => getenv('SMTP_USERNAME'),
-                'password' => getenv('SMTP_PASSWORD'),
-                'useAuthentication' => true,
-            ];
+                $settings->transportSettings = [
+                    'host' => getenv('SMTP_HOST'),
+                    'port' => getenv('SMTP_PORT'),
+                    'username' => getenv('SMTP_USERNAME'),
+                    'password' => getenv('SMTP_PASSWORD'),
+                    'useAuthentication' => true,
+                ];
 
-            $config = App::mailerConfig($settings);
+                $config = App::mailerConfig($settings);
 
-            return Craft::createObject($config);
-        }
+                try
+                {
+                    return Craft::createObject($config);
+                }
+                catch(Exception $exception)
+                {
+                    return null;
+                }
+            }
+        ]
     ]
 ];
