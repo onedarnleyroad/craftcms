@@ -55,6 +55,9 @@ return [
 
         // Error template locations:
         'errorTemplatePrefix' => "_errors/",
+
+        // Set timezone
+        'timezone' => 'UTC',
     ],
 
     // Development environment settings
