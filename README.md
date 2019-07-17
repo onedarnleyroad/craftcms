@@ -53,7 +53,7 @@ And while it probably would be "nice" if this was a separate package so that it 
 
 1. Set `SECURITY_KEY` *
 2. Set `CP_TRIGGER`
-3. Set `TEST_TO_EMAIL_ADDRESS`
+3. Set `DEFAULT_SITE_URL`
 4. Set `DB_` credentials **
 
 *\* For existing projects, obtain security key from project lead; to set up a new Security Key, follow https://docs.craftcms.com/v3/installation.html#step-3-set-a-security-key*
@@ -62,9 +62,9 @@ And while it probably would be "nice" if this was a separate package so that it 
 
 ### Step 3: Configure DDEV
 
-We ship  `.ddev/config.yaml` with our preferred defaults, so all you should need to do is set the project name (which is used as the default hostname).
+Skip this step if running your own local environment.
 
-> `ddev config --project-name <HostName>`
+> `ddev config` and follow prompts...
 
 ### Ideal Usage:
 
@@ -79,7 +79,7 @@ _If using ddev...otherwise skip to .6_
 4. `ddev start` (to ensure that craft can connect to a database)
 5. `ddev ssh`
 
-Finally...
+Then once in your container...
 
 6. `./craft setup`
 7. `./onedarnleyroad setup`
@@ -90,7 +90,6 @@ Finally...
 2. `composer install`
 3. `ddev config --project-name <HostName>`
 2. `./onedarnleyroad setup`
-
 
 
 ### What `./onedarnleyroad setup` will do:
