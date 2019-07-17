@@ -44,6 +44,10 @@ return [
         // so even if the email was invalid, a “Password reset email sent” message will be displayed.
         'preventUserEnumeration' => true,
 
+        // Whether Craft should run pending queue jobs automatically over HTTP requests.
+        // Un-comment if running Async Queue
+        // 'runQueueAutomatically' => false,
+
         // The secure key Craft will use for hashing and encrypting data
         'securityKey' => getenv('SECURITY_KEY'),
 

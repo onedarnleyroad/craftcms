@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Postmark mail adapter
+- Add commented out line for `runQueueAutomatically` config
 
 ### Changed
 - Local environment mailer uses SMTP (defaults to mailhog)
