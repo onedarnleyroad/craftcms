@@ -72,5 +72,7 @@ return [
 
     // Production environment settings
     // Avoid env() to "lock down" any setting
-    'production' => []
+    'production' => [
+        'allowUpdates' => false
+    ]
 ];

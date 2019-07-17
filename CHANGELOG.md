@@ -11,7 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Postmark mail adapter
 
 ### Changed
-- local environment mailer uses SMTP (defaults to mailhog)
+- Local environment mailer uses SMTP (defaults to mailhog)
+- Prevent updates in production
 
 ## [1.2.0]
 
