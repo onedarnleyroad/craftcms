@@ -1,10 +1,39 @@
-{% extends "_errors/_layout" %}
+<!DOCTYPE html>
+<html lang="{{ currentSite.language }}" dir="{{craft.app.i18n.getLocaleById(currentSite.id).getOrientation()}}">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="referrer" content="origin-when-cross-origin" />
 
-{% set title = "Error " ~ {{ code }} %}
+    <title>{{ siteName }}</title>
 
-{% block content %}
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+</head>
 
-<p>{{ message }}</p>
+<body class="body">
 
+	<div class="bg-white">
+		<div class="max-w-full min-h-screen flex justify-start items-start">
+			<div class="px-8 py-8">
 
-{% endblock %}
+				<div class="text-left mt-8">
+
+				<div class="pt-8">
+
+					<svg class="fill-current text-grey w-32 h-32" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 100 100" x="0px" y="0px"><title>{{ siteName }}</title><path d="M60.63,8.36a3,3,0,0,0-2.14-.9H27.11a11,11,0,0,0-11,11V81.54a11,11,0,0,0,11,11H72.89a11,11,0,0,0,11-11V33.33a3,3,0,0,0-.86-2.1ZM77.89,81.54a5,5,0,0,1-5,5H27.11a5,5,0,0,1-5-5V18.46a5,5,0,0,1,5-5H55.33V32.27a5,5,0,0,0,5,5H77.89Z"></path></svg>
+
+				</div>
+
+				<div class="max-w-xs">
+					{% block content %}
+						<h1>{{ (title ?? null) ?: "Oops!"|t }}</h1>
+						<p>{{ (message ?? null) ?: "An error has occurred."|t }}</p>
+					{% endblock %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
