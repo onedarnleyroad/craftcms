@@ -178,7 +178,7 @@ module.exports = env => {
 			// from settings
 			https: settings.devServer.https,
 			host: settings.devServer.host,
-			publicPath: `${settings.devServer.https ? 'https' : 'http'}://${settings.devServer.host || 'localhost'}:${settings.devServer.port}/assets/`,
+			publicPath: `${settings.devServer.https ? 'https' : 'http'}://${settings.devServer.host || 'localhost'}:${settings.devServer.port}/assets/development/`,
 			port: settings.devServer.port,
 
 			// hardcoded
@@ -186,7 +186,8 @@ module.exports = env => {
 				colors: true
 			},
 
-			watchContentBase: true,
+			disableHostCheck: true,
+			watchContentBase: false,
 			contentBase: './templates/',
 			compress: true,
 			hot: true,
