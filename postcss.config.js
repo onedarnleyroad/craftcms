@@ -11,7 +11,7 @@ class TailwindExtractor {
 module.exports = ({ options }) => {
 
 	let plugins = [
-		require('tailwindcss')('./tailwind.js'),
+		require('tailwindcss')('./tailwind.config.js'),
 		require('autoprefixer'),
 		purgecss({
 			content: ['./templates/**/*.twig', './src/js/components/**/*.vue', './templates/**/*.html'],
