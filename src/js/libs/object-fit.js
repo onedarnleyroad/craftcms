@@ -1,4 +1,4 @@
-import { qsa, docReady } from "@libs/helpers";
+import { qsa, docReady } from "@/libs/helpers";
 
 export const objectFit = () => {
 

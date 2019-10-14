@@ -1,6 +1,6 @@
 
-import { docReady, qsa } from "@libs/helpers";
-import { media } from "@parts/media";
+import { docReady, qsa } from "@/libs/helpers";
+import { media } from "@/parts/media";
 
 
 let header;

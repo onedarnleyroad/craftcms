@@ -1,6 +1,6 @@
 
 
-import { MediaQueries } from "@libs/media-queries";
+import { MediaQueries } from "@/libs/media-queries";
 
 const screens = {
 	mobile: { max: '639px' },

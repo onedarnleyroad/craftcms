@@ -1,6 +1,6 @@
 
 
-import { objectFit } from "@libs/object-fit";
+import { objectFit } from "@/libs/object-fit";
 
 
 objectFit();
