@@ -52,7 +52,7 @@
     "gulp": "gulp",
     "report": "node webpack.report",
     "serve": "webpack-dev-server --env.devServer --colors --progress",
-    "build": "concurrently -n production,legacy,dev \"npm run build:production\" \"npm run build:legacy\"",
+    "build": "concurrently -n production,legacy \"npm run build:production\" \"npm run build:legacy\"",
     "build:production": "webpack --env.production --progress --colors",
     "build:legacy": "webpack --env.legacy --progress --colors",
     "serve:legacy": "webpack --watch --env.legacy --progress --colors"
