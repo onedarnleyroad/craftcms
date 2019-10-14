@@ -1,6 +1,5 @@
 
-// CSS
-import "@css/app.scss";
+import "@/parts/css";
 
 
 import 'what-input';

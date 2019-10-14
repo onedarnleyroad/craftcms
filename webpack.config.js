@@ -69,9 +69,8 @@ module.exports = env => {
 	// it'll go from `app` to `./src/js/app.js`
 	settings.entries.forEach(name => entry[name] = `${settings.base}${name}.js`);
 
-	// Webpack.settings.js will store a function to compile a script tag for each entry
-	const filename = settings.html.filename(entry, target);
-	console.log( filename );
+	
+	
 
 	/**
 	 * WEBPACK PLUGINS.
@@ -101,6 +100,9 @@ module.exports = env => {
 		// Loop through each entry and...
 		settings.entries.forEach(entry => {
 
+			// Webpack.settings.js will store a function to compile a script tag for each entry,
+			// based on the entry and target, that's how we end up with /production_app.twig etc.
+			const filename = settings.html.filename(entry, target);
 
 			// Create an HTMLWebpackPlugin that will generate our script.twig
 			htmlWebpackPlugins.push(
