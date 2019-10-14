@@ -201,7 +201,10 @@ module.exports = env => {
 		},
 
 		// How to optimise the build:
-		optimization: {
+		// If it's devserver, don't do anything,
+		// don't codesplit because we then can just include the app.js entry point
+		// and keep it simple. We don't need to generate HTML for devserver then. 
+		optimization: devServer ? {} : {
 			// As long as the chunk name doesn't equal CP (we'd just want one bundle for that)
 			// then split chunks as necessary. this does async modules, and splits vendors / manifest.
 			splitChunks: {
