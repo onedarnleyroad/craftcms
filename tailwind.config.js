@@ -62,7 +62,7 @@ module.exports = {
 		screens: {
 			sm: { min: '640px' },
 			md: { min: '768px' },
-			lg: { min: '1024px' },
+			lg: { min: '1025px' },
 			xl: { min: '1441px' },
 			'xl2': { min: '1600px' },
 		},

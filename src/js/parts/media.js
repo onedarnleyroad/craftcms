@@ -1,17 +1,18 @@
 
-import MediaQueries from "@libs/media-queries";
 
-// Note - it is up to you to synchronise this with
-// the screens in tailwind, if you want consistency. 
+import { MediaQueries } from "@libs/media-queries";
+
 const screens = {
-	mobileshelf: { max: '1024px' },
-	sm: { min: '576px' },
-	smonly: { max: '767px' },
+	mobile: { max: '639px' },
+	sm: { min: '640px' },
 	md: { min: '768px' },
 	lg: { min: '1025px' },
-	xl: { min: '1600px' },
+	xl: { min: '1441px' },
+	'xl2': { min: '1600px' },
+	reducedMotion: `(prefers-reduced-motion: reduce)`,
 };
 
-export const media = new MediaQueries( screens );
-export default { media };
+const m = new MediaQueries( screens );
+export const media = m;
 
+export default { media: m };
