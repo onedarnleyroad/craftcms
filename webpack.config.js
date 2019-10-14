@@ -2,7 +2,7 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
-// const path = require("path");
+const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
@@ -31,14 +31,23 @@ module.exports = env => {
 	// Generate entries list
 	const entry = {};
 	settings.entries.forEach(name => entry[name] = `${settings.base}${name}.js`);
+	const filename = settings.html.filename(entry, target);
+	
 
-	const htmlWebpackPlugins = [];
-	settings.entries.forEach(entry => {
+	// Shared plugins:
+	let plugins = [
+		new VueLoaderPlugin(),
+		new webpack.DefinePlugin({ ENV: { production, legacy } })
+	];
 
-		const filename = settings.html.filename(entry, target);
+	if ( !devServer ) {
 
-		// And again for our dev mode, not-inlined version:
-		if ( !devServer ) {
+		// Only when writing to disk:
+
+		const htmlWebpackPlugins = [];
+		settings.entries.forEach(entry => {
+
+			// And again for our dev mode, not-inlined version:
 			htmlWebpackPlugins.push(
 				new HtmlWebpackPlugin({
 					entry,
@@ -58,42 +67,33 @@ module.exports = env => {
 					legacy
 				})
 			);
-		}
-	});
+		});
 
-	let plugins = [
-		
-		new VueLoaderPlugin(),
-		new webpack.DefinePlugin({ ENV: { production, legacy } })
-		// Built up above...
-	];
-	
-	if ( !devServer ) {
 		plugins = [
 			new CleanWebpackPlugin([`${filePath}/*.js`, `${filePath}/*.css`], {
 				root: false,
 				allowExternal: true,
 			}),
-			...plugins,
 			...htmlWebpackPlugins,
 			new HtmlWebpackHarddiskPlugin(),
-			
+			...plugins
 		];
+
+		// Write CSS if production - don't do on Legacy,
+		// as that legacy will use the production css.
+		if (production) {
+			plugins.push(new MiniCssExtractPlugin({
+				// Options similar to the same options in webpackOptions.output
+				// both options are optional
+				filename: settings.output.css
+			}));
+		}
+
 	} else {
-		plugins = [
-			...plugins,
-			new webpack.HotModuleReplacementPlugin(),
-		];
+		// HMR for dev server only.
+		plugins.push( new webpack.HotModuleReplacementPlugin() );
 	}
 
-
-	if (production) {
-		plugins.push(new MiniCssExtractPlugin({
-			// Options similar to the same options in webpackOptions.output
-			// both options are optional
-			filename: settings.output.css
-		}));
-	}
 
 	let outputFilename;
 	if (legacy) {
