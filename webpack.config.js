@@ -2,7 +2,7 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
-const path = require("path");
+// const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
@@ -38,43 +38,51 @@ module.exports = env => {
 		const filename = settings.html.filename(entry, target);
 
 		// And again for our dev mode, not-inlined version:
-		htmlWebpackPlugins.push(
-			new HtmlWebpackPlugin({
-				entry,
-				filename,
-				alwaysWriteToDisk: true,
-				minify: {
-					collapseWhitespace: true,
-					preserveLineBreaks: true,
-				},
-				template: settings.html.template,
-				inject: false,
-				excludeChunks: settings.entries.filter(name => name != entry),
+		if ( !devServer ) {
+			htmlWebpackPlugins.push(
+				new HtmlWebpackPlugin({
+					entry,
+					filename,
+					alwaysWriteToDisk: true,
+					minify: {
+						collapseWhitespace: true,
+						preserveLineBreaks: true,
+					},
+					template: settings.html.template,
+					inject: false,
+					excludeChunks: settings.entries.filter(name => name != entry),
 
-				// Environment Vars:
-				production,
-				devServer,
-				legacy
-			})
-		);
+					// Environment Vars:
+					production,
+					devServer,
+					legacy
+				})
+			);
+		}
 	});
 
 	let plugins = [
-		new webpack.HotModuleReplacementPlugin(),
+		
 		new VueLoaderPlugin(),
-		// Built up above...
-		...htmlWebpackPlugins,
-		new HtmlWebpackHarddiskPlugin(),
 		new webpack.DefinePlugin({ ENV: { production, legacy } })
+		// Built up above...
 	];
-
+	
 	if ( !devServer ) {
 		plugins = [
 			new CleanWebpackPlugin([`${filePath}/*.js`, `${filePath}/*.css`], {
 				root: false,
 				allowExternal: true,
 			}),
-			...plugins
+			...plugins,
+			...htmlWebpackPlugins,
+			new HtmlWebpackHarddiskPlugin(),
+			
+		];
+	} else {
+		plugins = [
+			...plugins,
+			new webpack.HotModuleReplacementPlugin(),
 		];
 	}
 
@@ -121,10 +129,6 @@ module.exports = env => {
 
 		module: {
 			rules: [
-				{
-					test: /\.js$/,
-					exclude: /(node_modules|bower_components)/,
-				},
 				{
 					test: /\.vue$/,
 					loader: "vue-loader"
