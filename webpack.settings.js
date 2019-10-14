@@ -16,7 +16,6 @@ module.exports = {
 		development: '[name].js',
 		legacy: 'legacy-[name].[hash].js',
 		css: '[name].[hash].css',
-		library: 'ww-country',
 	},
 
 	html: {
