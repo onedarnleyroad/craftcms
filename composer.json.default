@@ -5,7 +5,6 @@
     "craftcms/postmark": "^2.0.0",
     "craftcms/redactor": "^2.3",
     "fruitstudios/linkit": "^1.1",
-    "fruitstudios/searchit": "^1.0",
     "lukeyouell/craft-queue-manager": "^1.1",
     "marionnewlevant/agnostic-fetch": "^2.0",
     "mmikkel/retcon": "^2.0",
