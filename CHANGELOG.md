@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Allow Craft above 3.2
 - consolidated error templates and refactored title/message/block output
 - removed SearchIt from default install
 
