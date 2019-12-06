@@ -7,6 +7,7 @@
     "fruitstudios/linkit": "^1.1",
     "lukeyouell/craft-queue-manager": "^1.1",
     "marionnewlevant/agnostic-fetch": "^2.0",
+    "mmikkel/cp-field-inspect": "^1.0",
     "mmikkel/retcon": "^2.0",
     "nystudio107/craft-retour": "^3.0",
     "nystudio107/craft-scripts": "^1.2",
