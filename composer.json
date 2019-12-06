@@ -1,7 +1,7 @@
 {
   "name": "onedarnleyroad/craftcms",
   "description": "Boilerplate Craft CMS set up for all One Darnley Road projects.",
-  "version": "1.2.3",
+  "version": "1.3.0",
   "license": "Unlicense",
   "type": "project",
   "require": {

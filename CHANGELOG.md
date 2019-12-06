@@ -5,20 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.3.0]
 
 ### Added
 
 - Add Template Comments plugin
 - Add CP Field Inspect plugin
 - lang= and dir= attributes to HTML root node
-- streamlined environment config
-- turn on project config
-- exclude vendor
 - add one.php config
 
 ### Changed
 
+- streamlined environment config
+- turn on project config
+- exclude vendor
 - Allow Craft above 3.2
 - consolidated error templates and refactored title/message/block output
 - removed SearchIt from default install
