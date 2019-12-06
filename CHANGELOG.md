@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - lang= and dir= attributes to HTML root node
 - exclude vendor
+- add one.php config
 
 ### Changed
 
