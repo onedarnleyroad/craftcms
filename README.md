@@ -12,7 +12,7 @@ Here are some of the things we might do differently:
 
 **1. We commit `vendor/` into our repo**
 
-This matters because we cannot rely on composer's pre/post command scripts and/or other deployment hooks to make sure things are structured just so. For example, NYStudio107 has a great setup script (https://github.com/nystudio107/craft/blob/master/nys-setup) that creates a symlink to the craft-scripts folder. However, symlinks are not preserved in git. So for us to use craft-scripts (which we always do), these have to be created manually.
+This matters because we cannot rely on composer's pre/post command scripts and/or other deployment hooks to make sure things are structured just so. For example, NYStudio107 has a great setup script (https://github.com/nystudio107/craft/blob/craft-webpack/nys-setup) that creates a symlink to the craft-scripts folder. However, symlinks are not preserved in git. So for us to use craft-scripts (which we always do), these have to be created manually.
 
 **2. We almost always use the same set of plugins to start with**
 
