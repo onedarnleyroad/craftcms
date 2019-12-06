@@ -28,8 +28,20 @@
     "sort-packages": true
   },
   "scripts": {
+    "craft-update": [
+      "@php craft migrate/all",
+      "@php craft project-config/sync",
+      "@php craft clear-caches/compiled-templates",
+      "@php craft clear-caches/temp-files",
+      "@php craft clear-caches/template-caches"
+    ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-    ]
+    ],
+    "post-create-project-cmd": [
+      "@php craft setup/welcome"
+    ],
+    "post-update-cmd": "@craft-update",
+    "post-install-cmd": "@craft-update"
   }
 }

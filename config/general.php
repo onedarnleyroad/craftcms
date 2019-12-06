@@ -10,74 +10,30 @@
  */
 
 return [
-    // Global settings
-    '*' => [
-        'aliases' => [
-            '@web' => getenv('DEFAULT_SITE_URL'),
-            '@webroot' => dirname(__DIR__) . '/web',
-        ],
-
-        // Control Panel trigger word
-        'cpTrigger' => getenv('CP_TRIGGER') ?: 'admin',
-
-        // extend tokens to 1 week
-        'defaultTokenDuration' => 'P1W',
-
-        // Default Week Start Day (0 = Sunday, 1 = Monday...)
-        'defaultWeekStartDay' => 0,
-
-        // Dev Mode (see https://craftcms.com/support/dev-mode)
-        'devMode' => (bool) getenv('DEV_MODE'),
-
-        // Enable CSRF Protection (recommended)
-        'enableCsrfProtection' => true,
-
-        // Whether template caching via the cache tag should be enabled
-        'enableTemplateCaching' => (bool) getenv('ENABLE_TEMPLATE_CACHING'),
-
-        // Error template locations:
-        'errorTemplatePrefix' => "_errors/",
-
-        // Whether generated URLs should omit "index.php"
-        'omitScriptNameInUrls' => true,
-
-        // Prevents “Forgot Password” forms from revealing whether a valid email address was entered,
-        // so even if the email was invalid, a “Password reset email sent” message will be displayed.
-        'preventUserEnumeration' => true,
-
-        // Whether Craft should run pending queue jobs automatically over HTTP requests.
-        // Un-comment if running Async Queue
-        // 'runQueueAutomatically' => false,
-
-        // The secure key Craft will use for hashing and encrypting data
-        'securityKey' => getenv('SECURITY_KEY'),
-
-        // Do not identify ourselves as a Craft-powered website in server response headers
-        'sendPoweredByHeader' => false,
-
-        // Send all Craft emails to a test address?
-        'testToEmailAddress' => getenv('TEST_TO_EMAIL_ADDRESS') ?: null,
-
-        // Set timezone
-        'timezone' => 'UTC',
-
-        // remove username field
-        'useEmailAsUsername' => true
+    'aliases' => [
+        '@web' => getenv('DEFAULT_SITE_URL'),
+        '@webroot' => dirname(__DIR__) . '/web',
     ],
-
-    // Development environment settings
-    'develop' => [
-        'isSystemLive' => false
-    ],
-
-    // Staging environment settings
-    'staging' => [
-        'isSystemLive' => false
-    ],
-
-    // Production environment settings
-    // Avoid env() to "lock down" any setting
-    'production' => [
-        'allowUpdates' => false
-    ]
+    'allowUpdates' => (bool) getenv('ALLOW_UPDATES'),
+    'allowAdminChanges' => (bool) getenv('ALLOW_ADMIN_CHANGES'),
+    'backupOnUpdate' => (bool) getenv('BACKUP_ON_UPDATE'),
+    'cpTrigger' => getenv('CP_TRIGGER') ?: 'admin',
+    'defaultTokenDuration' => 'P1W',
+    'defaultWeekStartDay' => 0,
+    'devMode' => (bool) getenv('DEV_MODE'),
+    'enableCsrfProtection' => true,
+    'enableGql' => false,
+    'enableTemplateCaching' => (bool) getenv('ENABLE_TEMPLATE_CACHING'),
+    'errorTemplatePrefix' => "_errors/",
+    'isSystemLive' => (bool) getenv('IS_SYSTEM_LIVE'),
+    'maxRevisions' => 3,
+    'omitScriptNameInUrls' => true,
+    'preventUserEnumeration' => true,
+    'runQueueAutomatically' => false,
+    'securityKey' => getenv('SECURITY_KEY'),
+    'sendPoweredByHeader' => false,
+    'testToEmailAddress' => getenv('TEST_TO_EMAIL_ADDRESS') ?: null,
+    'timezone' => 'UTC',
+    'useEmailAsUsername' => true,
+    'useProjectConfigFile' => true,
 ];
