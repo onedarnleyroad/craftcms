@@ -8,7 +8,7 @@ import camelCase from 'lodash.camelcase';
 // https://webpack.js.org/guides/dependency-management/#require-context
 const requireComponent = require.context(
 	// Look for files in the base components directory
-	'@components/base',
+	'@/components/base',
 	// Do not look in subdirectories
 	false,
 	// Only include "_base-" prefixed .vue files

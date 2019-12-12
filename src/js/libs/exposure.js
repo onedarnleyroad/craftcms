@@ -1,5 +1,5 @@
 
-import { qsa } from "@libs/helpers";
+import { qsa } from "@/libs/helpers";
 
 
 const defaults = {

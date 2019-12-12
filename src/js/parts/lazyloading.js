@@ -1,5 +1,5 @@
 import 'lazysizes';
-import { onSrcLoad } from "@libs/helpers";
+import { onSrcLoad } from "@/libs/helpers";
 
 document.addEventListener('lazybeforeunveil', function (e) {
 

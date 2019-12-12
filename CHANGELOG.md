@@ -10,11 +10,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `one` script for CLI
-- lang= and dir= attributes to HTML root node
+- `.deployignore` for DeployHQ atomic deployments
 
 ### Changed
 
+- Update dotenv to 3.*
+
+## [1.3.0]
+
+### Added
+
+- Add Template Comments plugin
+- Add CP Field Inspect plugin
+- lang= and dir= attributes to HTML root node
+- add one.php config
+
+### Changed
+
+- streamlined environment config
+- turn on project config
+- exclude vendor
+- Allow Craft above 3.2
 - consolidated error templates and refactored title/message/block output
+- removed SearchIt from default install
 
 ## [1.2.3]
 

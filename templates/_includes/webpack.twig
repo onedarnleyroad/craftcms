@@ -10,11 +10,8 @@
 
 	Our typical install relies on the setCookie plugin and our oneconfig,
 	so you'll get errors if that's not spun up (at least, in production mode).
-
-
 	
 #}
-
 
 {# Polyfills #}
 <script>
@@ -42,15 +39,9 @@ if (!Object.entries) {
 <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js"></script>
 
 {# Webpack: #}
-{% if craft.one.config('environment') == 'local' %}
-	{% if craft.one.config('webpackOn') %}
-		{% set devAssetPath = 'https://localhost:9000/assets/development/' %}
-	{% else %}
-		{% set devAssetPath = '/assets/development/' %}
-	{% endif %}
-	
+{% if craft.one.config('webpackOn') %}
+	{% set devAssetPath = 'https://localhost:9000/assets/' %}
 	{% include "_readonly/html/development_app.twig" with { devAssetPath: devAssetPath } only %}
-	{# {% include "_readonly/html/legacy_app.twig" with { devAssetPath: devAssetPath } only %} #}
 {% else %}
 	{% include "_readonly/html/production_app.twig" %}
 	{% include "_readonly/html/legacy_app.twig" %}

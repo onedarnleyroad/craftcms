@@ -2,7 +2,7 @@
 
 Look in `./src/js/utils/register-base.js`...
 
-Inside that file is some code that runs through the `@components/base` directory (i.e. this one) and picks up
+Inside that file is some code that runs through the `@/components/base` directory (i.e. this one) and picks up
 ALL `.vue` components that are prefixed with the `base-` name.
 
 It globally registers these components so they're just there and ready to be used without having to import them

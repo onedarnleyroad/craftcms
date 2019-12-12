@@ -1,24 +1,25 @@
 {
   "name": "onedarnleyroad/craftcms",
   "description": "Boilerplate Craft CMS set up for all One Darnley Road projects.",
-  "version": "1.2.3",
+  "version": "1.3.0",
   "license": "Unlicense",
   "type": "project",
   "require": {
-    "aelvan/imager": "^2.1",
-    "craftcms/cms": "<3.2.0",
-    "craftcms/postmark": "^2.0.0",
-    "craftcms/redactor": "^2.3",
+    "aelvan/imager": "^2.3",
+    "craftcms/cms": "^3.3",
+    "craftcms/postmark": "^2.0",
+    "craftcms/redactor": "^2.4",
     "fruitstudios/linkit": "^1.1",
-    "fruitstudios/searchit": "^1.0",
-    "lukeyouell/craft-queue-manager": "^1.1",
+    "jalendport/craft-queuemanager": "^1.1",
     "marionnewlevant/agnostic-fetch": "^2.0",
+    "mmikkel/cp-field-inspect": "^1.0",
     "mmikkel/retcon": "^2.0",
-    "nystudio107/craft-retour": "^3.0",
+    "nystudio107/craft-retour": "^3.1",
     "nystudio107/craft-scripts": "^1.2",
-    "nystudio107/craft-seomatic": "^3.1",
+    "nystudio107/craft-seomatic": "^3.2",
+    "nystudio107/craft-templatecomments": "^1.1",
     "ostark/craft-async-queue": "^2.0",
-    "vlucas/phpdotenv": "^2.4.0"
+    "vlucas/phpdotenv": "^3.4.0"
   },
   "autoload": {
     "psr-4": {

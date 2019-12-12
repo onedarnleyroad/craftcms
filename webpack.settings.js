@@ -16,7 +16,6 @@ module.exports = {
 		development: '[name].js',
 		legacy: 'legacy-[name].[hash].js',
 		css: '[name].[hash].css',
-		library: 'ww-country',
 	},
 
 	html: {
@@ -31,9 +30,7 @@ module.exports = {
 	},
 
 	aliases: {
-		'@components': path.resolve(__dirname, "./src/js/components"),
-		'@parts': path.resolve(__dirname, "./src/js/parts"),
-		'@libs': path.resolve(__dirname, "./src/js/libs"),
+		'@': path.resolve(__dirname, "./src/js/components"),
 		'@css': path.resolve(__dirname, "./src/scss"),
 		vue$: 'vue/dist/vue.common.js',
 	},
