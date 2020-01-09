@@ -31,7 +31,6 @@ return [
     'preventUserEnumeration' => true,
     'runQueueAutomatically' => false,
     'securityKey' => getenv('SECURITY_KEY'),
-    'sendPoweredByHeader' => false,
     'testToEmailAddress' => getenv('TEST_TO_EMAIL_ADDRESS') ?: null,
     'timezone' => 'UTC',
     'useEmailAsUsername' => true,
