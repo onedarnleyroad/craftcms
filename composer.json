@@ -19,6 +19,7 @@
     "nystudio107/craft-seomatic": "^3.2",
     "nystudio107/craft-templatecomments": "^1.1",
     "ostark/craft-async-queue": "^2.0",
+    "superbig/craft3-bugsnag": "^2.0",
     "vlucas/phpdotenv": "^3.4.0"
   },
   "autoload": {
