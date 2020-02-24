@@ -1,9 +1,46 @@
 <IfModule mod_rewrite.c>
-    RewriteEngine On
+  RewriteEngine On
+  RewriteBase /
 
-    # Send would-be 404 requests to Craft
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} !^/(favicon\.ico|apple-touch-icon.*\.png)$ [NC]
-    RewriteRule (.+) index.php?p=$1 [QSA,L]
+  # ----------------------------------------------------------------------
+  # Wordpress and other bad bots
+  # ----------------------------------------------------------------------
+  RedirectMatch 404 (wp-login|wp-admin|wp-config|wp-content|wp-includes|wp-info|xmlrpc)
+  RedirectMatch 404 (adminer|wso|olux|Marvins|shell|config)
+
+  # ----------------------------------------------------------------------
+  # Force www to production domain
+  # ----------------------------------------------------------------------
+  RewriteBase /
+  RewriteCond %{HTTP_HOST} =domain.tld [NC]
+  RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+  # ----------------------------------------------------------------------
+  # Force https for production domain
+  # ----------------------------------------------------------------------
+  RewriteCond %{HTTP_HOST} =www.domain.tld [NC]
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # ----------------------------------------------------------------------
+  # Remove trailing slashes from frontend requests
+  # Exclude CP & Action URLs
+  # hat=tip: https://www.extreme-creations.co.uk/blog/how-to-remove-a-trailing-slash-in-htaccess-apache-craft-concrete5-expressionengine-lemonstand/
+  # ----------------------------------------------------------------------
+  RewriteCond %{REQUEST_METHOD} =GET
+  RewriteCond %{REQUEST_URI} !^/actions(.*)?
+  RewriteCond %{REQUEST_URI} !^/cpresources(.*)?
+  RewriteCond %{REQUEST_URI} !^/one(.*)?
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+  # ----------------------------------------------------------------------
+  # Send would-be 404 requests to Craft
+  # ----------------------------------------------------------------------
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/(favicon\.ico|apple-touch-icon.*\.png)$ [NC]
+  RewriteRule (.+) index.php?p=$1 [QSA,L]
 </IfModule>
