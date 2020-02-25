@@ -1,5 +1,5 @@
 /* eslint-env node */
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const path = require("path");
@@ -42,287 +42,205 @@ module.exports = env => {
 
 
 	*/
-	const legacy = !!(env && env.legacy);
-	const production = legacy || (env && env.production);
-	const devServer = env && env.devServer;
+  const legacy = !!(env && env.legacy);
+  const production = legacy || (env && env.production);
+  const devServer = !!(env && env.devServer);
 
 	// Target is a string, switched between production, development or legacy, based
 	// on the env above. 
-	let target = production ? 'production' : 'development';
-	target = legacy ? 'legacy' : target;
+  let target = production ? 'production' : 'development';
+  target = legacy ? 'legacy' : target;
 
-	console.log(`Compiling for ${target}`);
+  console.log(`Compiling for ${target} with devServer ${devServer ? 'enabled' : 'disabled'}`);
 
 	// Based on the target, figure out a path for scripts.
 	// This still affects devServer, so HMR knows where to 
 	// look for.
 	
 	// Path, used to load scripts in on the browser.
-	const publicPath = `${settings.publicPath}${target}/`;
+  const publicPath = `${settings.publicPath}${target}/`;
 
 	// File path, where is the file located...
-	const filePath = `${settings.path}/${target}`;
+  const filePath = `${settings.path}/${target}`;
 
 	// Generate the entries list. It will get the list from webpack.settings.js
-	const entry = {};
+  const entry = {};
 	// It'll look through each name and find the file, so in most cases
 	// it'll go from `app` to `./src/js/app.js`
-	settings.entries.forEach(name => entry[name] = `${settings.base}${name}.js`);
+  settings.entries.forEach(name => entry[name] = `${settings.base}${name}.js`);
 
-	
-	
+  const htmlWebpackPlugins = [];
+  settings.entries.forEach(entry => {
 
-	/**
-	 * WEBPACK PLUGINS.
-	 * 
-	 * All sorts of things that are part of compilation.
-	 * 
-	 * Webpack expects an array of plugins.
-	 */
+    const filename = settings.html.filename(entry, target);
 
-	// Start the plugins array.
-	// This is the shared between any target, so all situations will use these pplugins:
-	let plugins = [
-		// Load vue components:
-		new VueLoaderPlugin(),
+    // And again for our dev mode, not-inlined version:
+    if ( !devServer ) {
+      htmlWebpackPlugins.push(
+        new HtmlWebpackPlugin({
+          entry,
+          filename,
+          alwaysWriteToDisk: true, // provided by html-webpack-harddisk-plugin
+          minify: {
+            collapseWhitespace: true,
+            preserveLineBreaks: true,
+          },
+          template: settings.html.template,
+          inject: false,
+          excludeChunks: settings.entries.filter(name => name != entry),
 
-		// This is a basic plugin that makes the ENV available, so 
-		// for example, we don't import certain things in legacy.
-		new webpack.DefinePlugin({ ENV: { production, legacy } })
-	];
+          // Environment Vars:
+          production,
+          devServer,
+          legacy
+        })
+      );
+    }
+  });
 
-	// For NON dev server builds, i.e. production and legacy...
-	if ( !devServer ) {
+  let plugins = [
+    new VueLoaderPlugin(),
+    new webpack.DefinePlugin({ ENV: { production, legacy } }),
+    new CleanWebpackPlugin(),
+  ];
 
-		// We write script tags to disk...
-		const htmlWebpackPlugins = [];
+  if ( !devServer ) {
+    plugins = [
+      ...plugins,
+      ...htmlWebpackPlugins,
+      new HtmlWebpackHarddiskPlugin(),
 
-		// Loop through each entry and...
-		settings.entries.forEach(entry => {
-
-			// Webpack.settings.js will store a function to compile a script tag for each entry,
-			// based on the entry and target, that's how we end up with /production_app.twig etc.
-			const filename = settings.html.filename(entry, target);
-
-			// Create an HTMLWebpackPlugin that will generate our script.twig
-			htmlWebpackPlugins.push(
-				new HtmlWebpackPlugin({
-					entry,
-					filename,
-					alwaysWriteToDisk: true,
-					minify: {
-						collapseWhitespace: true,
-						preserveLineBreaks: true,
-					},
-					template: settings.html.template,
-					inject: false,
-					// We exclude any scripts that AREN'T this entry, to avoid
-					// writing every entry to every script file. 
-
-					// Entries are not designed to co-exist with others, in our setup, eg
-					// "app" for the front end, or "Cp" for the control panel. but never both on one page.
-					excludeChunks: settings.entries.filter(name => name != entry),
-
-					// Environment Vars. Our script template can decide
-					// what to do based on this.
-					production,
-					devServer,
-					legacy
-				})
-			);
-		});
+    ];
+  } else {
+    plugins = [
+      ...plugins,
+      new webpack.HotModuleReplacementPlugin(),
+    ];
+  }
 
 
-		// Re assign our plugins array...
-		plugins = [
+  if (production) {
+    plugins.push(new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: settings.output.css
+    }));
+    plugins.push(new webpack.SourceMapDevToolPlugin({
+      filename: "[file].map",
+      test: /\.(js)($|\?)/i,
+      exclude: [
+        /vendor/,
+        /manifest/
+      ]
+    }));
+  }
 
-			// Clean out any compiled JS first:
-			new CleanWebpackPlugin([`${filePath}/*.js`, `${filePath}/*.css`], {
-				root: false,
-				allowExternal: true,
-			}),
-			// Add in our html script writing plugins:
-			...htmlWebpackPlugins,
-			// Add the hard disk plugin to write HTML rather than inject
-			new HtmlWebpackHarddiskPlugin(),
+  let outputFilename;
+  if (legacy) {
+    outputFilename = settings.output.legacy;
+  } else {
+    outputFilename = production ? settings.output.production : settings.output.development;
+  }
 
-			// Add our default plugins back in
-			...plugins
-		];
+  return {
 
-		// Write CSS if production - don't do on Legacy,
-		// as that legacy will use the production css.
-		if (production) {
-			plugins.push(new MiniCssExtractPlugin({
-				// Options similar to the same options in webpackOptions.output
-				// both options are optional
-				filename: settings.output.css
-			}));
-		}
+    mode: production ? 'production' : 'development',
+    entry,
 
-	} else {
-		// HMR for dev server only, it doesn't need anything else on top of the standard.
-		plugins.push( new webpack.HotModuleReplacementPlugin() );
-	}
+    output: {
+      filename: outputFilename,
+      publicPath: devServer ? `http${settings.devServer.https ? 's' : ''}://localhost:${settings.devServer.port}/${publicPath}` : `/${publicPath}`,
+      path: filePath,
+      library: settings.library
+    },
+
+    optimization: {
+      splitChunks: {
+        chunks: chunk => chunk.name !== 'cp',
+      },
+      runtimeChunk: {
+        name: "manifest",
+      },
+    },
+
+    resolve: {
+      alias: settings.aliases
+    },
+
+    module: {
+      rules: [
+        {
+          test: /\.vue$/,
+          loader: "vue-loader"
+        },
+        {
+          test: /\.js$/,
+          exclude: /(node_modules|bower_components)/,
+
+          use: [{
+            loader: "babel-loader",
+            options: {
+              presets: [
+                [
+                  "@babel/preset-env",
+                  legacy ? settings.babel.legacy : settings.babel.modern
+                ]
+              ],
+              plugins: [require("@babel/plugin-proposal-object-rest-spread")]
+            }
+          }]
+        },
+        {
+          test: /\.(s*)css$/,
+          use: [
+            production ? {
+              loader: MiniCssExtractPlugin.loader,
+              options: {},
+            } : 'style-loader',
+            'css-loader?url=false',
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: {
+                  ctx: {
+                    mode: production ? 'production' : 'development',
+                  }
+                }
+              }
+            },
+            'sass-loader',
+          ]
+        },
+      ]
+    },
+
+    // See above...
+    plugins,
 
 
-	// Settings file will define how to name our JS and CSS files.
-	let outputFilename;
-	if (legacy) {
-		outputFilename = settings.output.legacy;
-	} else {
-		outputFilename = production ? settings.output.production : settings.output.development;
-	}
+    devServer: {
+      // from settings
+      https: settings.devServer.https,
+      host: settings.devServer.host,
+      publicPath: `${settings.devServer.https ? 'https' : 'http'}://${settings.devServer.host || 'localhost'}:${settings.devServer.port}/assets/development/`,
+      port: settings.devServer.port,
 
-	// Finally we can start outputting our actual webpack config file. 
-	// This below could have been a lot more hard coded, as now it's
-	// largely configured by settings and logic above. But the property
-	// names here are the ones you'd look up on webpack docs.
-	return {
+      // hardcoded
+      stats: {
+        colors: true
+      },
 
-		// Let's add in our plugins array. We build this above,
-		// it's too complext to do when building the main object.
-		plugins,
-
-		// Let webpack know what mode we're in:
-		mode: production ? 'production' : 'development',
-
-		// Give the object of all our entries, eg 'app', or 'cp' etc...
-		entry,
-
-		// Tell webpack how and where to save:
-		output: {
-			// how to name files once bundled
-			filename: outputFilename,
-			// Where to retrieve async modules from, or where to load HMR modules:
-			publicPath: devServer ? `http${settings.devServer.https ? 's' : ''}://localhost:${settings.devServer.port}/${publicPath}` : `/${publicPath}`,
-			// where to find the entries
-			path: filePath,
-		},
-
-		// How to optimise the build:
-		// If it's devserver, don't do anything,
-		// don't codesplit because we then can just include the app.js entry point
-		// and keep it simple. We don't need to generate HTML for devserver then. 
-		optimization: devServer ? {} : {
-			// As long as the chunk name doesn't equal CP (we'd just want one bundle for that)
-			// then split chunks as necessary. this does async modules, and splits vendors / manifest.
-			splitChunks: {
-				chunks: chunk => chunk.name !== 'cp',
-			},
-			// Generate a manifest file that tells webpack where to get chunks from. 
-			runtimeChunk: {
-				name: "manifest",
-			},
-		},
-
-		// Resolve is what maps aliases. Rather than having to worry about complicated, nested relative paths
-		// eg within folders, we can just the @ symble. The common pattern is to use point "@" to "src/js",
-		// so that import "@/libs/helpers" would look in "src/js/libs/helpers.js"
-		resolve: {
-			alias: settings.aliases
-		},
-
-		// Module setting is what defines our actual transformers,
-		// it defines the actual compilation. This is what were' here for in the end
-		// so it runs through the files it encounters, all imported from the entry point 
-		// (eg app.js) and decides what to do with them. Genereally it's based on 
-		// file extensions.
-		module: {
-			rules: [
-
-				// Use Vue-loader plugin for vue files.
-				// These are converted to JS so in turn will get
-				// passed down to the JS rule below, i.e. babel.
-				{
-					test: /\.vue$/,
-					loader: "vue-loader"
-				},
-				
-				// For JS files, we run babel loader.
-				{
-					test: /\.js$/,
-					// But we exclude node_modules
-					exclude: /(node_modules|bower_components)/,
-
-					use: [{
-						loader: "babel-loader",
-						options: {
-							presets: [
-								// two possible babel settings depending on whether we are a legacy
-								// or modern build
-								[
-									"@babel/preset-env",
-									legacy ? settings.babel.legacy : settings.babel.modern
-								]
-							],
-							// Add in rest spread plugin so we can { ...spread } objects
-							plugins: [require("@babel/plugin-proposal-object-rest-spread")]
-						}
-					}]
-				},
-				{
-					// For CSS or SCSS files...
-					test: /\.(s*)css$/,
-					use: [
-						// Use our extract plugin if we are in production, i.e.
-						// not on dev server,
-						// If not production then just use style-loader and webpack
-						// will import CSS dynamically, upon javaScript execution.
-						production ? {
-							loader: MiniCssExtractPlugin.loader,
-							options: {},
-						} : 'style-loader',
-						
-						// Also use css loader
-						'css-loader',
-						// and also use postcss. ctx will pass 
-						// the 'mode' to our postcss.config.js file, 
-						// so we can choose to minify or not, purge or not.
-						{
-							loader: 'postcss-loader',
-							options: {
-								config: {
-									ctx: {
-										mode: production ? 'production' : 'development',
-									}
-								}
-							}
-						},
-						// And pass our sass loader. 
-						'sass-loader',
-					]
-				},
-			]
-		},
-		
-		// Finally, add devServer settings. These are ignored
-		// if the devServer flag is not enabled.
-		devServer: {
-			// from settings, decide where to look
-			// for the dev server. Most cases it's just https://localhost:9000/assets/development,
-			// the settings below build that out.
-			https: settings.devServer.https,
-			host: settings.devServer.host,
-			publicPath: `${settings.devServer.https ? 'https' : 'http'}://${settings.devServer.host || 'localhost'}:${settings.devServer.port}/assets/development/`,
-			port: settings.devServer.port,
-
-			// hardcoded settings, this just makes things easier to work with craft.
-			stats: {
-				colors: true
-			},
-
-			disableHostCheck: true,
-			watchContentBase: false,
-			contentBase: './templates/',
-			compress: true,
-			hot: true,
-			inline: true,
-			headers: {
-				"Access-Control-Allow-Origin": "*",
-				"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-				"Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-			}
-		}
-	};
+      disableHostCheck: true,
+      watchContentBase: true,
+      contentBase: './templates/',
+      compress: true,
+      hot: true,
+      inline: true,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+      }
+    }
+  };
 };

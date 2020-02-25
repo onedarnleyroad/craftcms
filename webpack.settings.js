@@ -12,10 +12,10 @@ module.exports = {
 
 	// Filenames for JS files
 	output: {
-		production: '[name].[hash].js',
+		production: '[name].[chunkhash].js',
 		development: '[name].js',
-		legacy: 'legacy-[name].[hash].js',
-		css: '[name].[hash].css',
+		legacy: 'legacy-[name].[chunkhash].js',
+		css: '[name].[chunkhash].css',
 	},
 
 	html: {
@@ -30,7 +30,7 @@ module.exports = {
 	},
 
 	aliases: {
-		'@': path.resolve(__dirname, "./src/js/components"),
+		'@': path.resolve(__dirname, "./src/js"),
 		'@css': path.resolve(__dirname, "./src/scss"),
 		vue$: 'vue/dist/vue.common.js',
 	},
