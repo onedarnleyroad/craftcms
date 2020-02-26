@@ -33,6 +33,7 @@ return [
     'securityKey' => getenv('SECURITY_KEY'),
     'testToEmailAddress' => getenv('TEST_TO_EMAIL_ADDRESS') ?: null,
     'timezone' => 'UTC',
+    'transformGifs' => false,
     'useEmailAsUsername' => true,
     'useProjectConfigFile' => true,
 ];
