@@ -9,9 +9,8 @@
   RedirectMatch 404 (adminer|wso|olux|Marvins|shell|config)
 
   # ----------------------------------------------------------------------
-  # Force www to production domain
+  # Force www for production domain
   # ----------------------------------------------------------------------
-  RewriteBase /
   RewriteCond %{HTTP_HOST} =domain.tld [NC]
   RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
