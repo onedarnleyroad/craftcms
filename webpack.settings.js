@@ -1,5 +1,5 @@
 const path = require("path");
-
+const version = process.env.npm_package_version;
 
 module.exports = {
 
@@ -12,10 +12,10 @@ module.exports = {
 
 	// Filenames for JS files
 	output: {
-		production: '[name].[chunkhash].js',
-		development: '[name].js',
-		legacy: 'legacy-[name].[chunkhash].js',
-		css: '[name].[chunkhash].css',
+		production: `[name].[chunkhash]-${version}.js`,
+		development: `[name].js`,
+		legacy: `legacy-[name].[chunkhash]-${version}.js`,
+		css: `[name].[chunkhash]-${version}.css`,
 	},
 
 	html: {
