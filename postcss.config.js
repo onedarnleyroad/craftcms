@@ -28,11 +28,11 @@ module.exports = ({ options }) => {
 		plugins: [
 			tailwind,
 			autoprefixer,
-      ...options.mode === 'devServer'
-				? [] : [
+      ...options.mode === 'production'
+				? [
 					purgecss,
 					cssnano
-				]
+        ] : []
 		]
 	}
 }
