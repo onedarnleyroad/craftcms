@@ -17,6 +17,7 @@
     "nystudio107/craft-seomatic": "^3.2",
     "nystudio107/craft-templatecomments": "^1.1",
     "ostark/craft-async-queue": "^2.0",
+    "putyourlightson/craft-blitz": "^3.6",
     "spacecatninja/imager-x": "^3.0",
     "superbig/craft3-bugsnag": "^2.0",
     "verbb/knock-knock": "^1.2",
