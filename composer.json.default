@@ -1,6 +1,5 @@
 {
   "require": {
-    "aelvan/imager": "^2.4",
     "craftcms/cms": "^3.4",
     "craftcms/postmark": "^2.0",
     "craftcms/redactor": "^2.6",
@@ -13,6 +12,8 @@
     "nystudio107/craft-seomatic": "^3.2",
     "nystudio107/craft-templatecomments": "^1.1",
     "ostark/craft-async-queue": "^2.0",
+    "putyourlightson/craft-blitz": "^3.6",
+    "spacecatninja/imager-x": "^3.0",
     "superbig/craft3-bugsnag": "^2.0",
     "verbb/knock-knock": "^1.2",
     "vlucas/phpdotenv": "^3.4.0"
