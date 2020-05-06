@@ -3,14 +3,14 @@
 return [
     'uploads' => [
         'hasUrls' => true,
-        'url' => '@web/uploads',
+        'url' => '@web/volumes/uploads',
         'type' => 'craft\volumes\Local',
-        'path' => '@webroot/uploads',
+        'path' => '@webroot/volumes/uploads',
     ],
     'userPhotos' => [
         'hasUrls' => true,
-        'url' => '@web/userphotos',
+        'url' => '@web/volumes/userphotos',
         'type' => 'craft\volumes\Local',
-        'path' => '@webroot/userphotos',
+        'path' => '@webroot/volumes/userphotos',
     ]
 ];
