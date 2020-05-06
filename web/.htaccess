@@ -6,7 +6,6 @@
   # Wordpress and other bad bots
   # ----------------------------------------------------------------------
   RedirectMatch 404 (wp-login|wp-admin|wp-config|wp-content|wp-includes|wp-info|xmlrpc)
-  RedirectMatch 404 (adminer|wso|olux|Marvins|shell|config)
 
   # ----------------------------------------------------------------------
   # Force www for production domain
