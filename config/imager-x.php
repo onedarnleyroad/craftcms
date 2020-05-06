@@ -4,8 +4,8 @@ return [
 	'cacheDuration' => false,
 	'cacheDurationRemoteFiles' => false,
 	'cacheEnabled' => true,
-	'imagerSystemPath' => '@webroot/imager/',
-	'imagerUrl' => '@web/imager/',
+	'imagerSystemPath' => '@webroot/cache/imager/',
+	'imagerUrl' => '@web/cache/imager/',
 	'imgixAPIKey' => getenv('IMGIX_API_KEY'),
 	'imgixConfig' => [
 		'default' => [
