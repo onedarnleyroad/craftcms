@@ -31,7 +31,7 @@ return [
     'local' => [
         'components' => [
             'deprecator' => [
-                'throwExceptions' => YII_DEBUG,
+                'throwExceptions' => getenv('DEV_MODE'),
             ],
             'mailer' => static function() {
                 $settings = App::mailSettings();
