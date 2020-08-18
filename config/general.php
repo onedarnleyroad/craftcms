@@ -37,5 +37,4 @@ return [
     'timezone' => 'UTC',
     'transformGifs' => false,
     'useEmailAsUsername' => true,
-    'useProjectConfigFile' => true,
 ];
