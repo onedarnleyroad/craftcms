@@ -47,7 +47,7 @@
       "@php -r \"rename('.gitignore.default', '.gitignore');\"",
       "@php -r \"unlink('composer.json');\"",
       "@php -r \"rename('composer.json.default', 'composer.json');\"",
-      "@composer dump-autoload -o",
+      "@composer dump-autoload -o"
     ]
   }
 }
