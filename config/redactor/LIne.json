@@ -1,0 +1,8 @@
+{
+  "buttons": ["html","bold", "italic", "link", "file"],
+  "toolbarFixed": true,
+  "enterKey": false,
+  "breakline": false,
+  "pastePlainText": true,
+  "markup": "div"
+}
