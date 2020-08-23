@@ -5,7 +5,7 @@
   "license": "Unlicense",
   "type": "project",
   "require": {
-    "craftcms/cms": "^3.4",
+    "craftcms/cms": "^3.5",
     "craftcms/postmark": "^2.0",
     "craftcms/redactor": "^2.6",
     "fruitstudios/linkit": "^1.1",
