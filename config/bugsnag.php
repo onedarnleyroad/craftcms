@@ -8,9 +8,11 @@
  * @copyright Copyright (c) 2017 Superbig
  */
 
+use craft\helpers\App;
+
 return [
-    'enabled'             => getenv('BUGSNAG_IS_ENABLED'),
-    'serverApiKey'        => getenv('BUGSNAG_SERVER_API_KEY'),
+    'enabled'             => App::env('BUGSNAG_IS_ENABLED'),
+    'serverApiKey'        => App::env('BUGSNAG_SERVER_API_KEY'),
     'blacklist'            => [
         [
             'label' => '404 errors etc',

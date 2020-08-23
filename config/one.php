@@ -1,5 +1,7 @@
 <?php
 
+use craft\helpers\App;
+
 // As a precaution, only define constants once
 if( ! defined('ENV_SITE_VERSION'))
 {
@@ -10,7 +12,7 @@ if( ! defined('ENV_SITE_VERSION'))
 
 return [
 	'environment' => CRAFT_ENVIRONMENT,
-	'webpackOn' => (bool) getenv('WEBPACK_ON'),
+	'webpackOn' => (bool) App::env('WEBPACK_ON'),
 	'version' => ENV_SITE_VERSION,
-	'googleAnalyticsID' => getenv('GOOGLE_ANALYTICS_ID'),
+	'googleAnalyticsID' => App::env('GOOGLE_ANALYTICS_ID'),
 ];

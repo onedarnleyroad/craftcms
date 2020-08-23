@@ -1,6 +1,8 @@
 <?php
 
+use craft\helpers\App;
+
 return [
-	'enabled' => (bool) getenv('KNOCK_KNOCK_IS_ENABLED'),
-	'password' => getenv('KNOCK_KNOCK_PASSWORD'),
+	'enabled' => (bool) App::env('KNOCK_KNOCK_IS_ENABLED'),
+	'password' => App::env('KNOCK_KNOCK_PASSWORD'),
 ];

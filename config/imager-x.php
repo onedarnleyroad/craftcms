@@ -1,17 +1,19 @@
 <?php
 
+use craft\helpers\App;
+
 return [
 	'cacheDuration' => false,
 	'cacheDurationRemoteFiles' => false,
 	'cacheEnabled' => true,
 	'imagerSystemPath' => '@webroot/cache/imager/',
 	'imagerUrl' => '@web/cache/imager/',
-	'imgixAPIKey' => getenv('IMGIX_API_KEY'),
+	'imgixAPIKey' => App::env('IMGIX_API_KEY'),
 	'imgixConfig' => [
 		'default' => [
-			'domain' => getenv('IMGIX_DOMAIN'),
+			'domain' => App::env('IMGIX_DOMAIN'),
 			'useHttps' => true,
-			'signKey' => getenv('IMGIX_SIGN_KEY'),
+			'signKey' => App::env('IMGIX_SIGN_KEY'),
 			'sourceIsWebProxy' => false,
 			'useCloudSourcePath' => false,
 			'getExternalImageDimensions' => false,
@@ -21,5 +23,5 @@ return [
 		],
 	],
 	'imgixProfile' => 'default',
-	'transformer' => getenv('IMAGER_TRANSFORMER') ?: 'craft',
+	'transformer' => App::env('IMAGER_TRANSFORMER') ?: 'craft',
 ];

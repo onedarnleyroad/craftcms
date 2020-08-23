@@ -1,10 +1,6 @@
 <?php
 
 /**
- * @copyright Copyright (c) PutYourLightsOn
- */
-
-/**
  * Blitz config.php
  *
  * This file exists only as a template for the Blitz settings.
@@ -18,18 +14,20 @@
  * you do for 'general.php'
  */
 
+use craft\helpers\App;
+
 return [
 	'cacheDuration' => '0',
 	'cacheElementQueries' => true,
 	'cacheElements' => true,
 	'cachePurgerType' => 'putyourlightson\blitz\drivers\purgers\CloudflarePurger',
 	'cachePurgerSettings' => [
-		'apiKey' => getenv('CLOUDFLARE_API_KEY'),
-		'email' => getenv('CLOUDFLARE_EMAIL'),
+		'apiKey' => App::env('CLOUDFLARE_API_KEY'),
+		'email' => App::env('CLOUDFLARE_EMAIL'),
 		'warmCacheDelay' => 5,
 		'zoneIds' => [
 			'UUID_REPLACE_ME' => [
-				'zoneId' => getenv('CLOUDFLARE_ZONE_ID')
+				'zoneId' => App::env('CLOUDFLARE_ZONE_ID')
 			]
 		]
 	],
@@ -37,9 +35,9 @@ return [
 		'createGzipFiles' => false,
 		'folderPath' => '@webroot/cache/blitz'
 	],
-	'cachingEnabled' => (bool) getenv('BLITZ_CACHING_ENABLED'),
+	'cachingEnabled' => (bool) App::env('BLITZ_CACHING_ENABLED'),
 	'clearCacheAutomatically' => true,
-	'debug' => (bool) getenv('BLITZ_DEBUG'),
+	'debug' => (bool) App::env('BLITZ_DEBUG'),
 	'includedUriPatterns' => [
 		[
 			'siteId' => 1,

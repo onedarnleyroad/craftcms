@@ -1,6 +1,8 @@
 <?php
 
+use craft\helpers\App;
+
 return [
     'pluginName' => 'SEO',
-    'environment' => (bool) getenv('SEOMATIC_IS_LIVE') ? 'live' : 'local',
+    'environment' => (bool) App::env('SEOMATIC_IS_LIVE') ? 'live' : 'local',
 ];
