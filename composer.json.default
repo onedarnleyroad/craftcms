@@ -38,8 +38,7 @@
       "@php craft migrate/all",
       "@php craft project-config/apply",
       "@php craft clear-caches/compiled-templates",
-      "@php craft clear-caches/temp-files",
-      "@php craft clear-caches/template-caches"
+      "@php craft clear-caches/temp-files"
     ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
