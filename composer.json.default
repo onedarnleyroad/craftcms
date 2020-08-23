@@ -2,21 +2,24 @@
   "require": {
     "craftcms/cms": "^3.5",
     "craftcms/postmark": "^2.0",
-    "craftcms/redactor": "^2.6",
+    "craftcms/redactor": "^2.7",
     "fruitstudios/linkit": "^1.1",
     "marionnewlevant/agnostic-fetch": "^2.0",
-    "mmikkel/cp-field-inspect": "^1.1",
-    "mmikkel/retcon": "^2.0",
+    "mmikkel/cp-field-inspect": "^1.2",
+    "mmikkel/retcon": "^2.2",
     "nystudio107/craft-retour": "^3.1",
     "nystudio107/craft-scripts": "^1.2",
-    "nystudio107/craft-seomatic": "^3.2",
+    "nystudio107/craft-seomatic": "^3.3",
     "nystudio107/craft-templatecomments": "^1.1",
-    "ostark/craft-async-queue": "^2.0",
+    "ostark/craft-async-queue": "^2.1",
     "putyourlightson/craft-blitz": "^3.6",
-    "spacecatninja/imager-x": "^3.0",
-    "superbig/craft3-bugsnag": "^2.0",
+    "spacecatninja/imager-x": "^3.1",
+    "superbig/craft3-bugsnag": "^2.1",
     "verbb/knock-knock": "^1.2",
     "vlucas/phpdotenv": "^3.4.0"
+  },
+  "require-dev": {
+    "yiisoft/yii2-shell": "^2.0.3"
   },
   "autoload": {
     "psr-4": {
@@ -26,7 +29,7 @@
   "config": {
     "optimize-autoloader": true,
     "platform": {
-      "php": "7.3"
+      "php": "7.4"
     },
     "sort-packages": true
   },
