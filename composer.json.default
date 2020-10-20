@@ -19,7 +19,7 @@
     "vlucas/phpdotenv": "^3.4.0"
   },
   "require-dev": {
-    "roave/security-advisories": "dev-master",
+    "roave/security-advisories": "dev-latest",
     "yiisoft/yii2-shell": "^2.0.3"
   },
   "autoload": {
