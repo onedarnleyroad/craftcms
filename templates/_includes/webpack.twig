@@ -39,9 +39,10 @@ if (!Object.entries) {
 <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js"></script>
 
 {# Webpack: #}
-{% if craft.one.config('webpackOn') %}
-	{% set devAssetPath = 'https://localhost:9000/assets/' %}
-	{% include "_readonly/html/development_app.twig" with { devAssetPath: devAssetPath } only %}
+{% if craft.app.config.getConfigFromFile('one')['webpackOn'] %}
+  <script async type="module" src="https://localhost:9000/assets/development/manifest.js"></script>
+  <script async type="module" src="https://localhost:9000/assets/development/vendors~app.js"></script>
+  <script async type="module" src="https://localhost:9000/assets/development/app.js"></script>
 {% else %}
 	{% include "_readonly/html/production_app.twig" %}
 	{% include "_readonly/html/legacy_app.twig" %}

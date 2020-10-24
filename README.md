@@ -10,61 +10,56 @@ Partly because it's fun to publish something that is "ours". But more importantl
 
 Here are some of the things we might do differently:
 
-**1. We commit `vendor/` into our repo**
-
-This matters because we cannot rely on composer's pre/post command scripts and/or other deployment hooks to make sure things are structured just so. For example, NYStudio107 has a great setup script (https://github.com/nystudio107/craft/blob/craft-webpack/nys-setup) that creates a symlink to the craft-scripts folder. However, symlinks are not preserved in git. So for us to use craft-scripts (which we always do), these have to be created manually.
-
-**2. We almost always use the same set of plugins to start with**
+**1. We almost always use the same set of plugins to start with**
 
 This doesn't take a lot of work, but it would be nice to consolidate this common setup into a single command.
 
-**3. Cloning & setting up an existing project is a pain**
+**2. Cloning & setting up an existing project is a pain**
 
-Even though "you only have to do it once", we do it once _a lot_. Create & configure `.env.php`; create and configure `craft-scripts/.env.sh`; pull down db & assets from upstream. It amounts to upwards of 15min that should be automated.
+Even though "you only have to do it once", we do it once _a lot_. Create & configure `.env`; create and configure `craft-scripts/.env.sh`; pull down db & assets from upstream. It amounts to upwards of 15min that should be automated.
 
-**4. Hopes for the future in Docker/DDEV/etc**
+**3. We dev in DDEV**
 
-Right now we're all on MAMP Pro, and while that's _fine_, it means we're each responsible for the local environment setup for each project we work on. If we can wrap that into something like DDEV or Docker then that's one less thing to do when spinning up a new project.
+We have adopted [DDEV](https://ddev.readthedocs.io/en/stable/) as our local development environment of choice, and its behaviour is well-suited to some boilerplating. Our documentation below embraces this as an inherent part of the stack. If we end up switching to Craft's [Nitro](https://github.com/craftcms/nitro), the below will change accordingly.
 
-**5. Our front-end build process is... complicate**
+**5. Our front-end build process is... complicated**
 
 And while it probably would be "nice" if this was a separate package so that it could be leveraged outside of Craft, the reality is that _if_ we are doing something in Craft, we will definitely need our front-end build tool in place. And it's complicated, so having it purpose-built for our most common setup is ideal.
 
 ## Installation Instructions
 
-### Step 1: Download Craft
+### Step 1: Download project & set up Craft
 
-#### Option 1 (Recommended): Setup via Composer
+#### Option 1: via Composer
 
-1. `composer create-project onedarnleyroad/craftcms <Path>`  
+1. `composer create-project onedarnleyroad/craftcms <Path> --no-install`  
 
    _Tip: Use `composer create-project onedarnleyroad/craftcms:dev-master <Path>` to use latest commits from master. If this does not appear to work, run `composer clearcache` and try again._
+
+2. `cd` into project `<Path>`
+3. Run `ddev config` to set up VM
+4. Run `ddev start` to start VM
+5. Run `ddev ssh` to ssh into container
+6. Run `composer install`
+7. Run `./craft setup` to set up all the Craft things.
 
 #### Option 2: Manual setup
 
 1. clone/download repo to local machine
-2. delete `README.md`, `CHANGELOG.md` and `LICENSE.md`
-3. delete `composer.json` and rename `composer.json.default` to `composer.json`
-4. delete `.gitignore` and rename `.gitignore.default` to `.gitignore`
-5. duplicate `.env.example` to `.env`
-6. run `composer install`
+2. `cd` into project root
+4. Run `composer run-script post-create-project-cmd` to delete project files and prepare default files
+5. Run `ddev config` to set up VM
+6. Run `ddev start` to start VM
+7. Run `ddev ssh` to ssh into container
+8. Run `composer install` to install composer & packages
+9. Run `./craft setup` to set up all the Craft things.
 
 ### Step 2: Edit .env
 
-1. Set `SECURITY_KEY` *
-2. Set `CP_TRIGGER`
-3. Set `DEFAULT_SITE_URL`
-4. Set `DB_` credentials **
+Out of the box, the values copied from `.env.default`, combined with running `./craft welcome` and `./craft/setup` will get you 99% of the way to being ready to go. All that's left now is to:
 
-*\* For existing projects, obtain security key from project lead; to set up a new Security Key, follow https://docs.craftcms.com/v3/installation.html#step-3-set-a-security-key*
-
-\*** The default Database values are compatible with DDEV environment. If you are planning to use DDEV, leave them as-is.*
-
-### Step 3: Configure DDEV
-
-Skip this step if running your own local environment.
-
-> `ddev config` and follow prompts...
+1. Set `CP_TRIGGER` (defaults to `admin`)
+2. Set `PRIMARY_SITE_URL`
 
 ### Ideal Usage:
 
@@ -73,7 +68,7 @@ Skip this step if running your own local environment.
 1. `composer create-project onedarnleyroad/craftcms <Path>`
 2. `cd <Path>`
 
-_If using ddev...otherwise skip to .6_
+
 
 3. `ddev config --project-name <HostName>`
 4. `ddev start` (to ensure that craft can connect to a database)

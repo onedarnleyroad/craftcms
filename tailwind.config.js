@@ -67,6 +67,7 @@ const columns = {
 
 module.exports = {
   prefix: '',
+  purge: false,
   important: false,
   separator: ':',
   theme: {
@@ -154,7 +155,7 @@ module.exports = {
 				'Times',
 				'serif',
 			],
-			mono: [				
+			mono: [
 				'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'
 			],
     },

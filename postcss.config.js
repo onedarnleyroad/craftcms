@@ -10,13 +10,12 @@ const cssnano = require('cssnano')({
 
 const purgecss = require('@fullhuman/postcss-purgecss')({
 	content: [
-		'./templates/**/*.twig',
-		'./src/**/*.vue'
+		'./templates/**/*.twig'
 	],
 	whitelistPatterns: [
 		/js-/
 	],
-	defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+	defaultExtractor: content => content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []
 })
 
 const tailwind = require('tailwindcss')(

@@ -3,18 +3,16 @@
     "craftcms/cms": "^3.5",
     "craftcms/postmark": "^2.0",
     "craftcms/redactor": "^2.7",
-    "fruitstudios/linkit": "^1.1",
     "marionnewlevant/agnostic-fetch": "^2.0",
     "mmikkel/cp-field-inspect": "^1.2",
     "mmikkel/retcon": "^2.2",
     "nystudio107/craft-retour": "^3.1",
     "nystudio107/craft-scripts": "^1.2",
     "nystudio107/craft-seomatic": "^3.3",
-    "nystudio107/craft-templatecomments": "^1.1",
     "ostark/craft-async-queue": "^2.1",
     "putyourlightson/craft-blitz": "^3.6",
+    "sebastianlenz/linkfield": "^1.0",
     "spacecatninja/imager-x": "^3.1",
-    "superbig/craft3-bugsnag": "^2.1",
     "verbb/knock-knock": "^1.2",
     "vlucas/phpdotenv": "^3.4.0"
   },
@@ -36,15 +34,28 @@
   },
   "scripts": {
     "craft-update": [
-      "@php craft migrate/all",
-      "@php craft project-config/apply",
-      "@php craft clear-caches/compiled-templates",
-      "@php craft clear-caches/temp-files"
+      "@pre-craft-update",
+      "@post-craft-update"
+    ],
+    "pre-craft-update": [
+      "@php craft install/check && php craft off --retry=60 || return 0"
+    ],
+    "post-craft-update": [
+      "@php craft install/check && php craft clear-caches/compiled-templates || return 0",
+      "@php craft install/check && php craft clear-caches/temp-files || return 0",
+      "@php craft install/check && php craft migrate/all || return 0",
+      "@php craft install/check && php craft project-config/apply || return 0",
+      "@php craft install/check && php craft on || return 0"
     ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
     ],
-    "post-update-cmd": "@craft-update",
-    "post-install-cmd": "@craft-update"
+    "post-create-project-cmd": [
+      "@php craft setup/welcome"
+    ],
+    "pre-update-cmd": "@pre-craft-update",
+    "pre-install-cmd": "@pre-craft-update",
+    "post-update-cmd": "@post-craft-update",
+    "post-install-cmd": "@post-craft-update"
   }
 }
