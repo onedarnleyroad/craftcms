@@ -20,10 +20,17 @@
 
 use craft\helpers\App;
 use craft\mail\transportadapters\Smtp;
+use craft\queue\Queue;
 
 return [
     '*' => [
-	    'id' => App::env('APP_ID') ?: 'CraftCMS',
+	'components' => [
+		'queue' => [
+			'class' => Queue::class,
+			'ttr' => 15 * 60,
+		]
+	],
+	'id' => App::env('APP_ID') ?: 'CraftCMS',
         'modules' => [
             'my-module' => \modules\Module::class,
         ],
