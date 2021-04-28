@@ -11,11 +11,13 @@ const cssnano = require('cssnano')({
 const purgecss = require('@fullhuman/postcss-purgecss')({
 	content: [
 		'./templates/**/*.twig',
-		'./src/**/*.vue'
 	],
 	whitelistPatterns: [
 		/js-/
 	],
+  whitelistPatternsChildren: [
+    /plyr/
+  ],
 	defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
 })
 

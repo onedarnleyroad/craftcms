@@ -4,33 +4,32 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 const settings = require('./webpack.settings');
 
 module.exports = env => {
 
-	
+
 	/*
-	
+
 	Decide on the environment settings, whether legacy
 	production or devServer, the compilation will behave a little
 	differently.
 
-	To sum up, 
-	
-	Production means: 
+	To sum up,
+
+	Production means:
 		1. Compile an HTML scripts file,
 		2. Extract CSS into separate css files as needed
 		3. Use a modern browser preset for transpiling, eg, quite a lot of things are left as is, due to modern browsers being able to use ES6. HTML Scripts are imported as type=module to avoid being downloaded by legacy browsers.
-		
+
 	Legacy means:
 		1. Compile an HTML scripts file,
-		2. Some CSS will ajax in, if needed, but it will not write CSS to hard drive, 
+		2. Some CSS will ajax in, if needed, but it will not write CSS to hard drive,
 			since it will use the one that "production" builds
 		3. A more severe transpiling will happen on babel, for legacy browsers.
-		4. Nomodule scripts are being 
+		4. Nomodule scripts are being
 
 		Legacy basically means IE11. So, maybe one day we can decide ot just not do it.
 
@@ -47,16 +46,16 @@ module.exports = env => {
   const devServer = !!(env && env.devServer);
 
 	// Target is a string, switched between production, development or legacy, based
-	// on the env above. 
+	// on the env above.
   let target = production ? 'production' : 'development';
   target = legacy ? 'legacy' : target;
 
   console.log(`Compiling for ${target} with devServer ${devServer ? 'enabled' : 'disabled'}`);
 
 	// Based on the target, figure out a path for scripts.
-	// This still affects devServer, so HMR knows where to 
+	// This still affects devServer, so HMR knows where to
 	// look for.
-	
+
 	// Path, used to load scripts in on the browser.
   const publicPath = `${settings.publicPath}${target}/`;
 
@@ -99,7 +98,6 @@ module.exports = env => {
   });
 
   let plugins = [
-    new VueLoaderPlugin(),
     new webpack.DefinePlugin({ ENV: { production, legacy } }),
     new CleanWebpackPlugin(),
   ];
@@ -169,10 +167,6 @@ module.exports = env => {
 
     module: {
       rules: [
-        {
-          test: /\.vue$/,
-          loader: "vue-loader"
-        },
         {
           test: /\.js$/,
 

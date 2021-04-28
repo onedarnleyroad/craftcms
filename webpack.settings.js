@@ -32,7 +32,6 @@ module.exports = {
 	aliases: {
 		'@': path.resolve(__dirname, "./src/js"),
 		'@css': path.resolve(__dirname, "./src/scss"),
-		vue$: 'vue/dist/vue.common.js',
 	},
 
 	babel: {
