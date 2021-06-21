@@ -1,0 +1,23 @@
+{% extends "_layouts/default.twig" %}
+
+{% block bodyTag %}
+  {{ parent()|attr({ class : 'justify-center items-center bg-gray-200'}) }}
+{% endblock %}
+
+{% block content %}
+  <div x-data="{ show : true }"
+       x-transition.opacity
+       x-show="show"
+       class="relative p-8 bg-white rounded rounded-sm shadow">
+    <button x-on:click.prevent="show = false"
+            class="absolute top-0 right-0 p-4 focus:outline-none
+                   text-gray-500 hover:text-gray-800
+                   transition">
+      {{ svg('@webroot/dist/svg/close.svg')|attr({ 'class' : 'fill-current'}) }}
+    </button>
+    <div class="max-w-xs">
+        <h1 class="font-serif text-xl">{{ (title ?? null) ?: "Oops!"|t }}</h1>
+        <p>{{ (message ?? null) ?: "An error has occurred."|t }}</p>
+    </div>
+  </div>
+{% endblock %}

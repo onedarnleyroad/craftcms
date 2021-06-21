@@ -59,14 +59,6 @@
   RewriteRule ^(.*)/$ /$1 [L,R=301]
 
   # ----------------------------------------------------------------------
-  # Blitz cache rewrite
-  # ----------------------------------------------------------------------
-  RewriteCond %{DOCUMENT_ROOT}/cache/blitz/%{HTTP_HOST}/%{REQUEST_URI}/index.html -s
-  RewriteCond %{REQUEST_METHOD} GET
-  RewriteCond %{QUERY_STRING} !token= [NC]
-  RewriteRule .* /cache/blitz/%{HTTP_HOST}/%{REQUEST_URI}/index.html [L]
-
-  # ----------------------------------------------------------------------
   # Send would-be 404 requests to Craft
   # ----------------------------------------------------------------------
   RewriteCond %{REQUEST_FILENAME} !-f

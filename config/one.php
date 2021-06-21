@@ -12,7 +12,6 @@ if( ! defined('ENV_SITE_VERSION'))
 
 return [
 	'environment' => CRAFT_ENVIRONMENT,
-	'webpackOn' => (bool) App::env('WEBPACK_ON'),
 	'version' => ENV_SITE_VERSION,
 	'googleAnalyticsID' => App::env('GOOGLE_ANALYTICS_ID'),
 ];

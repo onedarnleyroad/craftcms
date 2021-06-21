@@ -1,0 +1,21 @@
+{% if currentUser and entry is defined and currentUser.can('editEntries:' ~ entry.id) and devMode %}
+  {# Edit entry button #}
+  {% html at endBody %}
+    <a href="{{ entry.cpEditUrl }}" target="_blank" class="fixed left-0 bottom-0 px-5 py-2 mb-6 ml-6 font-mono uppercase">Edit this entry</a>
+  {% endhtml %}
+{% endif %}
+
+{# make sure to capture any flashes so they do not linger #}
+{% set flashes = craft.app.session.getAllFlashes() %}
+{% if flashes|length %}
+  {% html at endBody %}
+    <script>
+      {% for key, message in flashes if key in ['notice', 'error'] %}
+      console.log('{{ key }}:', '{{ message }}');
+      {% endfor %}
+    </script>
+  {% endhtml %}
+{% endif %}
+
+{% block response %}
+{% endblock %}

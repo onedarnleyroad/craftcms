@@ -1,0 +1,24 @@
+{% extends "_layouts/base.twig" %}
+
+{% block response %}
+  <!DOCTYPE html>
+  <html class="no-js" lang="{{ currentSite.language }}">
+    <head>
+      <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+      <meta name="referrer" content="origin-when-cross-origin" />
+      <title>{{ siteName }}</title>
+      {% include "_includes/analytics.twig" %}
+      {% include "_includes/fonts.twig" %}
+      {% include "_includes/scripts.twig" %}
+    </head>
+    {% block bodyTag %}
+      <body class="relative flex flex-col min-h-screenh antialiased"
+            dir="{{craft.app.i18n.getLocaleById(currentSite.id).getOrientation()}}">
+    {% endblock %}
+      {% block content %}{% endblock %}
+    </body>
+  </html>
+{% endblock %}

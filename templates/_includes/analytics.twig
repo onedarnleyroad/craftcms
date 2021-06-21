@@ -1,0 +1,14 @@
+{% set trackingId = getenv('GOOGLE_ANALYTICS_ID') %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ trackingId }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  {% if not devMode
+        and not craft.app.request.isLivePreview
+        and not craft.app.request.isPreview
+        and (not currentUser or not currentUser.admin) %}
+    gtag('config', '{{ trackingId }}');
+  {% endif %}
+</script>

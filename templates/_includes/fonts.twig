@@ -1,0 +1,26 @@
+{% apply spaceless %}
+  {% macro rule(fontFamily, filenameWithoutExt = false, fontWeight = '400', fontStyle = 'normal', preload = false) %}
+    {% if preload %}
+      <link rel="preload" href="/dist/fonts/{{ filenameWithoutExt }}.woff2" as="font" crossorigin="anonymous">
+    {% endif %}
+    <style type="text/css">
+      @font-face {
+        font-family: '{{ fontFamily }}';
+        {% if filenameWithoutExt %}
+          src: url('/dist/fonts/{{ filenameWithoutExt }}.woff2') format('woff2'),
+               url('/dist/fonts/{{ filenameWithoutExt }}.woff') format('woff');
+        {% endif %}
+        font-weight: {{ fontWeight }};
+        font-style: {{ fontStyle }};
+        font-stretch: normal;
+        font-display: swap;
+      }
+    </style>
+  {% endmacro %}
+
+  {# sans #}
+  {{ _self.rule('Lato', 'lato-v17-latin-regular', '400', 'normal') }}
+
+  {# serif #}
+  {{ _self.rule('Merriweather', 'merriweather-sans-v14-latin-regular', '400', 'normal') }}
+{% endapply %}

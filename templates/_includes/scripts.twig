@@ -1,0 +1,12 @@
+<script>
+  {#
+  Our site global "APP" variable
+  #}
+  var APP = window.APP || {};
+  APP.debug = {{ devMode ? 'true' : 'false' }};
+  APP.environment = '{{ getenv('ENVIRONMENT') }}';
+  APP.isMobileBrowser = {{ craft.app.request.isMobileBrowser ? 'true' : 'false' }};
+</script>
+
+{# vite our app; pass `false` so that CSS is not async loaded #}
+{{ craft.vite.script('src/js/app.js', false) }}
