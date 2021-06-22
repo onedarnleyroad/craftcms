@@ -26,7 +26,8 @@ export default ({ command }) => ({
   publicDir: path.resolve('./src/public'),
   resolve: {
     alias: {
-      '@': path.resolve('./src'),
+      '@js': path.resolve('./src/js'),
+      '@css': path.resolve('./src/css'),
     },
   },
   server: {
