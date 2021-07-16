@@ -7,8 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add [Autocomplete for Craft CMS](https://github.com/putyourlightson/craft-autocomplete)
 - Add `jsconfig.json` for better intellisense of vite aliases
 - Improve readme
+
+### Changed
+- Update Craft ^3.7
 - Update npm packages: Alpine ^3.2, Autoprefixer ^10.3, Vite ^2.4
 
 ## [2.0.0]
