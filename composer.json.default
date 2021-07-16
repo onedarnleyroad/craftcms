@@ -1,6 +1,6 @@
 {
   "require": {
-    "craftcms/cms": "^3.6",
+    "craftcms/cms": "^3.7",
     "craftcms/postmark": "^2.1",
     "craftcms/redactor": "^2.8",
     "marionnewlevant/agnostic-fetch": "^2.0",
