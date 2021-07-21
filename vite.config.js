@@ -29,7 +29,7 @@ export default ({ command }) => ({
   publicDir: path.resolve(__dirname, 'src/public'),
   resolve: {
     alias: {
-      '@css': path.resolve(__dirname, 'src/css'),
+      '@css': path.resolve(__dirname, 'src/scss'),
       '@js': path.resolve(__dirname, 'src/js'),
     },
   },

@@ -11,6 +11,7 @@
     "@tailwindcss/typography": "^0.4",
     "autoprefixer": "^10.3",
     "postcss": "^8.3",
+    "sass": "^1.35",
     "tailwindcss": "^2.2",
     "vite": "^2.4",
     "vite-plugin-restart": "^0.0.2"
