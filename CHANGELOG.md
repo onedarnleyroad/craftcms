@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add `jsconfig.json` for better intellisense of vite aliases
 - Improve readme
 - Simplify to 2 scripts: `npm run build` and `npm run serve`
+- Invalidate all template tags as part of composer `craft-scripts`
 
 ### Changed
 - Update Craft ^3.7

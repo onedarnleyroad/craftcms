@@ -37,6 +37,7 @@
     ],
     "post-craft-update": [
       "@php craft install/check && php craft clear-caches/all --interactive=0 || exit 0",
+      "@php craft install/check && php craft invalidate-tags/all --interactive=0 || return 0",
       "@php craft install/check && php craft migrate/all --interactive=0 || exit 0",
       "@php craft install/check && php craft project-config/apply --interactive=0 || exit 0"
     ],
