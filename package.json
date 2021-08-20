@@ -11,17 +11,16 @@
     "@tailwindcss/typography": "^0.4",
     "autoprefixer": "^10.3",
     "postcss": "^8.3",
-    "sass": "^1.35",
+    "sass": "^1.38",
     "tailwindcss": "^2.2",
-    "vite": "^2.4",
+    "vite": "^2.5",
     "vite-plugin-restart": "^0.0.2"
   },
   "engines": {
-    "node": "^14.17"
+    "node": "^14"
   },
   "scripts": {
-    "dev": "NODE_ENV=dev vite",
     "build": "NODE_ENV=production vite build",
-    "serve": "NODE_ENV=dev vite preview"
+    "serve": "NODE_ENV=dev vite"
   }
 }
