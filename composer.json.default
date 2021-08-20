@@ -5,6 +5,7 @@
     "craftcms/redactor": "^2.8",
     "marionnewlevant/agnostic-fetch": "^2.0",
     "mmikkel/cp-field-inspect": "^1.2",
+    "nystudio107/craft-autocomplete": "^1.0",
     "nystudio107/craft-seomatic": "^3.3",
     "nystudio107/craft-vite": "^1.0",
     "ostark/craft-async-queue": "^2.3",
