@@ -12,6 +12,7 @@ Boilerplate Craft CMS set up for all One Darnley Road projects.
 ### Roadmap
 
 - Makefiles for a unified CLI
+- Continue to improve docs
 - Bugfixes, new features
 
 ---
@@ -40,13 +41,20 @@ Make sure that `PATH` is a new **or** _existing and empty_ folder.
 Alternatively you can clone the repo via the Git CLI:
 
 ```
-git clone --depth=1 git@github.com:onedarnleyroad/craftcms.git PATH && rm -rf ./PATH/.git
+git clone git@github.com:onedarnleyroad/craftcms.git PATH
 ```
 
-Make sure that `PATH` is a new **or** _existing and empty_ folder.
+Make sure that `PATH` is a new **or** _existing and empty_ folder. Then run:
 
-`rm -rf ./.git` will remove the repo's `.git` folder after cloning. If `PATH` is not a relative folder, you may need to adjust this.
+```
+cd PATH
+rm -rf ./.git
+composer run-script post-create-project-cmd
+```
 
+`rm -rf ./.git` will remove the repo's `.git` folder after cloning.
+
+`composer run-script post-create-project-cmd` prepares the project for using our default composer setup.
 
 #### Option 3: Manual Download
 
@@ -54,7 +62,7 @@ Download a copy of the repo to your local machine and move to where you want to 
 
 ----
 
-Once you have a copy of the project saved to your local machine, continue with setup:
+Once you have a copy of the project saved to your local machine, from the terminal inside `PATH`, continue with setup:
 
 1. Run `ddev config` if you wish to change the project name from something other than `craftcms`. Follow the prompts.
     1. Project Name `mysite` would result in a project URL of `http://mysite.ddev.site`
@@ -67,8 +75,8 @@ Once you have a copy of the project saved to your local machine, continue with s
 4. `ddev exec composer install` to install composer
 5. `ddev exec ./craft setup/app-id` to generate an `APP_ID`
 6. `ddev exec ./craft setup/security-key` to generate a `SECURITY_KEY`
-7. `ddev exec npm install`
-8. Visit CP to run through installation steps, e.g. `http://projectname.ddev.site/admin`; alternatively run `ddev exec ./craft welcome`
+7. `ddev exec npm install` to install npm for Vite
+8. `ddev exec ./craft install` to begin the installation process. Alternatively you may visit CP to run through installation steps, e.g. `http://craftcms.ddev.site/admin`
 
 Note: as an alternative to `ddev exec...` you can also `ddev ssh` into the container and then run everything without that preamble.
 
