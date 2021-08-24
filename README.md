@@ -13,6 +13,7 @@ Boilerplate Craft CMS set up for all One Darnley Road projects.
 
 - Makefiles for a unified CLI
 - Continue to improve docs
+- Gitignore `@webroot/dist` (requires `npm run build` as part of deployment pipeline)
 - Bugfixes, new features
 
 ---
@@ -60,7 +61,7 @@ composer run-script post-create-project-cmd
 
 Download a copy of the repo to your local machine and move to where you want to your project to run.
 
-----
+### Setting up DDEV, Craft, and Vite
 
 Once you have a copy of the project saved to your local machine, from the terminal inside `PATH`, continue with setup:
 
@@ -72,13 +73,30 @@ Once you have a copy of the project saved to your local machine, from the termin
     1. set `PRIMARY_SITE_URL` based on the Project Name, e.g. `https://craftcms.ddev.site`
     2. set `CP_TRIGGER` e.g. `admin`
 3. Run `ddev start` to start your container
-4. `ddev exec composer install` to install composer
-5. `ddev exec ./craft setup/app-id` to generate an `APP_ID`
-6. `ddev exec ./craft setup/security-key` to generate a `SECURITY_KEY`
-7. `ddev exec npm install` to install npm for Vite
+4. `ddev exec npm install` to install npm for Vite
+5. `ddev exec composer install` to install composer
+6. `ddev exec ./craft setup/app-id` to generate an `APP_ID`
+7. `ddev exec ./craft setup/security-key` to generate a `SECURITY_KEY`
 8. `ddev exec ./craft install` to begin the installation process. Alternatively you may visit CP to run through installation steps, e.g. `https://craftcms.ddev.site/admin`
 
 Note: as an alternative to `ddev exec...` you can also `ddev ssh` into the container and then run everything without that preamble.
+
+### Local development with Vite
+
+DDEV has been configured for Vite to run _inside_ the container. The following commands assume you have SSHed into the container; if not, add `ddev exec ` to each command:
+
+To spin up Vite HMR, run:
+
+```
+npm run serve
+```
+
+For a production build, run:
+
+```
+npm run build
+```
+
 
 ### Craft CMS Plugins
 
