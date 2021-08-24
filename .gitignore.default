@@ -1,6 +1,5 @@
 /.env
 /.idea
-/.ddev
 .DS_Store
 .cache
 .project
