@@ -30,10 +30,7 @@
   },
   "scripts": {
     "craft-update": [
-      "@pre-craft-update",
       "@post-craft-update"
-    ],
-    "pre-craft-update": [
     ],
     "post-craft-update": [
       "@php craft install/check && php craft clear-caches/all --interactive=0 || exit 0",
@@ -47,8 +44,6 @@
     "post-create-project-cmd": [
       "@php craft setup/welcome"
     ],
-    "pre-update-cmd": "@pre-craft-update",
-    "pre-install-cmd": "@pre-craft-update",
     "post-update-cmd": "@post-craft-update",
     "post-install-cmd": "@post-craft-update"
   }
