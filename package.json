@@ -1,6 +1,6 @@
 {
   "author": "One Darnley Road Digital Ltd",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "alpinejs": "^3.2",
     "lazysizes": "^5.3"
