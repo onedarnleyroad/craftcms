@@ -65,18 +65,18 @@ Download a copy of the repo to your local machine and move to where you want to 
 Once you have a copy of the project saved to your local machine, from the terminal inside `PATH`, continue with setup:
 
 1. Run `ddev config` if you wish to change the project name from something other than `craftcms`. Follow the prompts.
-    1. Project Name `mysite` would result in a project URL of `http://mysite.ddev.site`
+    1. Project Name `mysite` would result in a project URL of `https://mysite.ddev.site`
     2. Docroot Location defaults to `web`
     3. Project Type defaults to `php`
 2. Edit `.env`
-    1. set `PRIMARY_SITE_URL` based on the Project Name, e.g. `http://craftcms.ddev.site`
+    1. set `PRIMARY_SITE_URL` based on the Project Name, e.g. `https://craftcms.ddev.site`
     2. set `CP_TRIGGER` e.g. `admin`
 3. Run `ddev start` to start your container
 4. `ddev exec composer install` to install composer
 5. `ddev exec ./craft setup/app-id` to generate an `APP_ID`
 6. `ddev exec ./craft setup/security-key` to generate a `SECURITY_KEY`
 7. `ddev exec npm install` to install npm for Vite
-8. `ddev exec ./craft install` to begin the installation process. Alternatively you may visit CP to run through installation steps, e.g. `http://craftcms.ddev.site/admin`
+8. `ddev exec ./craft install` to begin the installation process. Alternatively you may visit CP to run through installation steps, e.g. `https://craftcms.ddev.site/admin`
 
 Note: as an alternative to `ddev exec...` you can also `ddev ssh` into the container and then run everything without that preamble.
 
