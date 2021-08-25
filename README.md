@@ -24,7 +24,7 @@ Boilerplate Craft CMS set up for all One Darnley Road projects.
 
 ### Getting Started
 
-#### Option 1: With Composer
+#### Option 1: With Composer (recommended)
 
 If you have [Composer](https://getcomposer.org/) installed on your local machine,
 you can use `create-project` to pull the latest tagged release.
@@ -45,41 +45,54 @@ Alternatively you can clone the repo via the Git CLI:
 git clone git@github.com:onedarnleyroad/craftcms.git PATH
 ```
 
-Make sure that `PATH` is a new **or** _existing and empty_ folder. Then run:
+Make sure that `PATH` is a new **or** _existing and empty_ folder.
+
+Next, you'll want to discard the existing `/.git` directory. In the terminal, run:
 
 ```
 cd PATH
 rm -rf ./.git
-composer run-script post-create-project-cmd
 ```
 
-`rm -rf ./.git` will remove the repo's `.git` folder after cloning.
+Last, clean up and set some default files for use:
 
-`composer run-script post-create-project-cmd` prepares the project for using our default composer setup.
+```
+cp .env.example .env
+mv -f composer.json.default composer.json
+mv -f .gitignore.default .gitignore
+rm CHANGELOG.md && rm LICENSE.md && rm README.md
+```
 
 #### Option 3: Manual Download
 
-Download a copy of the repo to your local machine and move to where you want to your project to run.
+Download a copy of the repo to your local machine and move to where you want to your project to run. Similar to above, you'll then want to clean up and set some default files for use. In ther terminal, run:
+
+```
+cd PATH
+cp .env.example .env
+mv -f composer.json.default composer.json
+mv -f .gitignore.default .gitignore
+rm CHANGELOG.md && rm LICENSE.md && rm README.md
+```
 
 ### Setting up DDEV, Craft, and Vite
 
 Once you have a copy of the project saved to your local machine, from the terminal inside `PATH`, continue with setup:
 
 1. Run `ddev config` if you wish to change the project name from something other than `craftcms`. Follow the prompts.
-    1. Project Name `mysite` would result in a project URL of `https://mysite.ddev.site`
-    2. Docroot Location defaults to `web`
-    3. Project Type defaults to `php`
+  1. Project Name `mysite` would result in a project URL of `https://mysite.ddev.site`
+  2. Docroot Location defaults to `web`
+  3. Project Type defaults to `php`
 2. Edit `.env`
-    1. set `PRIMARY_SITE_URL` based on the Project Name, e.g. `https://craftcms.ddev.site`
-    2. set `CP_TRIGGER` e.g. `admin`
-3. Run `ddev start` to start your container
-4. `ddev exec npm install` to install npm for Vite
-5. `ddev exec composer install` to install composer
-6. `ddev exec ./craft setup/app-id` to generate an `APP_ID`
-7. `ddev exec ./craft setup/security-key` to generate a `SECURITY_KEY`
-8. `ddev exec ./craft install` to begin the installation process. Alternatively you may visit CP to run through installation steps, e.g. `https://craftcms.ddev.site/admin`
+  1. Set `PRIMARY_SITE_URL` based on the Project Name, e.g. `https://mysite.ddev.site`
+  2. Optionally change `CP_TRIGGER` to something other than `admin`
+3. Run `ddev start && ddev ssh` to start & SSH into your container
+4. `npm install && composer install` to install npm & composer
+5. `./craft setup/app-id` to generate an `APP_ID`
+6. `./craft setup/security-key` to generate a `SECURITY_KEY`
+7. `./craft install` to begin the installation process. Alternatively you may visit CP to run through installation steps, e.g. `https://craftcms.ddev.site/admin`
 
-Note: as an alternative to `ddev exec...` you can also `ddev ssh` into the container and then run everything without that preamble.
+Note: as an alternative to SSHing into the container, you can run all commands outside of the container, by prefixing each command with `ddev exec`, e.g. `ddev exec npm install`. [Read DDEV's docs](https://ddev.readthedocs.io/) for more about its CLI.
 
 ### Local development with Vite
 
