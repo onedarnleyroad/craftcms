@@ -2,7 +2,5 @@ backups
 backups/**
 storage
 storage/**
-web/uploads
-web/uploads/**
-web/userphotos
-web/userphotos/**
+web/volumes
+web/volumes/**
