@@ -17,8 +17,9 @@ postcss.config.js
 src
 src/**
 storage/**
-taiwlind.config.js
+tailwind.config.js
 vite.config.js
 vendor
 vendor/**
+web/dist/**
 web/volumes/**
