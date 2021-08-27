@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- `web/dist` is now ignored, assumes deployment process includes build step
+- added more exclusion rules to `.deployignore`
+
 ### Fixed
 
 - copy `.gitignore.default` to `.gitignore` after composer create-project

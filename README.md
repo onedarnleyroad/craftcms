@@ -13,7 +13,6 @@ Boilerplate Craft CMS set up for all One Darnley Road projects.
 
 - Makefiles for a unified CLI
 - Continue to improve docs
-- Gitignore `@webroot/dist` (requires `npm run build` as part of deployment pipeline)
 - Bugfixes, new features
 
 ---
@@ -88,8 +87,8 @@ Once you have a copy of the project saved to your local machine, from the termin
   2. Optionally change `CP_TRIGGER` to something other than `admin`
 3. Run `ddev start && ddev ssh` to start & SSH into your container
 4. `npm install && composer install` to install npm & composer
-5. `./craft setup/app-id` to generate an `APP_ID`
-6. `./craft setup/security-key` to generate a `SECURITY_KEY`
+5. `./craft setup/app-id` to generate an `APP_ID` (or provide your own and save to `.env`)
+6. `./craft setup/security-key` to generate a `SECURITY_KEY` (or provide your own and save to `.env`)
 7. `./craft install` to begin the installation process. Alternatively you may visit CP to run through installation steps, e.g. `https://craftcms.ddev.site/admin`
 
 Note: as an alternative to SSHing into the container, you can run all commands outside of the container, by prefixing each command with `ddev exec`, e.g. `ddev exec npm install`. [Read DDEV's docs](https://ddev.readthedocs.io/) for more about its CLI.
@@ -109,7 +108,6 @@ For a production build, run:
 ```
 npm run build
 ```
-
 
 ### Craft CMS Plugins
 
