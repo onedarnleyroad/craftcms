@@ -21,5 +21,4 @@ tailwind.config.js
 vite.config.js
 vendor
 vendor/**
-web/dist/**
 web/volumes/**
