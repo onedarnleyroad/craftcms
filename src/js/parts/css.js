@@ -1,1 +1,1 @@
-import "@css/app.scss";
+import "@css/app.pcss";
