@@ -20,6 +20,7 @@ Boilerplate Craft CMS set up for all One Darnley Road projects.
 ### Local machine prerequisites:
 
 1. [Docker](https://www.docker.com/) & [DDEV](https://ddev.readthedocs.io/)
+2. Optional but recommended, [Composer](https://getcomposer.org/)
 
 ### Getting Started
 
@@ -64,7 +65,7 @@ rm CHANGELOG.md && rm LICENSE.md && rm README.md
 
 #### Option 3: Manual Download
 
-Download a copy of the repo to your local machine and move to where you want to your project to run. Similar to above, you'll then want to clean up and set some default files for use. In ther terminal, run:
+Download a copy of the repo to your local machine and move to where you want to your project to run. Similar to above, you'll then want to clean up and set some default files for use. In the terminal, run:
 
 ```
 cd PATH
