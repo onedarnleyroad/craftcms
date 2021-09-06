@@ -5,10 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2.2.0]
+
+### Added
+- add `@` alias for `/src` folder
+- add Makefile
+- establish sane folder structure for CSS
+- add Typed Link Field to default install
 
 ### Changed
 
+- remove `config/one.php` & `APP` js variable, no longer part of our convention
+- remove sass in favor of postcss-import + tailwindcss/nesting
 - `web/dist` is now ignored, assumes deployment process includes build step
 - added more exclusion rules to `.deployignore`
 
