@@ -13,7 +13,7 @@ use craft\helpers\App;
 
 return [
     'aliases' => [
-        '@web' => APP::env('PRIMARY_SITE_URL'),
+        '@web' => rtrim(APP::env('PRIMARY_SITE_URL'), '/'),
         '@webroot' => dirname(__DIR__) . '/web',
     ],
     'allowUpdates' => (bool) App::env('ALLOW_UPDATES'),
