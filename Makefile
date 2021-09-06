@@ -1,6 +1,3 @@
-CONTAINER?=$(shell basename $(CURDIR))_php_1
-BUILDCHAIN?=$(shell basename $(CURDIR))_webpack_1
-
 .PHONY: build dev composer craft npm pull up
 
 build: up
@@ -21,7 +18,10 @@ pull: up
 	ddev exec bash scripts/pull_db.sh
 up:
 	if [ ! "$$(ddev describe | grep running)" ]; then \
-        ddev auth ssh && ddev start; \
+        ddev auth ssh; \
+        ddev start; \
+        ddev composer install; \
+        ddev exec npm install; \
     fi
 %:
 	@:
