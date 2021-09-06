@@ -16,6 +16,14 @@ npm: up
 pull: up
 	ddev exec bash scripts/pull_assets.sh
 	ddev exec bash scripts/pull_db.sh
+install: up
+	ddev exec php craft setup/app-id \
+		$(filter-out $@,$(MAKECMDGOALS))
+	ddev exec php craft setup/security-key \
+		$(filter-out $@,$(MAKECMDGOALS))
+	ddev exec php craft install \
+		$(filter-out $@,$(MAKECMDGOALS))
+	ddev exec php craft plugin/install vite
 up:
 	if [ ! "$$(ddev describe | grep running)" ]; then \
         ddev auth ssh; \
