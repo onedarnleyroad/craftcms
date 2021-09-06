@@ -9,6 +9,7 @@
     "nystudio107/craft-seomatic": "^3.3",
     "nystudio107/craft-vite": "^1.0",
     "ostark/craft-async-queue": "^2.3",
+    "sebastianlenz/linkfield": "^1.0",
     "spacecatninja/imager-x": "^3.4",
     "verbb/knock-knock": "^1.2",
     "vlucas/phpdotenv": "^3.6"
