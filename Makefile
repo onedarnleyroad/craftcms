@@ -1,4 +1,4 @@
-.PHONY: build dev composer craft npm pull up
+.PHONY: build dev composer craft npm pull up install
 
 build: up
 	ddev exec npm run build
@@ -16,13 +16,22 @@ npm: up
 pull: up
 	ddev exec bash scripts/pull_assets.sh
 	ddev exec bash scripts/pull_db.sh
-install: up
+install: up build
 	ddev exec php craft setup/app-id \
 		$(filter-out $@,$(MAKECMDGOALS))
 	ddev exec php craft setup/security-key \
 		$(filter-out $@,$(MAKECMDGOALS))
 	ddev exec php craft install \
 		$(filter-out $@,$(MAKECMDGOALS))
+	ddev exec php craft plugin/install agnostic-fetch
+	ddev exec php craft plugin/install async-queue
+	ddev exec php craft plugin/install cp-field-inspect
+	ddev exec php craft plugin/install imager-x
+	ddev exec php craft plugin/install knock-knock
+	ddev exec php craft plugin/install typedlinkfield
+	ddev exec php craft plugin/install postmark
+	ddev exec php craft plugin/install redactor
+	ddev exec php craft plugin/install seomatic
 	ddev exec php craft plugin/install vite
 up:
 	if [ ! "$$(ddev describe | grep running)" ]; then \
