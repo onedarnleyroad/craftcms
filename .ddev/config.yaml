@@ -12,7 +12,7 @@ mariadb_version: "10.3"
 mysql_version: ""
 use_dns_when_possible: true
 composer_version: ""
-web_environment: []
+webimage_extra_packages: [gconf-service, libasound2, libatk1.0-0, libcairo2, libgconf-2-4, libgdk-pixbuf2.0-0, libgtk-3-0, libnspr4, libpango-1.0-0, libpangocairo-1.0-0, libx11-xcb1, libxcomposite1, libxcursor1, libxdamage1, libxfixes3, libxi6, libxrandr2, libxrender1, libxss1, libxtst6, fonts-liberation, libappindicator1, libnss3, xdg-utils]
 
 
 # This config.yaml was created with ddev version v1.17.2
@@ -158,7 +158,7 @@ web_environment: []
 # In this case the user must provide all such settings.
 
 # You can inject environment variables into the web container with:
-# web_environment: 
+# web_environment:
 # - SOMEENV=somevalue
 # - SOMEOTHERENV=someothervalue
 
