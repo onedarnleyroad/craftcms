@@ -125,7 +125,7 @@ This command will:
 4. Run `npm install`
 5. Spin up Vite server
 
-Open up a browser to your project to verify that Vite is connected. Begin making beautiful things. ❤️
+Open up a browser to your project to verify that Vite is connected. Begin crafting beautiful things. ❤️
 
 ## Makefile
 
