@@ -14,8 +14,9 @@ This is the boilerplate Craft CMS set up for all [One Darnley Road](https://www.
 
 ## Local machine prerequisites:
 
-1. [Docker](https://www.docker.com/) & [DDEV](https://ddev.readthedocs.io/)
-2. Optional but recommended, [Composer](https://getcomposer.org/)
+1. [Docker](https://www.docker.com/)
+2. [DDEV](https://ddev.readthedocs.io/)
+3. Optional but recommended, [Composer](https://getcomposer.org/)
 
 ## Getting Started
 
