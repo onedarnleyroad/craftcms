@@ -2,17 +2,17 @@
   "author": "One Darnley Road Digital Ltd",
   "version": "0.0.1",
   "dependencies": {
-    "alpinejs": "^3.2",
-    "lazysizes": "^5.3"
-  },
-  "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.2",
     "@tailwindcss/line-clamp": "^0.2",
     "@tailwindcss/typography": "^0.4",
+    "alpinejs": "^3.2",
+    "lazysizes": "^5.3",
+    "tailwindcss": "^2.2"
+  },
+  "devDependencies": {
     "autoprefixer": "^10.3",
     "postcss": "^8.3",
     "postcss-import": "^14.0",
-    "tailwindcss": "^2.2",
     "vite": "^2.5",
     "vite-plugin-restart": "^0.0.2"
   },
