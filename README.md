@@ -100,7 +100,7 @@ Follow the prompts.
 This command will:
 
 1. Copy your local SSH keys into the container (handy if you are setting up [craft-scripts](https://github.com/nystudio107/craft-scripts/))
-2. Start your project
+2. Start your DDEV project
 3. Install Composer
 4. Install npm
 5. Do a one-time build of Vite
@@ -122,7 +122,7 @@ make dev
 This command will:
 
 1. Copy your local SSH keys into the container (handy if you are setting up [craft-scripts](https://github.com/nystudio107/craft-scripts/))
-2. Start your project
+2. Start your DDEV project
 3. Install Composer
 4. Install npm
 5. Do a one-time build of Vite
