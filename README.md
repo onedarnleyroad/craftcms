@@ -2,9 +2,12 @@
 
 This is the boilerplate Craft CMS set up for all [One Darnley Road](https://www.onedarnleyroad.com/) projects.
 
-
-https://user-images.githubusercontent.com/134110/132591782-0bcc9465-eb62-46e0-9337-6154bf45fe97.mp4
-
+> https://user-images.githubusercontent.com/134110/132591782-0bcc9465-eb62-46e0-9337-6154bf45fe97.mp4
+> 
+> ☝️ A 1-min video demo, going from zero to Vite HMR on a fresh Craft install, with only 3 CLI commands:  
+> 1. `composer create-project...`
+> 2. `make install`
+> 3. `make dev`
 
 ## Notable Features:
 
