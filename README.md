@@ -1,6 +1,6 @@
 ## About onedarnleyroad/craftcms
 
-This is the boilerplate Craft CMS set up for all [One Darnley Road](https://www.onedarnleyroad.com/) projects.
+A Craft CMS starter project using DDEV for local hosting and Vite for front-end bundling and HMR.
 
 > https://user-images.githubusercontent.com/134110/132591782-0bcc9465-eb62-46e0-9337-6154bf45fe97.mp4
 > 
@@ -12,9 +12,9 @@ This is the boilerplate Craft CMS set up for all [One Darnley Road](https://www.
 ## Notable Features:
 
 - [DDEV](https://ddev.readthedocs.io/) for local development
-- [ViteJS](https://vitejs.dev/) for build & HMR
+- [Vite](https://vitejs.dev/) for front-end bundling & HMR
 - [Tailwind](https://tailwindcss.com) with [JIT](https://tailwindcss.com/docs/just-in-time-mode) enabled
-- [AlpineJS](https://alpinejs.dev/)
+- [Alpine](https://alpinejs.dev/)
 - Deployments via [DeployHQ](https://www.deployhq.com/)
 - [Postmark](https://postmarkapp.com/) for email delivery
 - [Makefile](https://www.gnu.org/software/make/manual/make.html) for common CLI commands
