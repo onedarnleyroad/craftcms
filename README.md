@@ -13,9 +13,9 @@ A Craft CMS starter project using DDEV for local hosting and Vite for front-end 
 
 - [DDEV](https://ddev.readthedocs.io/) for local development
 - [Vite](https://vitejs.dev/) for front-end bundling & HMR
-- [Tailwind](https://tailwindcss.com) with [JIT](https://tailwindcss.com/docs/just-in-time-mode) enabled
-- [Alpine](https://alpinejs.dev/)
-- Deployments via [DeployHQ](https://www.deployhq.com/)
+- [Tailwind](https://tailwindcss.com), with [JIT](https://tailwindcss.com/docs/just-in-time-mode) enabled, for utility-first CSS
+- [Alpine](https://alpinejs.dev/) for lightweight reactivity
+- [DeployHQ](https://www.deployhq.com/) for automated deployment
 - [Postmark](https://postmarkapp.com/) for email delivery
 - [Makefile](https://www.gnu.org/software/make/manual/make.html) for common CLI commands
 
