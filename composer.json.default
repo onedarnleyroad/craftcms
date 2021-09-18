@@ -1,6 +1,6 @@
 {
   "require": {
-    "craftcms/cms": "^3.7",
+    "craftcms/cms": "^3.7.13",
     "craftcms/postmark": "^2.1",
     "craftcms/redactor": "^2.8",
     "marionnewlevant/agnostic-fetch": "^2.0",
@@ -35,9 +35,8 @@
     ],
     "post-craft-update": [
       "@php craft install/check && php craft clear-caches/all --interactive=0 || exit 0",
-      "@php craft install/check && php craft invalidate-tags/all --interactive=0 || exit 0",
-      "@php craft install/check && php craft migrate/all --interactive=0 || exit 0",
-      "@php craft install/check && php craft project-config/apply --interactive=0 || exit 0"
+      "@php craft install/check && php craft invalidate-tags/all --interactive=0 || return 0",
+      "@php craft install/check && php craft up --interactive=0 || exit 0",
     ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
