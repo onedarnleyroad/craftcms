@@ -7,8 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Changed
+## [2.2.3]
 
+- bump autoprefixer
 - Use Craft 3.7.13's new [`craft up`](https://craftcms.com/docs/3.x/console-commands.html#up) command
 
 ### Fixed
