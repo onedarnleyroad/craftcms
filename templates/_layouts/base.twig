@@ -2,21 +2,27 @@
 Set some variables to be available in all twig contexts.
 Prefix with `_` underscore to signal it's been set here.
 #}
-{% set _doTrack = not craft.app.request.getIsLivePreview() and not craft.app.request.getIsPreview() %}
+
+{# @var _isPreview bool TRUE if the request is ANY kind of 'preview' #}
+{% set _isPreview = craft.app.request.getIsLivePreview() or craft.app.request.getIsPreview() %}
+
+{# @var _isNotPreview bool TRUE if the request is NO kind of 'preview'  #}
+{% set _isNotPreview = not craft.app.request.getIsLivePreview() and not craft.app.request.getIsPreview() %}
+
+{# @var _isPreviewIframe bool TRUE if the request is a preview request within the CP iframe #}
+{% set _isPreviewIframe = craft.app.request.getIsLivePreview() or (craft.app.request.getIsPreview() and craft.app.request.headers.get('sec-fetch-dest') == 'iframe') %}
 
 {# Element edit button #}
-{% if currentUser and currentUser.can('accessCp') and not craft.app.request.getIsLivePreview() %}
+{% if currentUser and currentUser.can('accessCp') and not _isPreviewIframe %}
   {% html at endBody %}
-    <div>
-      {% set element = craft.app.elements().getElementByUri(craft.app.request.getFullUri() ?: '__home__') %}
-      {% if element and element.getIsEditable() %}
-        <a href="{{ element.getCpEditUrl() }}"
-           target="_blank"
-           class="fixed left-0 bottom-0 px-5 py-2 mb-6 ml-6 font-mono uppercase">
-          Edit this page
-        </a>
-      {% endif %}
-    </div>
+    {% set element = craft.app.elements().getElementByUri(craft.app.request.getFullUri() ?: '__home__') %}
+    {% if element and element.getIsEditable() %}
+      <a href="{{ element.getCpEditUrl() }}"
+         target="_blank"
+         class="fixed left-0 bottom-0 px-5 py-2 mb-6 ml-6 font-mono uppercase">
+        Edit this page
+      </a>
+    {% endif %}
   {% endhtml %}
 {% endif %}
 
