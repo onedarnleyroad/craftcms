@@ -1,7 +1,22 @@
-{% if currentUser and entry is defined and currentUser.can('editEntries:' ~ entry.id) and devMode %}
-  {# Edit entry button #}
+{#
+Set some variables to be available in all twig contexts.
+Prefix with `_` underscore to signal it's been set here.
+#}
+{% set _doTrack = not craft.app.request.getIsLivePreview() and not craft.app.request.getIsPreview() %}
+
+{# Element edit button #}
+{% if currentUser and currentUser.can('accessCp') and not craft.app.request.getIsLivePreview() %}
   {% html at endBody %}
-    <a href="{{ entry.cpEditUrl }}" target="_blank" class="fixed left-0 bottom-0 px-5 py-2 mb-6 ml-6 font-mono uppercase">Edit this entry</a>
+    <div>
+      {% set element = craft.app.elements().getElementByUri(craft.app.request.getFullUri() ?: '__home__') %}
+      {% if element and element.getIsEditable() %}
+        <a href="{{ element.getCpEditUrl() }}"
+           target="_blank"
+           class="fixed left-0 bottom-0 px-5 py-2 mb-6 ml-6 font-mono uppercase">
+          Edit this page
+        </a>
+      {% endif %}
+    </div>
   {% endhtml %}
 {% endif %}
 
