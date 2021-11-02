@@ -5,7 +5,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  {% if _isNotPreview %}
+  {% if not _isPreview %}
     gtag('config', '{{ trackingId }}');
   {% endif %}
 </script>

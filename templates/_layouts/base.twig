@@ -6,11 +6,8 @@ Prefix with `_` underscore to signal it's been set here.
 {# @var _isPreview bool TRUE if the request is ANY kind of 'preview' #}
 {% set _isPreview = craft.app.request.getIsLivePreview() or craft.app.request.getIsPreview() %}
 
-{# @var _isNotPreview bool TRUE if the request is NO kind of 'preview'  #}
-{% set _isNotPreview = not craft.app.request.getIsLivePreview() and not craft.app.request.getIsPreview() %}
-
 {# @var _isPreviewIframe bool TRUE if the request is a preview request within the CP iframe #}
-{% set _isPreviewIframe = craft.app.request.getIsLivePreview() or (craft.app.request.getIsPreview() and craft.app.request.headers.get('sec-fetch-dest') == 'iframe') %}
+{% set _isPreviewIframe = _isPreview and craft.app.request.headers.get('sec-fetch-dest') == 'iframe' %}
 
 {# Element edit button #}
 {% if currentUser and currentUser.can('accessCp') and not _isPreviewIframe %}
