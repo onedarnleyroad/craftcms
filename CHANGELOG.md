@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- 
+- "Edit this page" now works for any editable element
+
 ### Added
 
 - add dir= based on current site / locale
