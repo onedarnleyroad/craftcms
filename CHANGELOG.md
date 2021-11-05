@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-- 
+- Temporarily remove extra packages for puppeteer (currently not working with DDEV v1.18)
 - "Edit this page" now works for any editable element
 
 ### Added
