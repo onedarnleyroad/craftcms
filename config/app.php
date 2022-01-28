@@ -25,10 +25,13 @@ use craft\queue\Queue;
 return [
     '*' => [
 	'components' => [
+		'deprecator' => [
+			'throwExceptions' => getenv('HARD_MODE'),
+		],
 		'queue' => [
 			'class' => Queue::class,
 			'ttr' => 15 * 60,
-		]
+		],
 	],
 	'id' => App::env('APP_ID') ?: 'CraftCMS',
         'modules' => [
@@ -38,9 +41,6 @@ return [
     ],
     'local' => [
         'components' => [
-            'deprecator' => [
-                'throwExceptions' => getenv('DEV_MODE'),
-            ],
             'mailer' => static function() {
                 $settings = App::mailSettings();
 
@@ -64,7 +64,7 @@ return [
                 {
                     return null;
                 }
-            }
-        ]
-    ]
+            },
+        ],
+    ],
 ];
