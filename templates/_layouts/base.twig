@@ -1,39 +1,36 @@
-{#
-Set some variables to be available in all twig contexts.
-Prefix with `_` underscore to signal it's been set here.
-#}
+{# -- Root that all templates inherit from -- #}
+{# -- This allows for defining site-wide Twig variables as needed -- #}
+{%- spaceless -%}
+  {# @var _isPreview bool TRUE if the request is ANY kind of 'preview' #}
+  {% set _isPreview = craft.app.request.getIsLivePreview() or craft.app.request.getIsPreview() %}
 
-{# @var _isPreview bool TRUE if the request is ANY kind of 'preview' #}
-{% set _isPreview = craft.app.request.getIsLivePreview() or craft.app.request.getIsPreview() %}
+  {# @var _isPreviewIframe bool TRUE if the request is a preview request within the CP iframe #}
+  {% set _isPreviewIframe = _isPreview and craft.app.request.headers.get('sec-fetch-dest') == 'iframe' %}
 
-{# @var _isPreviewIframe bool TRUE if the request is a preview request within the CP iframe #}
-{% set _isPreviewIframe = _isPreview and craft.app.request.headers.get('sec-fetch-dest') == 'iframe' %}
+  {# Element edit button #}
+  {% if currentUser and currentUser.can('accessCp') and not _isPreviewIframe %}
+    {% html at endBody %}
+      {% set element = craft.app.elements().getElementByUri(craft.app.request.getFullUri() ?: '__home__') %}
+      {% if element and element.getIsEditable() %}
+        <a href="{{ element.getCpEditUrl() }}"
+           target="_blank"
+           class="fixed left-0 bottom-0 px-5 py-2 mb-6 ml-6 font-mono uppercase">
+          Edit this page
+        </a>
+      {% endif %}
+    {% endhtml %}
+  {% endif %}
 
-{# Element edit button #}
-{% if currentUser and currentUser.can('accessCp') and not _isPreviewIframe %}
-  {% html at endBody %}
-    {% set element = craft.app.elements().getElementByUri(craft.app.request.getFullUri() ?: '__home__') %}
-    {% if element and element.getIsEditable() %}
-      <a href="{{ element.getCpEditUrl() }}"
-         target="_blank"
-         class="fixed left-0 bottom-0 px-5 py-2 mb-6 ml-6 font-mono uppercase">
-        Edit this page
-      </a>
-    {% endif %}
-  {% endhtml %}
-{% endif %}
-
-{# make sure to capture any flashes so they do not linger #}
-{% set flashes = craft.app.session.getAllFlashes() %}
-{% if flashes|length %}
-  {% html at endBody %}
-    <script>
-      {% for key, message in flashes if key in ['notice', 'error'] %}
-      console.log('{{ key }}:', '{{ message }}');
-      {% endfor %}
-    </script>
-  {% endhtml %}
-{% endif %}
-
-{% block response %}
-{% endblock %}
+  {# make sure to capture any flashes so they do not linger #}
+  {% set flashes = craft.app.session.getAllFlashes() %}
+  {% if flashes|length %}
+    {% html at endBody %}
+      <script>
+        {% for key, message in flashes if key in ['notice', 'error'] %}
+        console.log('{{ key }}:', '{{ message }}');
+        {% endfor %}
+      </script>
+    {% endhtml %}
+  {% endif %}
+{%- endspaceless -%}
+{% block response %}{% endblock %}

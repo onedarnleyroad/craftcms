@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Added:
 
+- Ensure `base.twig` does not introduce whitespace at start of response
 - New `HARD_MODE` to throw deprecation errors by environment
 
 ## [2.2.4]
