@@ -10,9 +10,6 @@ composer: up
 craft: up
 	ddev exec php craft \
 		$(filter-out $@,$(MAKECMDGOALS))
-npm: up
-	ddev exec npm \
-		$(filter-out $@,$(MAKECMDGOALS))
 pull: up
 	ddev exec bash scripts/pull_assets.sh
 	ddev exec bash scripts/pull_db.sh
