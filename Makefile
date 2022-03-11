@@ -1,4 +1,4 @@
-.PHONY: build dev composer craft npm pull up install
+.PHONY: build dev composer craft pull up install
 
 build: up
 	ddev exec npm run build
