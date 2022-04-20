@@ -1,11 +1,11 @@
-import ViteRestart from 'vite-plugin-restart';
+import {defineConfig} from 'vite';
+import manifestSRI from 'vite-plugin-manifest-sri';
 import path from 'path';
+import viteCompression from 'vite-plugin-compression';
+import ViteRestart from 'vite-plugin-restart';
 
 // https://vitejs.dev/config/
-/**
- * @type {import('vite').UserConfig}
- */
-export default ({ command }) => ({
+export default defineConfig(({command}) => ({
   base: command === 'serve' ? '' : '/dist/',
   build: {
     commonjsOptions: {
@@ -17,9 +17,16 @@ export default ({ command }) => ({
       input: {
         app: path.resolve(__dirname, 'src/js/app.js'),
       },
+      output: {
+        sourcemap: true
+      },
     },
   },
   plugins: [
+    manifestSRI(),
+    viteCompression({
+      filter: /\.(js|mjs|json|css|map)$/i
+    }),
     ViteRestart({
       reload: [
         path.resolve(__dirname, 'templates/**/*'),
@@ -39,4 +46,4 @@ export default ({ command }) => ({
     port: 3000,
     strictPort: true,
   },
-});
+}));
