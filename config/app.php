@@ -26,7 +26,7 @@ return [
     '*' => [
 	'components' => [
 		'deprecator' => [
-			'throwExceptions' => getenv('HARD_MODE'),
+			'throwExceptions' => (bool) APP::env('HARD_MODE'),
 		],
 		'queue' => [
 			'class' => Queue::class,
@@ -47,10 +47,10 @@ return [
                 $settings->transportType = Smtp::class;
 
                 $settings->transportSettings = [
-                    'host' => getenv('SMTP_HOST'),
-                    'port' => getenv('SMTP_PORT'),
-                    'username' => getenv('SMTP_USERNAME'),
-                    'password' => getenv('SMTP_PASSWORD'),
+                    'host' => APP::env('SMTP_HOST'),
+                    'port' => APP::env('SMTP_PORT'),
+                    'username' => APP::env('SMTP_USERNAME'),
+                    'password' => APP::env('SMTP_PASSWORD'),
                     'useAuthentication' => true,
                 ];
 
