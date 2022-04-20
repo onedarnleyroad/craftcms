@@ -5,12 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2.3.0]
 
 ## Added:
 
+- Add a boilerplate Site Module
 - Ensure `base.twig` does not introduce whitespace at start of response
 - New `HARD_MODE` to throw deprecation errors by environment
+
+## Changed:
+
+- Updated for DDEV 1.19 compatibility
+- Default to Node version 16, composer 2
+- Update Craft, plugins & NPM packages to latest
+- Upgrade Tailwind 3.x
 
 ## [2.2.4]
 
