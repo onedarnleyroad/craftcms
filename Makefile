@@ -31,7 +31,7 @@ install: up build
 	ddev exec php craft plugin/install seomatic
 	ddev exec php craft plugin/install vite
 up:
-	if [ ! "$$(ddev describe | grep running)" ]; then \
+	if [ ! "$$(ddev describe | grep OK)" ]; then \
         ddev auth ssh; \
         ddev start; \
         ddev composer install; \
