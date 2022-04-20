@@ -1,14 +1,13 @@
 {
   "autoload": {
     "psr-4": {
-      "modules\\": "modules/"
+      "modules\\sitemodule\\": "modules/sitemodule/src/"
     }
   },
   "config": {
     "allow-plugins": {
-      "yiisoft/yii2-composer": true,
       "craftcms/plugin-installer": true,
-      "treeware/plant": false
+      "yiisoft/yii2-composer": true
     },
     "optimize-autoloader": true,
     "platform": {
@@ -22,7 +21,6 @@
     "craftcms/redactor": "^2.10",
     "marionnewlevant/agnostic-fetch": "^2.0",
     "mmikkel/cp-field-inspect": "^1.4",
-    "nystudio107/craft-autocomplete": "^1.10",
     "nystudio107/craft-seomatic": "^3.4",
     "nystudio107/craft-vite": "^1.0",
     "ostark/craft-async-queue": "^2.3",
@@ -31,9 +29,16 @@
     "verbb/knock-knock": "^1.2",
     "vlucas/phpdotenv": "^3.0"
   },
+  "require-dev": {
+    "nystudio107/craft-autocomplete": "^1.0",
+    "yiisoft/yii2-shell": "^2.0.3"
+  },
   "scripts": {
     "craft-update": [
+      "@pre-craft-update",
       "@post-craft-update"
+    ],
+    "pre-craft-update": [
     ],
     "post-craft-update": [
       "@php craft install/check && php craft clear-caches/all --interactive=0 || exit 0",
@@ -46,6 +51,8 @@
     "post-create-project-cmd": [
       "@php craft setup/welcome"
     ],
+    "pre-update-cmd": "@pre-craft-update",
+    "pre-install-cmd": "@pre-craft-update",
     "post-update-cmd": "@post-craft-update",
     "post-install-cmd": "@post-craft-update"
   }

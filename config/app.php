@@ -18,6 +18,8 @@
  * your config/ folder, alongside this one.
  */
 
+use modules\sitemodule\SiteModule;
+
 use craft\helpers\App;
 use craft\mail\transportadapters\Smtp;
 use craft\queue\Queue;
@@ -35,9 +37,9 @@ return [
 	],
 	'id' => App::env('APP_ID') ?: 'CraftCMS',
         'modules' => [
-            'my-module' => \modules\Module::class,
+            'site-module' => SiteModule::class,
         ],
-        //'bootstrap' => ['my-module'],
+        'bootstrap' => ['site-module'],
     ],
     'local' => [
         'components' => [
