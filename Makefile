@@ -3,6 +3,7 @@
 build: up
 	ddev exec npm run build
 dev: build
+	ddev launch
 	ddev exec npm run serve
 composer: up
 	ddev composer \
