@@ -18,6 +18,13 @@
     "docs": "https://craftcms.com/docs",
     "rss": "https://craftcms.com/changelog.rss"
   },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true,
+      "treeware/plant": false
+    }
+  },
   "scripts": {
     "post-create-project-cmd": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
