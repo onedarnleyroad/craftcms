@@ -29,7 +29,7 @@ export default defineConfig(({command}) => ({
     }),
     ViteRestart({
       reload: [
-        path.resolve(__dirname, 'templates/**/*'),
+        'templates/**/*',
       ],
     }),
   ],
