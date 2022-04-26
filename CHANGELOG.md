@@ -5,26 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed:
+
+- Fix Vite restart when contents in `./templates` change (https://github.com/onedarnleyroad/craftcms/pull/38)
+
 ## [2.3.1]
 
-## Added:
+### Added:
 
 - Add `vbenjs/vite-plugin-compression` support
 - Add sourcemaps to production build
 
-## Fixed:
+### Fixed:
 
 - Fix `ElMassimo/vite-plugin-manifest-sri` support
 
 ## [2.3.0]
 
-## Added:
+### Added:
 
 - Add a boilerplate Site Module
 - Ensure `base.twig` does not introduce whitespace at start of response
 - New `HARD_MODE` to throw deprecation errors by environment
 
-## Changed:
+### Changed:
 
 - Updated for DDEV 1.19 compatibility
 - Default to Node version 16, composer 2
