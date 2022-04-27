@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added:
+
+- set preview token duration to 1 week
+
+### Changed:
+
+- increase max revisions to 10
+
 ### Fixed:
 
 - Fix Vite restart when contents in `./templates` change (https://github.com/onedarnleyroad/craftcms/pull/38)
