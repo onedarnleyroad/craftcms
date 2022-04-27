@@ -36,6 +36,7 @@ return [
     'preserveCmykColorspace' => true,
     'preserveImageColorProfiles' => true,
     'preventUserEnumeration' => true,
+    'previewTokenDuration' => 'P1W',
     'securityKey' => App::env('SECURITY_KEY'),
     'testToEmailAddress' => App::env('TEST_TO_EMAIL_ADDRESS') ?: null,
     'timezone' => 'UTC',
