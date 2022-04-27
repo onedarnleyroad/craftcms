@@ -31,7 +31,7 @@ return [
     'enableTemplateCaching' => (bool) App::env('ENABLE_TEMPLATE_CACHING'),
     'imageDriver' => App::env('IMAGE_DRIVER'),
     'isSystemLive' => (bool) App::env('IS_SYSTEM_LIVE'),
-    'maxRevisions' => 3,
+    'maxRevisions' => 10,
     'omitScriptNameInUrls' => true,
     'preserveCmykColorspace' => true,
     'preserveImageColorProfiles' => true,
