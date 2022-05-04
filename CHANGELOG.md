@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed:
 
+- Run `craft up` _first_ when running composer install/update
 - increase max revisions to 10
 
 ### Fixed:
