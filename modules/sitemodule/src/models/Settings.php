@@ -25,7 +25,7 @@ class Settings extends Model
 	public function rules(): array
 	{
 		return [
-			[['example'], 'required'],
+//			[['example'], 'required'],
 		];
 	}
 }
