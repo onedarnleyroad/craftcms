@@ -15,9 +15,9 @@ use craft\base\Model;
 class Settings extends Model
 {
 	/**
-	 * @var string
+	 * @var string|null
 	 */
-	public string $example;
+	public ?string $example = null;
 
 	/**
 	 * @inheritdoc
