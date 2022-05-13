@@ -1,4 +1,4 @@
-.PHONY: build dev composer craft pull up install
+.PHONY: build dev composer craft pull up seed install
 
 build: up
 	ddev exec npm run build
@@ -14,6 +14,14 @@ craft: up
 pull: up
 	ddev exec bash scripts/pull_assets.sh
 	ddev exec bash scripts/pull_db.sh
+seed: up build
+	ddev exec php craft setup/app-id \
+    $(filter-out $@,$(MAKECMDGOALS))
+	ddev exec php craft setup/security-key \
+    $(filter-out $@,$(MAKECMDGOALS))
+	ddev import-db --src=seed.sql
+	ddev exec php craft up
+	ddev exec php craft project-config/write
 install: up build
 	ddev exec php craft setup/app-id \
 		$(filter-out $@,$(MAKECMDGOALS))
