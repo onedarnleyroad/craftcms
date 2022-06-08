@@ -21,7 +21,7 @@ install: up build
 		$(filter-out $@,$(MAKECMDGOALS))
 	ddev exec php craft install \
 		$(filter-out $@,$(MAKECMDGOALS))
-	ddev exec php craft plugin/install agnostic-fetch
+	# ddev exec php craft plugin/install agnostic-fetch
 	ddev exec php craft plugin/install async-queue
 	ddev exec php craft plugin/install cp-field-inspect
 	ddev exec php craft plugin/install imager-x
