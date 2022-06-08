@@ -26,8 +26,8 @@
   {% if flashes|length %}
     {% html at endBody %}
       <script>
-        {% for key, message in flashes if key in ['notice', 'error'] %}
-        console.log('{{ key }}:', '{{ message }}');
+        {% for key, message in flashes|filter(key => key in ['notice', 'error']) %}
+          console.log('{{ key }}:', '{{ message }}');
         {% endfor %}
       </script>
     {% endhtml %}
