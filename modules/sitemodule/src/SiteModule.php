@@ -12,12 +12,12 @@ use modules\sitemodule\variables\SiteVariable;
 use Craft;
 use craft\events\RegisterTemplateRootsEvent;
 use craft\i18n\PhpMessageSource;
-use craft\log\FileTarget;
 use craft\web\twig\variables\CraftVariable;
 use craft\web\View;
 
 use yii\base\Event;
 use yii\base\Module;
+use yii\log\FileTarget;
 
 /**
  * Class SiteModule

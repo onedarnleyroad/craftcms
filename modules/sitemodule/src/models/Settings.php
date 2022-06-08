@@ -15,9 +15,9 @@ use craft\base\Model;
 class Settings extends Model
 {
 	/**
-	 * @var string|null
+	 * @var string
 	 */
-	public ?string $example = null;
+	public string $example;
 
 	/**
 	 * @inheritdoc
@@ -25,7 +25,7 @@ class Settings extends Model
 	public function rules(): array
 	{
 		return [
-//			[['example'], 'required'],
+			[['example'], 'required'],
 		];
 	}
 }
