@@ -152,17 +152,17 @@ A Makefile has been included to provide a unified CLI for common development com
 
 ## Craft CMS Plugins
 
-1. [Agnostic Fetch](https://plugins.craftcms.com/agnostic-fetch)
-2. [Async Queue](https://plugins.craftcms.com/async-queue)
-3. [CP Field Inspect](https://plugins.craftcms.com/cp-field-inspect)
-4. [Craft Autocomplete](https://github.com/nystudio107/craft-autocomplete)
-5. [Imager-X](https://imager-x.spacecat.ninja/)
-6. [Knock Knock](https://plugins.craftcms.com/knock-knock)
-7. [Postmark](https://plugins.craftcms.com/postmark)
-8. [Redactor](https://plugins.craftcms.com/redactor)
-9. [Seomatic](https://nystudio107.com/docs/seomatic/)
-10. [Typed Link Field](https://plugins.craftcms.com/typedlinkfield)
-11. [Vite](https://github.com/nystudio107/craft-vite)
+<!-- 1. [Agnostic Fetch](https://plugins.craftcms.com/agnostic-fetch) -->
+1. [Async Queue](https://plugins.craftcms.com/async-queue)
+1. [CP Field Inspect](https://plugins.craftcms.com/cp-field-inspect)
+1. [Craft Autocomplete](https://github.com/nystudio107/craft-autocomplete)
+1. [Imager-X](https://imager-x.spacecat.ninja/)
+1. [Knock Knock](https://plugins.craftcms.com/knock-knock)
+1. [Postmark](https://plugins.craftcms.com/postmark)
+1. [Redactor](https://plugins.craftcms.com/redactor)
+1. [Seomatic](https://nystudio107.com/docs/seomatic/)
+1. [Typed Link Field](https://plugins.craftcms.com/typedlinkfield)
+1. [Vite](https://github.com/nystudio107/craft-vite)
 
 ## Tailwind Plugins
 
