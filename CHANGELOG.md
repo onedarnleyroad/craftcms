@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed:
 
 - Fix Vite restart when contents in `./templates` change (https://github.com/onedarnleyroad/craftcms/pull/38)
+- Avoid reloading when JS changes (thanks @nystudio107)
 
 ## [2.3.1]
 
