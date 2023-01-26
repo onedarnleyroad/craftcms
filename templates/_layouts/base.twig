@@ -11,7 +11,7 @@
   {% if currentUser and currentUser.can('accessCp') and not _isPreviewIframe %}
     {% html at endBody %}
       {% set element = craft.app.elements().getElementByUri(craft.app.request.getFullUri() ?: '__home__') %}
-      {% if element and element.getIsEditable() %}
+      {% if element and element.canSave(currentUser) %}
         <a href="{{ element.getCpEditUrl() }}"
            target="_blank"
            class="fixed left-0 bg-black text-white bottom-0 px-5 py-2 mb-6 ml-6 font-mono uppercase">
