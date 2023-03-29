@@ -5,16 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+### [3.0.0]
 
 ### Added:
 
-- set preview token duration to 1 week
+- Now built for Craft4
 
 ### Changed:
 
+- set preview token duration to 1 week
 - Run `craft up` _first_ when running composer install/update
 - increase max revisions to 10
+- Default to Servd as hosting environment (remove Async Queue and adjust `make pull` command)
+- Switch to Verbb's Hyper as the default plugin for link fields
+- Remove make commands that can now be fulfilled with `ddev`
+- Use `expose` instead of `port` for Vite
 
 ### Fixed:
 
