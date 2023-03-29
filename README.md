@@ -12,10 +12,10 @@ A Craft CMS starter project using DDEV for local hosting and Vite for front-end 
 ## Notable Features:
 
 - [DDEV](https://ddev.readthedocs.io/) for local development
-- [Vite 2.x](https://vitejs.dev/) for front-end bundling & HMR
+- [Vite 4.x](https://vitejs.dev/) for front-end bundling & HMR
 - [Tailwind 3.x](https://tailwindcss.com) for utility-first CSS
-- [Alpine 2.x](https://alpinejs.dev/) for lightweight reactivity
-- [DeployHQ](https://www.deployhq.com/) for automated deployment
+- [Alpine 3.x](https://alpinejs.dev/) for lightweight reactivity
+- [Servd](https://servd.host/) as the default hosting environment
 - [Postmark](https://postmarkapp.com/) for email delivery
 - [Makefile](https://www.gnu.org/software/make/manual/make.html) for common CLI commands
 
@@ -145,23 +145,19 @@ A Makefile has been included to provide a unified CLI for common development com
 - `make up` - Starts the DDEV project, ensuring that SSH keys have been added, and npm & Composer have been installed.
 - `make dev` - Runs a one-time build of all front-end assets, then starts Vite's server for HMR.
 - `make build` - Builds all front-end assets.
-- `make composer xxx` - Run Composer commands inside the container, e.g. `make composer install`
-- `make craft xxx` - Run Craft commands inside the container, e.g. `make craft project-config/touch`
-- `make npm xxx` - Run npm commands inside the container, e.g. `make npm install`
 - `make pull` - Pull remote db & assets (requires setting up [craft-scripts](https://github.com/nystudio107/craft-scripts/)
 
 ## Craft CMS Plugins
 
-<!-- 1. [Agnostic Fetch](https://plugins.craftcms.com/agnostic-fetch) -->
-1. [Async Queue](https://plugins.craftcms.com/async-queue)
 1. [CP Field Inspect](https://plugins.craftcms.com/cp-field-inspect)
 1. [Craft Autocomplete](https://github.com/nystudio107/craft-autocomplete)
+1. [Hyper](https://plugins.craftcms.com/hyper)
 1. [Imager-X](https://imager-x.spacecat.ninja/)
 1. [Knock Knock](https://plugins.craftcms.com/knock-knock)
 1. [Postmark](https://plugins.craftcms.com/postmark)
 1. [Redactor](https://plugins.craftcms.com/redactor)
 1. [Seomatic](https://nystudio107.com/docs/seomatic/)
-1. [Typed Link Field](https://plugins.craftcms.com/typedlinkfield)
+1. [Servd Assets and Helpers](https://github.com/servdhost/craft-asset-storage)
 1. [Vite](https://github.com/nystudio107/craft-vite)
 
 ## Tailwind Plugins
