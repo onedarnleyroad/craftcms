@@ -3,7 +3,6 @@
 build: up
 	ddev exec npm run build
 dev: build
-	ddev launch
 	ddev exec npm run serve
 pull: up
 	ddev exec php craft servd-asset-storage/local/pull-database --from=production --interactive=0
