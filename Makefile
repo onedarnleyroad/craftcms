@@ -1,16 +1,10 @@
-.PHONY: build dev composer craft pull up install
+.PHONY: build dev pull up install
 
 build: up
 	ddev exec npm run build
 dev: build
 	ddev launch
 	ddev exec npm run serve
-composer: up
-	ddev composer \
-		$(filter-out $@,$(MAKECMDGOALS))
-craft: up
-	ddev exec php craft \
-		$(filter-out $@,$(MAKECMDGOALS))
 pull: up
 	ddev exec bash scripts/pull_assets.sh
 	ddev exec bash scripts/pull_db.sh
