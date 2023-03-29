@@ -8,7 +8,7 @@
         and currentUser.can('accessCp')
         and not (craft.app.request.getIsPreview() and craft.app.request.headers.get('sec-fetch-dest') == 'iframe') %}
     {% html at endBody %}
-      {% set element = craft.app.elements().getElementByUri(craft.app.request.getFullUri() ?: '__home__') %}
+      {% set element = craft.app.getUrlManager().getMatchedElement() %}
       {% if element and element.canSave(currentUser) %}
         <a href="{{ element.getCpEditUrl() }}"
            target="_blank"
