@@ -1,19 +1,12 @@
-.PHONY: build dev composer craft pull up install
+.PHONY: build dev pull up install
 
 build: up
 	ddev exec npm run build
 dev: build
-	ddev launch
 	ddev exec npm run serve
-composer: up
-	ddev composer \
-		$(filter-out $@,$(MAKECMDGOALS))
-craft: up
-	ddev exec php craft \
-		$(filter-out $@,$(MAKECMDGOALS))
 pull: up
-	ddev exec bash scripts/pull_assets.sh
-	ddev exec bash scripts/pull_db.sh
+	ddev exec php craft servd-asset-storage/local/pull-database --from=production --interactive=0
+	ddev composer install
 install: up build
 	ddev exec php craft setup/app-id \
 		$(filter-out $@,$(MAKECMDGOALS))
@@ -21,22 +14,16 @@ install: up build
 		$(filter-out $@,$(MAKECMDGOALS))
 	ddev exec php craft install \
 		$(filter-out $@,$(MAKECMDGOALS))
-	ddev exec php craft plugin/install agnostic-fetch
-	ddev exec php craft plugin/install async-queue
 	ddev exec php craft plugin/install cp-field-inspect
+	ddev exec php craft plugin/install hyper
 	ddev exec php craft plugin/install imager-x
-	ddev exec php craft plugin/install knock-knock
-	ddev exec php craft plugin/install typedlinkfield
 	ddev exec php craft plugin/install postmark
 	ddev exec php craft plugin/install redactor
-	ddev exec php craft plugin/install seomatic
 	ddev exec php craft plugin/install vite
 up:
 	if [ ! "$$(ddev describe | grep OK)" ]; then \
         ddev auth ssh; \
         ddev start; \
-        ddev composer install; \
-        ddev exec npm install; \
     fi
 %:
 	@:

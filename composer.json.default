@@ -7,6 +7,7 @@
   "config": {
     "allow-plugins": {
       "craftcms/plugin-installer": true,
+      "treeware/plant": false,
       "yiisoft/yii2-composer": true
     },
     "optimize-autoloader": true,
@@ -16,21 +17,20 @@
     "sort-packages": true
   },
   "require": {
-    "craftcms/cms": "^3.7",
-    "craftcms/postmark": "^2.1",
-    "craftcms/redactor": "^2.10",
-    "marionnewlevant/agnostic-fetch": "^2.0",
+    "craftcms/cms": "^4.4",
+    "craftcms/postmark": "^3.0",
+    "craftcms/redactor": "^3.0",
     "mmikkel/cp-field-inspect": "^1.4",
-    "nystudio107/craft-seomatic": "^3.4",
-    "nystudio107/craft-vite": "^1.0",
-    "ostark/craft-async-queue": "^2.3",
-    "sebastianlenz/linkfield": "^1.0",
-    "spacecatninja/imager-x": "^3.5",
-    "verbb/knock-knock": "^1.2",
-    "vlucas/phpdotenv": "^3.0"
+    "nystudio107/craft-seomatic": "^4.0",
+    "nystudio107/craft-vite": "^4.0",
+    "servd/craft-asset-storage": "^3.3",
+    "spacecatninja/imager-x": "^4.1",
+    "verbb/hyper": "^1.1",
+    "verbb/knock-knock": "^2.0",
+    "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {
-    "nystudio107/craft-autocomplete": "^1.0",
+    "nystudio107/craft-autocomplete": "^1.10.0",
     "yiisoft/yii2-shell": "^2.0.3"
   },
   "scripts": {

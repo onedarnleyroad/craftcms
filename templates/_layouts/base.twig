@@ -1,17 +1,15 @@
 {# -- Root that all templates inherit from -- #}
 {# -- This allows for defining site-wide Twig variables as needed -- #}
-{%- spaceless -%}
-  {# @var _isPreview bool TRUE if the request is ANY kind of 'preview' #}
-  {% set _isPreview = craft.app.request.getIsLivePreview() or craft.app.request.getIsPreview() %}
+{% apply spaceless %}
 
-  {# @var _isPreviewIframe bool TRUE if the request is a preview request within the CP iframe #}
-  {% set _isPreviewIframe = _isPreview and craft.app.request.headers.get('sec-fetch-dest') == 'iframe' %}
-
-  {# Element edit button #}
-  {% if currentUser and currentUser.can('accessCp') and not _isPreviewIframe %}
+  {# Element edit button
+     requires a currentUser, who can access the CP, and the request should not be an iframe live preview #}
+  {% if currentUser
+        and currentUser.can('accessCp')
+        and not (craft.app.request.getIsPreview() and craft.app.request.headers.get('sec-fetch-dest') == 'iframe') %}
     {% html at endBody %}
-      {% set element = craft.app.elements().getElementByUri(craft.app.request.getFullUri() ?: '__home__') %}
-      {% if element and element.getIsEditable() %}
+      {% set element = craft.app.getUrlManager().getMatchedElement() %}
+      {% if element and element.canSave(currentUser) %}
         <a href="{{ element.getCpEditUrl() }}"
            target="_blank"
            class="fixed left-0 bg-black text-white bottom-0 px-5 py-2 mb-6 ml-6 font-mono uppercase">
@@ -26,11 +24,11 @@
   {% if flashes|length %}
     {% html at endBody %}
       <script>
-        {% for key, message in flashes if key in ['notice', 'error'] %}
-        console.log('{{ key }}:', '{{ message }}');
+        {% for key, message in flashes|filter(key => key in ['notice', 'error']) %}
+          console.log('{{ key }}:', '{{ message }}');
         {% endfor %}
       </script>
     {% endhtml %}
   {% endif %}
-{%- endspaceless -%}
+{% endapply %}
 {% block response %}{% endblock %}

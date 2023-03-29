@@ -9,6 +9,7 @@
  * @see craft\config\GeneralConfig
  */
 
+use craft\config\GeneralConfig;
 use craft\helpers\App;
 
 return [
@@ -37,7 +38,6 @@ return [
     'preserveImageColorProfiles' => true,
     'preventUserEnumeration' => true,
     'previewTokenDuration' => 'P1W',
-    'securityKey' => App::env('SECURITY_KEY'),
     'testToEmailAddress' => App::env('TEST_TO_EMAIL_ADDRESS') ?: null,
     'timezone' => 'UTC',
     'transformGifs' => false,
