@@ -7,6 +7,7 @@
   "config": {
     "allow-plugins": {
       "craftcms/plugin-installer": true,
+      "treeware/plant": false,
       "yiisoft/yii2-composer": true
     },
     "optimize-autoloader": true,
