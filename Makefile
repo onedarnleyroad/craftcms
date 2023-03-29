@@ -18,10 +18,8 @@ install: up build
 	ddev exec php craft plugin/install cp-field-inspect
 	ddev exec php craft plugin/install hyper
 	ddev exec php craft plugin/install imager-x
-	ddev exec php craft plugin/install knock-knock
 	ddev exec php craft plugin/install postmark
 	ddev exec php craft plugin/install redactor
-	ddev exec php craft plugin/install seomatic
 	ddev exec php craft plugin/install vite
 up:
 	if [ ! "$$(ddev describe | grep OK)" ]; then \
