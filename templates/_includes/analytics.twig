@@ -5,7 +5,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  {% if not _isPreview %}
+  {% if not craft.app.request.getIsPreview() %}
     gtag('config', '{{ trackingId }}');
   {% endif %}
 </script>

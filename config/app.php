@@ -26,16 +26,15 @@ use craft\queue\Queue;
 
 return [
     '*' => [
-	'components' => [
-		'deprecator' => [
-			'throwExceptions' => (bool) APP::env('HARD_MODE'),
+		'components' => [
+			'deprecator' => [
+				'throwExceptions' => (bool) APP::env('HARD_MODE'),
+			],
+			'queue' => [
+				'class' => Queue::class,
+				'ttr' => 15 * 60,
+			],
 		],
-		'queue' => [
-			'class' => Queue::class,
-			'ttr' => 15 * 60,
-		],
-	],
-	'id' => App::env('APP_ID') ?: 'CraftCMS',
         'modules' => [
             'site-module' => SiteModule::class,
         ],

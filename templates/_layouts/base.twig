@@ -1,14 +1,12 @@
 {# -- Root that all templates inherit from -- #}
 {# -- This allows for defining site-wide Twig variables as needed -- #}
 {% apply spaceless %}
-  {# @var _isPreview bool TRUE if the request is ANY kind of 'preview' #}
-  {% set _isPreview = craft.app.request.getIsLivePreview() or craft.app.request.getIsPreview() %}
 
-  {# @var _isPreviewIframe bool TRUE if the request is a preview request within the CP iframe #}
-  {% set _isPreviewIframe = _isPreview and craft.app.request.headers.get('sec-fetch-dest') == 'iframe' %}
-
-  {# Element edit button #}
-  {% if currentUser and currentUser.can('accessCp') and not _isPreviewIframe %}
+  {# Element edit button
+     requires a currentUser, who can access the CP, and the request should not be an iframe live preview #}
+  {% if currentUser
+        and currentUser.can('accessCp')
+        and not (craft.app.request.getIsPreview() and craft.app.request.headers.get('sec-fetch-dest') == 'iframe') %}
     {% html at endBody %}
       {% set element = craft.app.elements().getElementByUri(craft.app.request.getFullUri() ?: '__home__') %}
       {% if element and element.canSave(currentUser) %}
