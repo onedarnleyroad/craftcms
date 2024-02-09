@@ -12,6 +12,22 @@
  #   class : 'max-w-full mx-auto',
  # }) }}
  #
+ # Will output something like:
+ #   <img class="max-w-full mx-auto"
+ #        src="data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%221920%22%20height%3D%221080%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E"
+ #        srcset="https://craftcms.ddev.site/volumes/uploads/_1920x1080_crop_center-center_none/image.jpg 1920w,
+ #                https://craftcms.ddev.site/volumes/uploads/_425x239_crop_center-center_none/image.jpg 425w,
+ #                https://craftcms.ddev.site/volumes/uploads/_640x360_crop_center-center_none/image.jpg 640w,
+ #                https://craftcms.ddev.site/volumes/uploads/_768x432_crop_center-center_none/image.jpg 768w,
+ #                https://craftcms.ddev.site/volumes/uploads/_1024x576_crop_center-center_none/image.jpg 1024w,
+ #                https://craftcms.ddev.site/volumes/uploads/_1366x768_crop_center-center_none/image.jpg 1366w,
+ #                https://craftcms.ddev.site/volumes/uploads/_1600x900_crop_center-center_none/image.jpg 1600w"
+ #        width="1920"
+ #        height="1080"
+ #        alt=""
+ #        loading="lazy"
+ #        sizes="(min-width: 1280) 60vw, 100vw">
+ #
  # @parm string|craft\\elements\Asset image - An asset image or image URL string
  # @param null|number maxW - The max width the image should ever display at
  # @param array opts - Hash of options:
