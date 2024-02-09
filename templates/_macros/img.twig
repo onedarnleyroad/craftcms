@@ -39,7 +39,7 @@
  # #}
 {% macro responsive(image, maxW = 1920, opts = {}, attrs = {}) %}
 
-  {% from "_macros/svg.twig" import transparent %}
+  {% from "_macros/svg.twig" import transparentDataUri %}
 
   {# merge opts with defaults #}
   {% set opts = {
@@ -62,7 +62,7 @@
     }) %}
 
     {# Generate a placeholder in case we are lazyloading #}
-    {% set placeholder = transparent(
+    {% set placeholder = transparentDataUri(
       maxW,
       opts.ratio > 0 ? (maxW / opts.ratio)|round(2) : null
       ) %}
@@ -116,7 +116,7 @@
 {% macro dummy(w = 600, h = 400, lazyload = true) %}
 
   {% from _self import responsive %}
-  
+
   {{ responsive('https://placehold.co/' ~ w ~ 'x' ~ h, w, {
     ratio : w / h,
     lazyload : lazyload
