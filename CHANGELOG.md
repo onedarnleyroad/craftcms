@@ -7,17 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### Added
+
+- `img.responsive()`, `img.dummy()` and `svg.transparent()` macros
+
+### Changed
+
+- Remove Imager-X
+
 ### Fixed:
 
 - Fix 500 and 503 pages
 
-### [3.0.1]
+## [3.0.1]
 
 ### Added:
 
 - DDEV config specifies that the project is of type `craftcms`
 
-### [3.0.0]
+## [3.0.0]
 
 ### Added:
 
