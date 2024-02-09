@@ -24,7 +24,6 @@
     "nystudio107/craft-seomatic": "^4.0",
     "nystudio107/craft-vite": "^4.0",
     "servd/craft-asset-storage": "^3.3",
-    "spacecatninja/imager-x": "^4.1",
     "verbb/hyper": "^1.1",
     "verbb/knock-knock": "^2.0",
     "vlucas/phpdotenv": "^5.4.0"

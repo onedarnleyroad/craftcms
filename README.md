@@ -152,7 +152,6 @@ A Makefile has been included to provide a unified CLI for common development com
 1. [CP Field Inspect](https://plugins.craftcms.com/cp-field-inspect)
 1. [Craft Autocomplete](https://github.com/nystudio107/craft-autocomplete)
 1. [Hyper](https://plugins.craftcms.com/hyper)
-1. [Imager-X](https://imager-x.spacecat.ninja/)
 1. [Knock Knock](https://plugins.craftcms.com/knock-knock)
 1. [Postmark](https://plugins.craftcms.com/postmark)
 1. [Redactor](https://plugins.craftcms.com/redactor)
