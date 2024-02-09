@@ -114,10 +114,7 @@
  # @param bool lazyload - Whether to lazyload (default true)
  # #}
 {% macro dummy(w = 600, h = 400, lazyload = true) %}
-
-  {% from _self import responsive %}
-
-  {{ responsive('https://placehold.co/' ~ w ~ 'x' ~ h, w, {
+  {{ _self.responsive('https://placehold.co/' ~ w ~ 'x' ~ h, w, {
     ratio : w / h,
     lazyload : lazyload
   }) }}
