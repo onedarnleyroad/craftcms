@@ -55,7 +55,7 @@
     {# Generate an array of widths, from big to small, that do not exceed max width #}
     {% set widths = [maxW]|merge(opts.widths|sort|filter(w => maxW > w)) %}
 
-    {# Generate hash of transforms based on widths #}
+    {# Generate hash of transforms based on widths & opts.ratio #}
     {% set transforms = widths|map(w => {
       width : w,
       height : opts.ratio > 0 ? (w / opts.ratio)|round(2) : null
@@ -69,7 +69,7 @@
 
     {# Define img tag attributes to merge into default #}
     {% set assetAttrs = {
-      alt:     image.alt|default (''),
+      alt:     image.alt|default(''),
       src:     opts.lazyload ? placeholder : image.url(transforms|last),
       srcset:  transforms|map(t => image.url(t) ~ ' ' ~ image.width(t) ~ 'w')|join(','),
       sizes:   opts.sizes,
@@ -114,7 +114,9 @@
  # @param bool lazyload - Whether to lazyload (default true)
  # #}
 {% macro dummy(w = 600, h = 400, lazyload = true) %}
+
   {% from _self import responsive %}
+  
   {{ responsive('https://placehold.co/' ~ w ~ 'x' ~ h, w, {
     ratio : w / h,
     lazyload : lazyload
