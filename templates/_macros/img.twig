@@ -1,0 +1,77 @@
+{# #
+ # Responsive <img>
+ # An image with srcset widths at standard breakpoints.
+ # Also includes some basic defaults and lazyloading support.
+ #
+ # Usage:
+ # {{ img.responsive(asset, 1920, {
+ #   lazyload : true,
+ #   ration : 16 / 9,
+ #   sizes : '(min-width: 1280) 60vw, 100vw',
+ # }, {
+ #   class : 'max-w-full mx-auto',
+ # }) }}
+ #
+ # @parm string|craft\\elements\Asset image - An asset image or image URL string
+ # @param null|number maxW - The max width the image should ever display at
+ # @param array opts - Hash of options:
+ #   @var bool lazyload - Whether the image should lazyload
+ #   @var number ratio - Set to zero to not crop
+ #   @var string sizes - String of responsive sizes
+ #   @var array widths - Array of width transforms
+ # @param hash attrs - Hash of attributes to add to img tag
+ # #}
+{% macro responsive(image, maxW = 1920, opts = {}, attrs = {}) %}
+
+  {% from "_macros/svg.twig" import transparent %}
+
+  {# merge opts with defaults #}
+  {% set opts = {
+    lazyload : true,
+    ratio : 0,
+    sizes : '100vw',
+    widths : [ 1920, 1600, 1366, 1024, 768, 640, 425 ]
+  }|merge(opts) %}
+
+  {# if image is an asset, then we can transform it #}
+  {% if image is instance of('craft\\elements\\Asset') %}
+
+    {# Generate an array of widths, from big to small, that do not exceed max width #}
+    {% set widths = [maxW]|merge(opts.widths|sort|filter(w => maxW > w)) %}
+
+    {# Generate hash of transforms based on widths #}
+    {% set transforms = widths|map(w => {
+      width : w,
+      height : opts.ratio > 0 ? (w / opts.ratio)|round(2) : null
+    }) %}
+
+    {# Generate a placeholder in case we are lazyloading #}
+    {% set placeholder = transparent(
+      maxW,
+      opts.ratio > 0 ? (maxW / opts.ratio)|round(2) : null
+      ) %}
+
+    {# Define img tag attributes to merge into default #}
+    {% set assetAttrs = {
+      alt:     image.alt|default (''),
+      src:     opts.lazyload ? placeholder : image.url(transforms|last),
+      srcset:  transforms|map(t => image.url(t) ~ ' ' ~ image.width(t) ~ 'w')|join(','),
+      sizes:   opts.sizes|default('100vw'),
+    } %}
+  {% endif %}
+
+  {# #
+   # BEGIN OUTPUT OF IMG TAG
+   # The hash of options we pass:
+   #   - starts assuming `image` is just a string
+   #   - merged with `assetAttrs` if defined above, when `image` is an Asset
+   #   - merged with `attrs`, for things like adding `class=` etc
+   # #}
+  {{ tag('img', {
+    alt:     '',
+    src:     image,
+    width:   maxW,
+    height:  opts.ratio > 0 ? (maxW / opts.ratio)|round(2) : null,
+    loading: opts.lazyload ? 'lazy' : 'eager',
+  }|merge(assetAttrs ?? {})|merge(attrs ?? {})) }}
+{% endmacro %}

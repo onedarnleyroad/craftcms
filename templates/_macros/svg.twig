@@ -1,0 +1,19 @@
+
+{# #
+ # Transparent SVG
+ # Returns a transparent svg as a string for use in `<img src="">`
+ #
+ # Usage:
+ #   {{ transparent(16, 9) }}
+ #
+ # @param number w - The width of the SVG, default to 1
+ # @param number h - The height of the SVG, default to 1
+
+ # #}
+{% macro transparent(w = 1, h = 1) %}
+  {{- 'data:image/svg+xml;charset=utf-8,' ~ tag('svg', {
+    xmlns: 'http://www.w3.org/2000/svg',
+    width: w,
+    height: h
+  })|url_encode -}}
+{% endmacro %}
