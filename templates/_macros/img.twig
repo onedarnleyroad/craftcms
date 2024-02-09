@@ -56,7 +56,7 @@
       alt:     image.alt|default (''),
       src:     opts.lazyload ? placeholder : image.url(transforms|last),
       srcset:  transforms|map(t => image.url(t) ~ ' ' ~ image.width(t) ~ 'w')|join(','),
-      sizes:   opts.sizes|default('100vw'),
+      sizes:   opts.sizes,
     } %}
   {% endif %}
 
