@@ -93,3 +93,30 @@
     loading: opts.lazyload ? 'lazy' : 'eager',
   }|merge(assetAttrs ?? {})|merge(attrs ?? {})) }}
 {% endmacro %}
+
+{# #
+ # Dummy <img>
+ # A dummy image courtesy of https://placehold.co/
+ # Piggybacks off of responsive macro.
+ #
+ # Usage:
+ #   {{ img.dummy(400, 300) }}
+ #
+ # Outputs:
+ #   <img src="https://placehold.co/400x300"
+ #        alt=""
+ #        width="400"
+ #        height="300"
+ #        loading="lazy">
+ #
+ # @param number width - The width of the image (default 600)
+ # @param number height - The height of the image (default 400)
+ # @param bool lazyload - Whether to lazyload (default true)
+ # #}
+{% macro dummy(w = 600, h = 400, lazyload = true) %}
+  {% from _self import responsive %}
+  {{ responsive('https://placehold.co/' ~ w ~ 'x' ~ h, w, {
+    ratio : w / h,
+    lazyload : lazyload
+  }) }}
+{% endmacro %}
