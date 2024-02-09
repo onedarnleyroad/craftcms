@@ -6,7 +6,7 @@
  # Usage:
  # {{ img.responsive(asset, 1920, {
  #   lazyload : true,
- #   ration : 16 / 9,
+ #   ratio : 16 / 9,
  #   sizes : '(min-width: 1280) 60vw, 100vw',
  # }, {
  #   class : 'max-w-full mx-auto',
@@ -15,9 +15,9 @@
  # @parm string|craft\\elements\Asset image - An asset image or image URL string
  # @param null|number maxW - The max width the image should ever display at
  # @param array opts - Hash of options:
- #   @var bool lazyload - Whether the image should lazyload
- #   @var number ratio - Set to zero to not crop
- #   @var string sizes - String of responsive sizes
+ #   @var bool lazyload - Whether the image should lazyload (default true)
+ #   @var number ratio - Set to zero to not crop (default 0)
+ #   @var string sizes - String of responsive sizes (default 100vw)
  #   @var array widths - Array of width transforms
  # @param hash attrs - Hash of attributes to add to img tag
  # #}
