@@ -27,5 +27,5 @@
  # @param number h - The height of the SVG, default to 1
  # #}
 {% macro transparentDataUri(w = 1, h = 1) %}
-  {{ 'data:image/svg+xml;charset=utf-8,' ~ _self.transparent(w, h)|trim|url_encode }}
+  {{- 'data:image/svg+xml;charset=utf-8,' ~ _self.transparent(w, h)|trim|url_encode -}}
 {% endmacro %}
