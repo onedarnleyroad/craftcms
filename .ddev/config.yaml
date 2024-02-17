@@ -21,6 +21,7 @@ use_dns_when_possible: true
 composer_version: "2"
 web_environment: []
 nodejs_version: "16"
+omit_containers: [dba]
 
 # Key features of ddev's config.yaml:
 
