@@ -16,16 +16,25 @@
   }) }}
 {% endmacro %}
 
-{# #
+{##
  # Transparent SVG as Data URI string
  # Returns a transparent svg as a string for use in `<img src="">`
+ #
+ # See also: https://codepen.io/tigt/post/optimizing-svgs-in-data-uris
+ # Credit: https://github.com/nystudio107/craft-imageoptimize/blob/5f2e6e3fc2d4ea95ebd2ecdd25a360c22d5c2d52/src/services/OptimizedImages.php#L410-L441
  #
  # Usage:
  #   {{ transparentDataUri(16, 9) }}
  #
  # @param number w - The width of the SVG, default to 1
  # @param number h - The height of the SVG, default to 1
- # #}
+ ##}
 {% macro transparentDataUri(w = 1, h = 1) %}
-  {{- 'data:image/svg+xml;charset=utf-8,' ~ _self.transparent(w, h)|trim|url_encode -}}
+  {{- 'data:image/svg+xml,' ~ _self.transparent(w, h)|trim|url_encode|replace({
+    "%20" : " ",
+    "%3D" : "=",
+    "%3A" : ":",
+    "%2F" : "/",
+    "%3E%3C/svg%3E" : " /%3E",
+  }) -}}
 {% endmacro %}
