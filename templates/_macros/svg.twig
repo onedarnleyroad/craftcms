@@ -1,4 +1,28 @@
-{# #
+{##
+ # Outputs an SVG by filename
+ # Assumes SVG has been saved in `src/public/svg` and then
+ # copied to `web/dist/svg` via Vite.
+ #
+ # Usage:
+ #   {{ use('search') }}
+ #   {{ use('arrow', 'fill-current') }}
+ #   {{ use('icon', 'w-20 h-20', { 'aria-hidden' : 'true' }) }}
+ #
+ # @param string key       - The filename of the SVG, minus extension
+ # @param string classList - Any classes to add to SVG, defaults to none
+ # @param array  classList - Any additional attributes to add to SVG, defaults to empty hash
+ ##}
+{% macro use(key, classList = '', attrs = {}) %}
+    {% apply spaceless %}
+        {% set attrs = attrs|default({}) %}
+        {% set markup %}
+            {{ svg('@webroot/dist/svg/' ~ key ~ '.svg')|attr({ class: classList }) }}
+        {% endset %}
+        {{ markup|attr(attrs) }}
+    {% endapply %}
+{% endmacro %}
+
+{##
  # Transparent SVG
  # Returns a transparent svg tag
  #
@@ -7,7 +31,7 @@
  #
  # @param number w - The width of the SVG, default to 1
  # @param number h - The height of the SVG, default to 1
- # #}
+ ##}
 {% macro transparent(w = 1, h = 1) %}
   {{ tag('svg', {
     xmlns: 'http://www.w3.org/2000/svg',
