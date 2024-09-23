@@ -14,10 +14,10 @@ install: up build
 		$(filter-out $@,$(MAKECMDGOALS))
 	ddev exec php craft install \
 		$(filter-out $@,$(MAKECMDGOALS))
+	ddev exec php craft plugin/install ckeditor
 	ddev exec php craft plugin/install cp-field-inspect
 	ddev exec php craft plugin/install hyper
 	ddev exec php craft plugin/install postmark
-	ddev exec php craft plugin/install redactor
 	ddev exec php craft plugin/install vite
 up:
 	if [ ! "$$(ddev describe | grep OK)" ]; then \
