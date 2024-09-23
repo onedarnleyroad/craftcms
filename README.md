@@ -12,7 +12,7 @@ A Craft CMS starter project using DDEV for local hosting and Vite for front-end 
 ## Notable Features:
 
 - [DDEV](https://ddev.readthedocs.io/) for local development
-- [Vite 4.x](https://vitejs.dev/) for front-end bundling & HMR
+- [Vite 5.x](https://vitejs.dev/) for front-end bundling & HMR
 - [Tailwind 3.x](https://tailwindcss.com) for utility-first CSS
 - [Alpine 3.x](https://alpinejs.dev/) for lightweight reactivity
 - [Servd](https://servd.host/) as the default hosting environment
@@ -149,12 +149,12 @@ A Makefile has been included to provide a unified CLI for common development com
 
 ## Craft CMS Plugins
 
+1. [CKEditor](https://plugins.craftcms.com/ckeditor)
 1. [CP Field Inspect](https://plugins.craftcms.com/cp-field-inspect)
 1. [Craft Autocomplete](https://github.com/nystudio107/craft-autocomplete)
 1. [Hyper](https://plugins.craftcms.com/hyper)
 1. [Knock Knock](https://plugins.craftcms.com/knock-knock)
 1. [Postmark](https://plugins.craftcms.com/postmark)
-1. [Redactor](https://plugins.craftcms.com/redactor)
 1. [Seomatic](https://nystudio107.com/docs/seomatic/)
 1. [Servd Assets and Helpers](https://github.com/servdhost/craft-asset-storage)
 1. [Vite](https://github.com/nystudio107/craft-vite)
