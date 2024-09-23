@@ -17,9 +17,9 @@
     "sort-packages": true
   },
   "require": {
+    "craftcms/ckeditor": "^3.9.0",
     "craftcms/cms": "^4.4",
     "craftcms/postmark": "^3.0",
-    "craftcms/redactor": "^3.0",
     "mmikkel/cp-field-inspect": "^1.4",
     "nystudio107/craft-seomatic": "^4.0",
     "nystudio107/craft-vite": "^4.0",
@@ -37,8 +37,7 @@
       "@pre-craft-update",
       "@post-craft-update"
     ],
-    "pre-craft-update": [
-    ],
+    "pre-craft-update": [],
     "post-craft-update": [
       "@php craft install/check && php craft up --interactive=0 || exit 0",
       "@php craft install/check && php craft clear-caches/all --interactive=0 || exit 0",
