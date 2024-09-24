@@ -19,6 +19,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix 500 and 503 pages
 
+## [4.0.0]
+
+### Added:
+
+- Now built for Craft 5
+
+### Changed:
+
+- CKEditor replacing Redactor plugin
+- DDEV now uses PHP 8.2 and MySQL 8.0
+- Now uses Vite 5 and Node 20
+- Default Homepage amends
+
 ## [3.0.1]
 
 ### Added:
