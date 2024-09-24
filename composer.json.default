@@ -12,20 +12,20 @@
     },
     "optimize-autoloader": true,
     "platform": {
-      "php": "8.1"
+      "php": "8.2"
     },
     "sort-packages": true
   },
   "require": {
-    "craftcms/cms": "^4.4",
-    "craftcms/postmark": "^3.0",
-    "craftcms/redactor": "^3.0",
-    "mmikkel/cp-field-inspect": "^1.4",
-    "nystudio107/craft-seomatic": "^4.0",
-    "nystudio107/craft-vite": "^4.0",
-    "servd/craft-asset-storage": "^3.3",
-    "verbb/hyper": "^1.1",
-    "verbb/knock-knock": "^2.0",
+    "craftcms/ckeditor": "^4.2.0",
+    "craftcms/cms": "^5.0.0",
+    "craftcms/postmark": "^3.1.0",
+    "mmikkel/cp-field-inspect": "^2.0.2",
+    "nystudio107/craft-seomatic": "^5.1.3",
+    "nystudio107/craft-vite": "^5.0.1",
+    "servd/craft-asset-storage": "^4.0.6",
+    "verbb/hyper": "^2.0.5",
+    "verbb/knock-knock": "^3.0.1",
     "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {
@@ -37,8 +37,7 @@
       "@pre-craft-update",
       "@post-craft-update"
     ],
-    "pre-craft-update": [
-    ],
+    "pre-craft-update": [],
     "post-craft-update": [
       "@php craft install/check && php craft up --interactive=0 || exit 0",
       "@php craft install/check && php craft clear-caches/all --interactive=0 || exit 0",

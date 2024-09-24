@@ -1,4 +1,4 @@
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 import manifestSRI from 'vite-plugin-manifest-sri';
 import path from 'path';
 import viteCompression from 'vite-plugin-compression';
@@ -17,10 +17,8 @@ export default defineConfig(({command}) => ({
       input: {
         app: path.resolve(__dirname, 'src/js/app.js'),
       },
-      output: {
-        sourcemap: true
-      },
     },
+    sourcemap: true
   },
   plugins: [
     manifestSRI(),
