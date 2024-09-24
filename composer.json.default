@@ -53,5 +53,5 @@
     "pre-install-cmd": "@pre-craft-update",
     "post-update-cmd": "@post-craft-update",
     "post-install-cmd": "@post-craft-update"
-  },
+  }
 }
