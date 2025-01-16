@@ -9,15 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `img.responsive()`, `img.dummy()` and `svg.transparent()` macros
-
 ### Changed
-
-- Remove Imager-X
 
 ### Fixed:
 
-- Fix 500 and 503 pages
+## [4.0.1]
+
+### Changed:
+
+- NPM Package updates
 
 ## [4.0.0]
 
@@ -28,9 +28,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - CKEditor replacing Redactor plugin
+- Remove Imager-X
 - DDEV now uses PHP 8.2 and MySQL 8.0
 - Now uses Vite 5 and Node 20
 - Default Homepage amends
+- Fix 500 and 503 pages
+- `img.responsive()`, `img.dummy()` and `svg.transparent()` macros
 
 ## [3.0.1]
 
