@@ -26,6 +26,7 @@ use craft\queue\Queue;
 
 return [
     '*' => [
+		'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
 		'components' => [
 			'deprecator' => [
 				'throwExceptions' => (bool) APP::env('HARD_MODE'),
