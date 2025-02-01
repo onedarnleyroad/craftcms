@@ -7,7 +7,11 @@ dev: build
 pull: up
 	ddev craft servd-asset-storage/local/pull-database --from=production --interactive=0
 	ddev composer install
-install: up build
+install:
+	@test -f .env || cp .env.example .env
+	rm -f .gitignore composer.json CHANGELOG.md LICENSE.md
+	mv -f .gitignore.default .gitignore
+	mv -f composer.json.default composer.json
 	ddev craft setup/app-id \
 		$(filter-out $@,$(MAKECMDGOALS))
 	ddev craft setup/security-key \
