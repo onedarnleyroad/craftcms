@@ -12,6 +12,7 @@ install:
 	rm -f .gitignore composer.json composer.lock CHANGELOG.md LICENSE.md
 	mv -f .gitignore.default .gitignore
 	mv -f composer.json.default composer.json
+	ddev composer install
 	ddev craft setup/app-id \
 		$(filter-out $@,$(MAKECMDGOALS))
 	ddev craft setup/security-key \
