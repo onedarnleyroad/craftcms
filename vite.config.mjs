@@ -40,8 +40,20 @@ export default defineConfig(({command}) => ({
     },
   },
   server: {
+    // Allow cross-origin requests -- https://github.com/vitejs/vite/security/advisories/GHSA-vg6x-rcgg-rjx6
+    allowedHosts: true,
+    cors: {
+      origin: /(\.local|\.site|localhost)/
+    },
+    fs: {
+      strict: false
+    },
+    headers: {
+      "Access-Control-Allow-Private-Network": "true",
+    },
     host: '0.0.0.0',
+    origin: 'http://localhost:3000',
     port: 3000,
     strictPort: true,
-  },
+  }
 }));
