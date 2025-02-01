@@ -9,7 +9,7 @@ pull: up
 	ddev composer install
 install:
 	@test -f .env || cp .env.example .env
-	rm -f .gitignore composer.json CHANGELOG.md LICENSE.md
+	rm -f .gitignore composer.json composer.lock CHANGELOG.md LICENSE.md
 	mv -f .gitignore.default .gitignore
 	mv -f composer.json.default composer.json
 	ddev craft setup/app-id \
