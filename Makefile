@@ -13,6 +13,7 @@ install:
 	mv -f .gitignore.default .gitignore
 	mv -f composer.json.default composer.json
 	ddev composer install
+	ddev exec npm install
 	ddev craft setup/app-id \
 		$(filter-out $@,$(MAKECMDGOALS))
 	ddev craft setup/security-key \
