@@ -18,7 +18,7 @@
     "vite-plugin-restart": "^0.4.0"
   },
   "engines": {
-    "node": "^20"
+    "node": "^22"
   },
   "scripts": {
     "build": "NODE_ENV=production vite build",
