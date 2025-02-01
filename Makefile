@@ -4,9 +4,6 @@ build: up
 	ddev exec npm run build
 dev: build
 	ddev exec npm run serve
-pull: up
-	ddev craft servd-asset-storage/local/pull-database --from=production --interactive=0
-	ddev composer install
 install:
 	@test -f .env || cp .env.example .env
 	rm -f .gitignore composer.json composer.lock CHANGELOG.md LICENSE.md
@@ -20,6 +17,9 @@ install:
 	ddev craft plugin/install hyper
 	ddev craft plugin/install postmark
 	ddev craft plugin/install vite
+pull: up
+	ddev craft servd-asset-storage/local/pull-database --from=production --interactive=0
+	ddev composer install
 up:
 	if [ ! "$$(ddev describe | grep OK)" ]; then \
         ddev start; \
