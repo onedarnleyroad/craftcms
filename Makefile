@@ -14,12 +14,7 @@ install:
 	mv -f composer.json.default composer.json
 	ddev composer install
 	ddev exec npm install
-	ddev craft setup/app-id \
-		$(filter-out $@,$(MAKECMDGOALS))
-	ddev craft setup/security-key \
-		$(filter-out $@,$(MAKECMDGOALS))
-	ddev craft install \
-		$(filter-out $@,$(MAKECMDGOALS))
+	ddev craft install
 	ddev craft plugin/install ckeditor
 	ddev craft plugin/install cp-field-inspect
 	ddev craft plugin/install hyper
