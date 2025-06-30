@@ -41,14 +41,17 @@
 
   {% from "_macros/svg.twig" import transparentDataUri %}
 
+  {# Define the true default widths once, outside opts #}
+  {% set defaultWidths = [ 1920, 1600, 1366, 1024, 768, 640, 425 ] %}
+
   {# merge opts with defaults #}
   {% set opts = {
     class: '',
-    lazyload : true,
-    maxW : 1920,
-    ratio : 0,
-    sizes : '100vw',
-    widths : [ 1920, 1600, 1366, 1024, 768, 640, 425 ]
+    lazyload: true,
+    maxW: (opts.widths is iterable ? opts.widths : defaultWidths)|max,
+    ratio: 0,
+    sizes: '100vw',
+    widths: defaultWidths
   }|merge(opts) %}
 
   {# if image is an asset, then we can transform it #}
