@@ -48,7 +48,7 @@
   {% set opts = {
     class: '',
     lazyload: true,
-    maxW: (opts.widths is iterable ? opts.widths : defaultWidths)|max,
+    maxW: opts.widths is defined and iterable ? max(opts.widths) : min(defaultWidths),
     ratio: 0,
     sizes: '100vw',
     widths: defaultWidths
