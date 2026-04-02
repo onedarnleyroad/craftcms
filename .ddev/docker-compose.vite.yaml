@@ -1,6 +1,5 @@
 # Override the web container's standard HTTP_EXPOSE and HTTPS_EXPOSE services
 # to expose port 3000 of DDEV's web container.
-version: '3.6'
 services:
   web:
     expose:

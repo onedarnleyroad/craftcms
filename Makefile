@@ -4,25 +4,27 @@ build: up
 	ddev exec npm run build
 dev: build
 	ddev exec npm run serve
-pull: up
-	ddev exec php craft servd-asset-storage/local/pull-database --from=production --interactive=0
+install:
+	@test -f .env || cp .env.example .env
+	rm -f .gitignore composer.json composer.lock CHANGELOG.md LICENSE.md
+	mv -f .gitignore.default .gitignore
+	mv -f composer.json.default composer.json
 	ddev composer install
-install: up build
-	ddev exec php craft setup/app-id \
-		$(filter-out $@,$(MAKECMDGOALS))
-	ddev exec php craft setup/security-key \
-		$(filter-out $@,$(MAKECMDGOALS))
-	ddev exec php craft install \
-		$(filter-out $@,$(MAKECMDGOALS))
-	ddev exec php craft plugin/install ckeditor
-	ddev exec php craft plugin/install cp-field-inspect
-	ddev exec php craft plugin/install hyper
-	ddev exec php craft plugin/install postmark
-	ddev exec php craft plugin/install vite
+	ddev exec npm install
+	ddev craft install
+	ddev craft plugin/install ckeditor
+	ddev craft plugin/install cp-field-inspect
+	ddev craft plugin/install hyper
+	ddev craft plugin/install postmark
+	ddev craft plugin/install vite
+pull: up
+	ddev craft servd-asset-storage/local/pull-database --from=production --interactive=0
+	ddev composer install
 up:
 	if [ ! "$$(ddev describe | grep OK)" ]; then \
-        ddev auth ssh; \
         ddev start; \
+        ddev composer install; \
+        ddev exec npm install; \
     fi
 %:
 	@:
