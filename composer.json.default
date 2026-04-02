@@ -12,25 +12,25 @@
     },
     "optimize-autoloader": true,
     "platform": {
-      "php": "8.2"
+      "php": "8.3"
     },
     "sort-packages": true
   },
   "require": {
-    "craftcms/ckeditor": "^4.2.0",
-    "craftcms/cms": "^5.0.0",
+    "craftcms/ckeditor": "^5.4.0",
+    "craftcms/cms": "^5.9.18",
     "craftcms/postmark": "^3.1.0",
-    "mmikkel/cp-field-inspect": "^2.0.2",
-    "nystudio107/craft-seomatic": "^5.1.3",
+    "mmikkel/cp-field-inspect": "^2.0.4",
+    "nystudio107/craft-seomatic": "^5.1.21",
     "nystudio107/craft-vite": "^5.0.1",
-    "servd/craft-asset-storage": "^4.0.6",
-    "verbb/hyper": "^2.0.5",
-    "verbb/knock-knock": "^3.0.1",
-    "vlucas/phpdotenv": "^5.4.0"
+    "servd/craft-asset-storage": "^4.2.4.2",
+    "verbb/hyper": "^2.3.3",
+    "verbb/knock-knock": "^3.0.5",
+    "vlucas/phpdotenv": "^5.6.3"
   },
   "require-dev": {
-    "nystudio107/craft-autocomplete": "^1.10.0",
-    "yiisoft/yii2-shell": "^2.0.3"
+    "nystudio107/craft-autocomplete": "^1.12.2",
+    "yiisoft/yii2-shell": "^2.0.6"
   },
   "scripts": {
     "craft-update": [
